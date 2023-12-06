@@ -1,0 +1,298 @@
+@font-face {
+    font-family: 'AkzidenzBold';
+    src: url('assets/AkzidenzBold.ttf');
+}
+
+@font-face {
+    font-family: 'AkzidenzRoman';
+    src: url('assets/AkzidenzRoman.ttf');
+}
+
+@font-face {
+    font-family: 'AkzidenzLight';
+    src: url('assets/AkzidenzLight.ttf');
+}
+
+body {
+    background-color: black;
+    color: rgb(237, 237, 237);
+    font-family: 'AkzidenzLight', sans-serif;
+    margin: 0;
+}
+
+.Header {
+    font-size: 30px;
+    text-align: left;
+    margin-left: 50px;
+    padding-top: 10px;
+    position: fixed;
+    top: 12px;
+    font-family: 'AkzidenzBold', sans-serif;
+}
+
+.Header2 {
+    font-size: 15px;
+    text-align: left;
+    margin-left: 50px;
+    padding-top: 0px;
+    position: fixed;
+    top: 140px;
+    font-family: 'AkzidenzBold', sans-serif;
+}
+
+.Header3 {
+    font-size: 15px;
+    text-align: justify;
+    margin-left: 50px;
+    margin-right: 1300px;
+    min-width: 300px;
+    max-width: 300px;
+    position: fixed;
+    bottom: 60px;
+    font-family: 'AkzidenzBold', sans-serif;
+}
+
+.Header3 {
+    cursor: pointer;
+}
+
+.hide {
+    font-size: 10px;
+    text-align: justify;
+    margin-left: 50px;
+    margin-right: 1300px;
+    min-width: 120px;
+    max-width: 180px;
+    position: fixed;
+    bottom: 120px;
+    font-family: 'AkzidenzBold', sans-serif;
+}
+
+.Header4 {
+    font-family: 'AkzidenzLight', sans-serif;
+    font-size: 12px;
+    text-align: justify;
+    margin-left: 80px;
+    margin-right: 1300px;
+    min-width: 250px;
+    max-width: 250px;
+    position: fixed;
+    top: 400px;
+}
+
+.Header5 {
+    position: fixed;
+    font-size: 90px;
+    left: 230px;
+    bottom: 117px;
+    font-family: 'AkzidenzBold', sans-serif;
+    z-index: 0;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    transform: rotate(-90deg);
+}
+
+.Header5.hidden {
+    opacity: 0;
+}
+
+.Header6 {
+    position: fixed;
+    font-size: 90px;
+    left: 267px;
+    bottom: 79px;
+    font-family: 'AkzidenzBold', sans-serif;
+    z-index: 0;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    transform: rotate(-90deg);
+}
+
+.Header6.hidden {
+    opacity: 0;
+}
+
+.Header7 {
+    position: fixed;
+    font-size: 90px;
+    left: 220px;
+    bottom: 120px;
+    font-family: 'AkzidenzBold', sans-serif;
+    z-index: 0;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    transform: rotate(-90deg);
+}
+
+.Header7.hidden {
+    opacity: 0;
+}
+
+.WorkOptions1 {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 80px;
+    padding-top: 0px;
+    position: fixed;
+    top: 180px;
+}
+
+.WorkOptions2 {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 80px;
+    padding-top: 0px;
+    position: fixed;
+    top: 205px;
+}
+
+.WorkOptions3 {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 80px;
+    padding-top: 0px;
+    position: fixed;
+    top: 230px;
+}
+
+.WorkOptions1:hover {
+    color: rgba(255, 255, 255, 0.609);
+    cursor: pointer;
+}
+
+.WorkOptions1:active {
+    color: rgb(255, 255, 255);
+}
+
+.WorkOptions2:hover {
+    color: rgba(255, 255, 255, 0.609);
+    cursor: pointer;
+}
+
+.WorkOptions2:active {
+    color: rgb(255, 255, 255);
+}
+
+.WorkOptions3:hover {
+    color: rgba(255, 255, 255, 0.609);
+    cursor: pointer;
+}
+
+.WorkOptions3:active {
+    color: rgb(255, 255, 255);
+}
+
+.WorkOptions4:hover {
+    color: rgba(255, 255, 255, 0.609);
+    cursor: pointer;
+}
+
+.WorkOptions4:active {
+    color: rgb(255, 255, 255);
+}
+
+.Poster {
+    position: relative;
+    left: 280px;
+    top: 40px;
+    border: transparent;
+    margin: -3px -1.5px;
+    width: 400px;
+    height: 400px;
+}
+
+.Poster:hover {
+    cursor: pointer;
+    opacity: 0.95;
+}
+
+.Poster1 {
+    background: url(assets/Artboard\ 1.png) 20% 20% no-repeat;
+}
+
+.Poster2 {
+    background: url(assets/Artboard\ 3.png) 15% 0% no-repeat;
+}
+
+.Poster3 {
+    background: url(assets/Artboard\ 5.png) 60% 70% no-repeat;
+}
+
+.Poster4 {
+    background: url(assets/Artboard\ 4.png) 5% 0% no-repeat;
+}
+
+.Poster5 {
+    background: url(assets/Artboard\ 6.jpg) 60% 70% no-repeat;
+}
+
+.Poster6 {
+    background: url(assets/Artboard\ 7.png) 5% 0% no-repeat;
+    margin-bottom: 200px;
+}
+
+.Book {
+    position: relative;
+    left: 280px;
+    top: 40px;
+    border: transparent;
+    margin: -3px -1.5px;
+    width: 400px;
+    height: 400px;
+}
+
+.Book:hover {
+    cursor: pointer;
+    opacity: 0.95;
+}
+
+.Book1 {
+    background: url(assets/Book\ 1.png) 53% 44% no-repeat;
+    background-size: 220%;
+}
+
+.Book2 {
+    background: url(assets/Book\ 2.png) 80% 80% no-repeat;
+    background-size: 350%;
+    margin-bottom: 200px;
+}
+
+.Ill {
+    position: relative;
+    left: 280px;
+    top: 40px;
+    border: transparent;
+    margin: -3px -1.5px;
+    width: 400px;
+    height: 400px;
+}
+
+.Ill1 {
+    background: url(assets/Ill2.png) 50% 50% no-repeat;
+    background-size: 180%;
+    z-index: 1;
+}
+
+.Ill2 {
+    background: url(assets/ILU.png) 50% 50% no-repeat;
+    background-size: 180%;
+    z-index: 2;
+}
+
+.Ill3 {
+    background: url(assets/NMN.jpg) 50% 50% no-repeat;
+    background-size: 180%;
+    z-index: 3;
+}
+
+.Ill4 {
+    background: url(assets/Ill1.jpg) 50% 50% no-repeat;
+    background-size: 180%;
+    margin-bottom: 200px;
+    z-index: 4;
+}
+
+.Ill:hover {
+    cursor: pointer;
+    opacity: 0.92;
+}

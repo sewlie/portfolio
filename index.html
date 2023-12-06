@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Nick Sulis</title>
+    <style>
+        .hide {
+  display: none;
+}
+
+.Header3:hover + .hide {
+  display: block;
+  color: rgb(237, 237, 237);
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="Header">
+        <h1>Nick Sulis</h1>
+    </div>
+
+    <div class="Header2">
+        <h2>WORK</h2>
+    </div>
+
+    <div class="Header3">
+        <h2>ABOUT</h2>
+    </div>
+
+    <div class="hide">
+        <h2>I am shown when someone hovers over the div above.
+            I am shown when someone hovers over the div above.
+            I am shown when someone hovers over the div above.
+        </h2>
+    </div>
+
+    <div class="Header5">
+        <h2>Posters</h2>
+    </div>
+
+    <div class="Posters">
+        <a href="https://google.com" class="Poster">
+            <button class="Poster Poster1"></button>
+        </a>
+
+        <a href="https://google.com" class="Poster">
+            <button class="Poster Poster2"></button>
+        </a>
+
+        <a href="https://google.com" class="Poster">
+            <button class="Poster Poster3"></button>
+        </a>
+    </div>
+
+    <div class="Posters">
+        <a href="https://google.com" class="Poster">
+            <button class="Poster Poster4"></button>
+        </a>
+
+        <a href="https://google.com" class="Poster">
+            <button class="Poster Poster5"></button>
+        </a>
+
+        <a href="https://google.com" class="Poster">
+            <button class="Poster Poster6"></button>
+        </a>
+    </div>
+
+    <div id="books-anchor"></div>
+
+    <div class="WorkOptions1" onclick="scrollToElement('.Posters')">
+        <h3>POSTERS</h3>
+    </div>
+
+    <div class="WorkOptions2" onclick="scrollToBooks()">
+        <h3>BOOKS</h3>
+    </div>
+
+    <div class="WorkOptions3" onclick="scrollToElement('.Illustrations')">
+        <h3>GRAPHIC</h3>
+    </div>
+
+    <div class="Header6">
+        <h2>Books</h2>
+    </div>
+
+    <div class="Books">
+        <a href="https://google.com" class="Book">
+            <button class="Book Book1"></button>
+        </a>
+
+        <a href="https://google.com" class="Book">
+            <button class="Book Book2"></button>
+        </a>
+    </div>
+
+    <div class="Header7">
+        <h2>Graphic</h2>
+    </div>
+
+    <div class="Illustrations">
+        <a href="https://google.com" class="Ill">
+            <button class="Ill Ill1"></button>
+        </a>
+
+        <a href="https://google.com" class="Ill">
+            <button class="Ill Ill2"></button>
+        </a>
+
+        <a href="https://google.com" class="Ill">
+            <button class="Ill Ill3"></button>
+        </a>
+    </div>
+
+    <div class="Illustrations">
+        <a href="https://google.com" class="Ill">
+            <button class="Ill Ill4"></button>
+        </a>
+    </div>
+
+    <script>
+function scrollToPosition(position) {
+        window.scrollTo({
+            top: position,
+            behavior: 'smooth'
+        });
+    }
+
+        function scrollToElement(selector) {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        document.addEventListener('scroll', function () {
+    var header5 = document.querySelector('.Header5');
+    var header6 = document.querySelector('.Header6');
+    var header7 = document.querySelector('.Header7');
+    var scrollPosition = window.scrollY;
+
+    var threshold5 = 150;
+    var threshold6 = 700;
+    var threshold7 = 1100;
+
+    if (scrollPosition > threshold5) {
+        header5.classList.add('hidden');
+        header6.classList.remove('hidden');
+    } else {
+        header5.classList.remove('hidden');
+        header6.classList.add('hidden');
+    }
+
+    if (scrollPosition > threshold6) {
+        header6.classList.add('hidden');
+        header7.classList.remove('hidden');
+    } else {
+        header7.classList.add('hidden');
+    }
+});
+
+document.querySelector('.Header6').classList.add('hidden');
+document.querySelector('.Header7').classList.add('hidden');
+
+function scrollToBooks() {
+        scrollToPosition(597);
+    }
+    </script>
+
+</body>
+
+</html>
