@@ -94,8 +94,8 @@ body {
 .Header5 {
     position: fixed;
     font-size: 90px;
-    left: 230px;
-    top: 46%;
+    left: 12%;
+    top: 45%;
     font-family: 'AkzidenzBold', sans-serif;
     z-index: 0;
     opacity: 1;
@@ -208,13 +208,13 @@ body {
 
 .Poster {
     position: relative;
-    left: 280px;
+    left: 15%;
     top: 42px;
     border: transparent;
     margin: -3px -1.5px;
-    width: 388px;
-    height: 388px;
-    max-height: 388px;
+    width: 20%;
+    padding-top: 20%;
+    max-height: 100vh;
 }
 
 .Poster:hover {
@@ -321,13 +321,13 @@ body {
 
 .Ill {
     position: relative;
-    left: 280px;
-    top: 40px;
+    left: 15%;
+    top: 42px;
     border: transparent;
     margin: -3px -1.5px;
-    width: 388px;
-    height: 388px;
-    max-height: 388px;
+    width: 20%;
+    padding-top: 20%;
+    max-height: 100vh;
 }
 
 .Ill1 {
