@@ -53,7 +53,7 @@ body {
     min-width: 10px;
     max-width: 200px;
     position: fixed;
-    top: 84.8%;
+    top: 83.7%;
     font-family: 'AkzidenzBold', sans-serif;
 }
 
@@ -70,7 +70,7 @@ body {
     min-width: 120px;
     max-width: 180px;
     position: fixed;
-    top: 59%;
+    top: 56%;
     font-family: 'AkzidenzBold', sans-serif;
 }
 
@@ -95,7 +95,7 @@ body {
     position: fixed;
     font-size: 90px;
     left: 230px;
-    top: 47%;
+    top: 46%;
     font-family: 'AkzidenzBold', sans-serif;
     z-index: 0;
     opacity: 1;
@@ -107,27 +107,11 @@ body {
     opacity: 0;
 }
 
-.Header6 {
-    position: fixed;
-    font-size: 90px;
-    left: 267px;
-    top: 50.8%;
-    font-family: 'AkzidenzBold', sans-serif;
-    z-index: 0;
-    opacity: 1;
-    transition: opacity 0.2s ease;
-    transform: rotate(-90deg);
-}
-
-.Header6.hidden {
-    opacity: 0;
-}
-
 .Header7 {
     position: fixed;
     font-size: 90px;
     left: 220px;
-    top: 46%;
+    top: 44%;
     font-family: 'AkzidenzBold', sans-serif;
     z-index: 0;
     opacity: 1;
@@ -225,7 +209,7 @@ body {
 .Poster {
     position: relative;
     left: 280px;
-    top: 40px;
+    top: 42px;
     border: transparent;
     margin: -3px -1.5px;
     width: 388px;
@@ -440,7 +424,6 @@ body {
 .Ill6 {
     background: url(assets/ILU.png) 50% 50% no-repeat;
     background-size: 180%;
-    margin-bottom: 200px;
     z-index: 6;
 }
 
