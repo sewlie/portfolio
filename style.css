@@ -29,9 +29,9 @@ body {
     font-size: 30px;
     text-align: left;
     margin-left: 50px;
-    padding-top: 10px;
+    padding-top: 0px;
     position: fixed;
-    top: 12px;
+    top: 0%;
     font-family: 'AkzidenzBold', sans-serif;
 }
 
@@ -41,7 +41,7 @@ body {
     margin-left: 50px;
     padding-top: 0px;
     position: fixed;
-    top: 14%;
+    top: 10%;
     font-family: 'AkzidenzBold', sans-serif;
 }
 
@@ -159,7 +159,7 @@ body {
     margin-left: 50px;
     padding-top: 0px;
     position: fixed;
-    top: 190px;
+    top: 16%;
     z-index: 0;
     min-height: 10px;
     max-height: 50px;
@@ -171,9 +171,10 @@ body {
     margin-left: 50px;
     padding-top: 0px;
     position: fixed;
-    top: 215px;
+    top: 19%;
     min-height: 10px;
     max-height: 50px;
+    z-index: 0;
 }
 
 .WorkOptions4 {
@@ -182,7 +183,7 @@ body {
     margin-left: 50px;
     padding-top: 0px;
     position: fixed;
-    top: 190px;
+    top: 16%;
     z-index: 0;
 }
 
@@ -192,7 +193,8 @@ body {
     margin-left: 50px;
     padding-top: 0px;
     position: fixed;
-    top: 215px;
+    top: 19%;
+    z-index: 0;
 }
 
 .WorkOptions1:hover {
