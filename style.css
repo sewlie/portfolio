@@ -36,7 +36,7 @@ body {
 }
 
 .Header2 {
-    font-size: 15px;
+    font-size: 18px;
     text-align: left;
     margin-left: 50px;
     padding-top: 0px;
@@ -55,11 +55,6 @@ body {
     position: fixed;
     top: 84.8%;
     font-family: 'AkzidenzBold', sans-serif;
-}
-
-.Header3:hover {
-    color: rgba(255, 255, 255, 0.609);
-    cursor: pointer;
 }
 
 .hide {
@@ -154,16 +149,8 @@ body {
     margin-left: 50px;
     padding-top: 0px;
     position: fixed;
-    top: 180px;
-}
-
-.WorkOptions2 {
-    font-size: 12px;
-    text-align: left;
-    margin-left: 50px;
-    padding-top: 0px;
-    position: fixed;
-    top: 205px;
+    top: 190px;
+    z-index: 0;
 }
 
 .WorkOptions3 {
@@ -172,43 +159,51 @@ body {
     margin-left: 50px;
     padding-top: 0px;
     position: fixed;
-    top: 230px;
+    top: 215px;
+}
+
+.WorkOptions4 {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 50px;
+    padding-top: 0px;
+    position: fixed;
+    top: 190px;
+    z-index: 0;
+}
+
+.WorkOptions5 {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 50px;
+    padding-top: 0px;
+    position: fixed;
+    top: 215px;
 }
 
 .WorkOptions1:hover {
     color: rgba(255, 255, 255, 0.609);
     cursor: pointer;
 }
-
-.WorkOptions1:active {
-    color: rgb(255, 255, 255);
-}
-
 .WorkOptions2:hover {
     color: rgba(255, 255, 255, 0.609);
     cursor: pointer;
 }
-
-.WorkOptions2:active {
-    color: rgb(255, 255, 255);
-}
-
 .WorkOptions3:hover {
     color: rgba(255, 255, 255, 0.609);
     cursor: pointer;
 }
-
-.WorkOptions3:active {
-    color: rgb(255, 255, 255);
-}
-
 .WorkOptions4:hover {
     color: rgba(255, 255, 255, 0.609);
     cursor: pointer;
 }
-
-.WorkOptions4:active {
-    color: rgb(255, 255, 255);
+.WorkOptions5:hover {
+    color: rgba(255, 255, 255, 0.609);
+    cursor: pointer;
+}
+.WorkOptions6:hover {
+    color: rgba(255, 255, 255, 0.609);
+    cursor: pointer;
 }
 
 .Poster {
@@ -262,12 +257,48 @@ body {
     background: url(assets/Artboard\ 5.png) 60% 70% no-repeat;
 }
 
+.rosen {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.84);
+}
+
+.rosen img {
+    width: 100%;
+    height: 100%;
+}
+
 .Poster4 {
     background: url(assets/Artboard\ 4.png) 5% 0% no-repeat;
 }
 
+.sandeman {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.84);
+}
+
+.sandeman img {
+    width: 100%;
+    height: 100%;
+}
+
 .Poster5 {
     background: url(assets/Artboard\ 6.jpg) 60% 70% no-repeat;
+}
+
+.antsy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.54);
+}
+
+.antsy img {
+    width: 100%;
+    height: 100%;
 }
 
 .Poster6 {
@@ -275,30 +306,16 @@ body {
     margin-bottom: 200px;
 }
 
-.Book {
-    position: relative;
-    left: 280px;
-    top: 40px;
-    border: transparent;
-    margin: -3px -1.5px;
-    width: 400px;
-    height: 400px;
+.viceroy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.54);
 }
 
-.Book:hover {
-    cursor: pointer;
-    opacity: 0.95;
-}
-
-.Book1 {
-    background: url(assets/Book\ 1.png) 53% 44% no-repeat;
-    background-size: 220%;
-}
-
-.Book2 {
-    background: url(assets/Book\ 2.png) 80% 80% no-repeat;
-    background-size: 350%;
-    margin-bottom: 200px;
+.viceroy img {
+    width: 100%;
+    height: 100%;
 }
 
 .Ill {
@@ -317,16 +334,52 @@ body {
     z-index: 1;
 }
 
+.capital {
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.64);
+}
+
+.capital img {
+    width: 150%;
+    height: 150%;
+}
+
 .Ill2 {
-    background: url(assets/ILU.png) 50% 50% no-repeat;
-    background-size: 180%;
+    background: url(assets/Book\ 2.png) 85% 75% no-repeat;
+    background-size: 280%;
     z-index: 2;
 }
 
+.covid {
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.64);
+}
+
+.covid img {
+    width: 150%;
+    height: 150%;
+}
+
 .Ill3 {
-    background: url(assets/NMN.jpg) 50% 50% no-repeat;
+    background: url(assets/Book\ 1.png) 50% 50% no-repeat;
     background-size: 180%;
     z-index: 3;
+}
+
+.const {
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.64);
+}
+
+.const img {
+    width: 150%;
+    height: 150%;
 }
 
 .Ill4 {
@@ -334,6 +387,55 @@ body {
     background-size: 180%;
     margin-bottom: 200px;
     z-index: 4;
+}
+
+.friendly {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.64);
+}
+
+.friendly img {
+    width: 100%;
+    height: 100%;
+}
+
+.Ill5 {
+    background: url(assets/NMN.jpg) 50% 50% no-repeat;
+    background-size: 180%;
+    z-index: 5;
+}
+
+.nmn {
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.64);
+}
+
+.nmn img {
+    width: 150%;
+    height: 150%;
+}
+
+.Ill6 {
+    background: url(assets/ILU.png) 50% 50% no-repeat;
+    background-size: 180%;
+    margin-bottom: 200px;
+    z-index: 6;
+}
+
+.ilu {
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.64);
+}
+
+.ilu img {
+    width: 150%;
+    height: 150%;
 }
 
 .Ill:hover {

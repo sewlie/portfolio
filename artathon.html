@@ -15,26 +15,6 @@
   display: block;
   color: rgb(237, 237, 237);
 }
-    .Artathon::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        right: -200px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 20px 0 20px 32px;
-        border-color: transparent transparent transparent #fff;
-        transform: translateY(-50%);
-    }
-
-    .next {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-    }
     </style>
     </head>
 
@@ -51,19 +31,6 @@
         <h2>ABOUT</h2>
     </div>
 
-    <div class="WorkOptions1">
-        <a href="index.html#Posters">
-        <h3>Posters</h3>
-    </div>
-
-    <div class="WorkOptions2" onclick="scrollToBooks()">
-        <h3>Books</h3>
-    </div>
-
-    <div class="WorkOptions3" onclick="scrollToElement('.Illustrations')">
-        <h3>Graphic</h3>
-    </div>
-
     <div class="hide">
         <h2>I am shown when someone hovers over the div above.
             I am shown when someone hovers over the div above.
@@ -72,6 +39,14 @@
             I am shown when someone hovers over the div above.
             I am shown when someone hovers over the div above.
         </h2>
+    </div>
+
+    <div class="WorkOptions4" onclick="window.location.href='index.html';">
+        <h3>Posters</h3>
+    </div>
+
+    <div class="WorkOptions5" onclick="window.location.href='index.html#books-anchor';">
+        <h3>Graphic</h3>
     </div>
 
     <div class="Header8">

@@ -21,6 +21,17 @@
 
 <body>
 
+<div id="previewContainer"></div>
+
+
+    <div class="WorkOptions1" onclick="scrollToElement('.Posters')">
+        <h3>Posters</h3>
+    </div>
+
+    <div class="WorkOptions3" onclick="scrollToElement('.Illustrations')">
+        <h3>Graphic</h3>
+    </div>
+
     <div class="Header">
         <h1>Sewlie</h1>
     </div>
@@ -52,79 +63,64 @@
             <button class="Poster Poster1"></button>
         </a>
 
-        <a href="https://google.com" class="Poster">
+        <a href="dna.html" class="Poster">
             <button class="Poster Poster2"></button>
         </a>
 
-        <a href="https://google.com" class="Poster">
+        <a href="rosen.html" class="Poster">
             <button class="Poster Poster3"></button>
         </a>
     </div>
 
     <div class="Posters">
-        <a href="https://google.com" class="Poster">
+        <a href="sandeman.html" class="Poster">
             <button class="Poster Poster4"></button>
         </a>
 
-        <a href="https://google.com" class="Poster">
+        <a href="antsy.html" class="Poster">
             <button class="Poster Poster5"></button>
         </a>
 
-        <a href="https://google.com" class="Poster">
+        <a href="viceroy.html" class="Poster">
             <button class="Poster Poster6"></button>
         </a>
     </div>
 
     <div id="books-anchor"></div>
 
-    <div class="WorkOptions1" onclick="scrollToElement('.Posters')">
-        <h3>Posters</h3>
-    </div>
-
-    <div class="WorkOptions2" onclick="scrollToBooks()">
-        <h3>Books</h3>
-    </div>
-
-    <div class="WorkOptions3" onclick="scrollToElement('.Illustrations')">
-        <h3>Graphic</h3>
-    </div>
-
-    <div class="Header6">
-        <h2>Books</h2>
-    </div>
-
-    <div class="Books">
-        <a href="https://google.com" class="Book">
-            <button class="Book Book1"></button>
-        </a>
-
-        <a href="https://google.com" class="Book">
-            <button class="Book Book2"></button>
-        </a>
-    </div>
 
     <div class="Header7">
         <h2>Graphic</h2>
     </div>
 
     <div class="Illustrations">
-        <a href="https://google.com" class="Ill">
+        <a href="capital.html" class="Ill">
             <button class="Ill Ill1"></button>
         </a>
 
-        <a href="https://google.com" class="Ill">
+        <a href="covid.html" class="Ill">
             <button class="Ill Ill2"></button>
         </a>
 
-        <a href="https://google.com" class="Ill">
+        <a href="const.html" class="Ill">
             <button class="Ill Ill3"></button>
         </a>
     </div>
 
     <div class="Illustrations">
-        <a href="https://google.com" class="Ill">
+        <a href="friendly.html" class="Ill">
             <button class="Ill Ill4"></button>
         </a>
+
+
+        <a href="ilu.html" class="Ill">
+            <button class="Ill Ill6"></button>
+        </a>
+
+        <a href="nmn.html" class="Ill">
+            <button class="Ill Ill5"></button>
+        </a>
+
     </div>
 
     <script>
@@ -146,36 +142,23 @@ function scrollToPosition(position) {
 
         document.addEventListener('scroll', function () {
     var header5 = document.querySelector('.Header5');
-    var header6 = document.querySelector('.Header6');
     var header7 = document.querySelector('.Header7');
     var scrollPosition = window.scrollY;
 
-    var threshold5 = 150;
-    var threshold6 = 700;
-    var threshold7 = 1100;
+    var threshold5 = 250;
+    var threshold7 = 1000;
 
     if (scrollPosition > threshold5) {
         header5.classList.add('hidden');
-        header6.classList.remove('hidden');
-    } else {
-        header5.classList.remove('hidden');
-        header6.classList.add('hidden');
-    }
-
-    if (scrollPosition > threshold6) {
-        header6.classList.add('hidden');
         header7.classList.remove('hidden');
     } else {
+        header5.classList.remove('hidden');
         header7.classList.add('hidden');
     }
 });
 
-document.querySelector('.Header6').classList.add('hidden');
 document.querySelector('.Header7').classList.add('hidden');
 
-function scrollToBooks() {
-        scrollToPosition(597);
-    }
     </script>
 
 </body>
