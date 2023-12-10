@@ -5,17 +5,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Rosenquist</title>
     <style>
+        * {box-sizing: border-box;}
+    
+            .img-zoom-container {
+            position: absolute;
+            left: 18%;
+            top: 90px;
+            }
+    
+            .img-zoom-lens {
+            position: absolute;
+            border: 0px solid #d4d4d4;
+            /*set the size of the lens:*/
+            width: 30px;
+            height: 30px;
+            }
+    
+            .img-zoom-result {
+            position: absolute;
+            left: 71%;
+            bottom: 40%;
+            border: 1px solid #d4d4d4;
+            /*set the size of the result div:*/
+            width: 200px;
+            height: 200px;
+            background: no-repeat;
+            }
         .hide {
-  display: none;
-}
-
-.Header3:hover + .hide {
-  display: block;
-  color: rgb(237, 237, 237);
-}
+        display: none;
+        }
+    
+        .Header3:hover + .hide {
+        display: block;
+        color: rgb(237, 237, 237);
+        }
     </style>
+    <script>
+        function imageZoom(imgID, resultID) {
+        var img, lens, result, cx, cy;
+        img = document.getElementById(imgID);
+        result = document.getElementById(resultID);
+        /* Create lens: */
+        lens = document.createElement("DIV");
+        lens.setAttribute("class", "img-zoom-lens");
+        /* Insert lens: */
+        img.parentElement.insertBefore(lens, img);
+        /* Calculate the ratio between result DIV and lens: */
+        cx = (result.offsetWidth / lens.offsetWidth) / 3;
+        cy = (result.offsetHeight / lens.offsetHeight) / 3;
+        /* Set background properties for the result DIV */
+        result.style.backgroundImage = "url('" + img.src + "')";
+        result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+        /* Execute a function when someone moves the cursor over the image, or the lens: */
+        lens.addEventListener("mousemove", moveLens);
+        img.addEventListener("mousemove", moveLens);
+        /* And also for touch screens: */
+        lens.addEventListener("touchmove", moveLens);
+        img.addEventListener("touchmove", moveLens);
+        function moveLens(e) {
+          var pos, x, y;
+          /* Prevent any other actions that may occur when moving over the image */
+          e.preventDefault();
+          /* Get the cursor's x and y positions: */
+          pos = getCursorPos(e);
+          /* Calculate the position of the lens: */
+          x = pos.x - (lens.offsetWidth / 2);
+          y = pos.y - (lens.offsetHeight / 2);
+          /* Prevent the lens from being positioned outside the image: */
+          if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+          if (x < 0) {x = 0;}
+          if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+          if (y < 0) {y = 0;}
+          /* Set the position of the lens: */
+          lens.style.left = x + "px";
+          lens.style.top = y + "px";
+          /* Display what the lens "sees": */
+          result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+        }
+        function getCursorPos(e) {
+          var a, x = 0, y = 0;
+          e = e || window.event;
+          /* Get the x and y positions of the image: */
+          a = img.getBoundingClientRect();
+          /* Calculate the cursor's x and y coordinates, relative to the image: */
+          x = e.pageX - a.left;
+          y = e.pageY - a.top;
+          /* Consider any page scrolling: */
+          x = x - window.pageXOffset;
+          y = y - window.pageYOffset;
+          return {x : x, y : y};
+        }
+      }
+    </script>
+    <title>Getting Through Covid</title>
     </head>
 
 <body>
@@ -41,12 +124,12 @@
     </div>
 
     <div class="hide">
-        <h2>I am shown when someone hovers over the div above.
-            I am shown when someone hovers over the div above.
-            I am shown when someone hovers over the div above.
-            I am shown when someone hovers over the div above.
-            I am shown when someone hovers over the div above.
-            I am shown when someone hovers over the div above.
+        <h2>Sewlie is a multifaceted designer based in NYC.
+
+            <br><br>For him, design is a communicative endeavor, orchestrated by the creator to serve the viewer and, ideally, evoke profound thoughts. He is currently in the final semester of a BFA in Communications Design at CCNY's EDM Program.
+            
+            <br><br>Sewlie founded ILUM New York in 2015, creating a diverse array of clothing items that showcase graphic elements inspired by his upbringing in "The Big Apple." Since then, he is constantly improved his craft and created numerous impactful works. These include posters, book making, illustrations, as well as graphic elements for online livestreamed events and more.
+            <br><br>Reach him at <br>sewlie.art@gmail.com
         </h2>
     </div>
 
@@ -58,9 +141,14 @@
         <h3>Graphic</h3>
     </div>
 
-    <div class="covid">
-    <img src="assets/Book 2.png" alt="covid">
+    <div class="img-zoom-container">
+        <img id="myimage" src="assets/Book 2.png" width="70%" height="70%" alt="Book2">
+        <div id="myresult" class="img-zoom-result"></div>
     </div>
+
+    <script>
+        imageZoom("myimage", "myresult");
+    </script>
 
 </body>
 
