@@ -32,7 +32,7 @@
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 10px;
             padding: 10px;
             width: 90%;
@@ -40,10 +40,25 @@
         }
         .grid-item {
             background-color: #ccc;
-            padding: 20px;
-            border: 1px solid #ddd;
-            text-align: center;
+            padding-top: 100%;
+            position: relative;
             cursor: pointer;
+        }
+        .grid-item div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 5px;
+            }
         }
     </style>
 </head>
@@ -56,16 +71,56 @@
     </div>
 
     <div class="grid-container">
-        <div class="grid-item" style="background-color: #ff6666;" onclick="window.location='#'">1</div>
-        <div class="grid-item" style="background-color: #ffcc66;" onclick="window.location='#'">2</div>
-        <div class="grid-item" style="background-color: #99cc66;" onclick="window.location='#'">3</div>
-        <div class="grid-item" style="background-color: #66cccc;" onclick="window.location='#'">4</div>
-        <div class="grid-item" style="background-color: #6699ff;" onclick="window.location='#'">5</div>
-        <div class="grid-item" style="background-color: #cc66ff;" onclick="window.location='#'">6</div>
-        <div class="grid-item" style="background-color: #ff6699;" onclick="window.location='#'">7</div>
-        <div class="grid-item" style="background-color: #ff9966;" onclick="window.location='#'">8</div>
-        <div class="grid-item" style="background-color: #99ff66;" onclick="window.location='#'">9</div>
-        <div class="grid-item" style="background-color: #66ffcc;" onclick="window.location='#'">10</div>
+        <!-- Generating 50 grid items with the specified colors -->
+        <div class="grid-item" style="background-color: red;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: blue;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: green;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: yellow;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: white;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: black;" onclick="window.location='#'"><div></div></div>
+        <!-- Repeated pattern of colors -->
+        <div class="grid-item" style="background-color: red;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: blue;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: green;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: yellow;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: white;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: black;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: red;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: blue;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: green;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: yellow;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: white;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: black;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: red;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: blue;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: green;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: yellow;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: white;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: black;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: red;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: blue;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: green;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: yellow;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: white;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: black;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: red;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: blue;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: green;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: yellow;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: white;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: black;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: red;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: blue;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: green;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: yellow;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: white;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: black;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: red;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: blue;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: green;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: yellow;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: white;" onclick="window.location='#'"><div></div></div>
+        <div class="grid-item" style="background-color: black;" onclick="window.location='#'"><div></div></div>
     </div>
 </body>
 </html>
