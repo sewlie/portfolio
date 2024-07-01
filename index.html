@@ -1,193 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Sewlie</title>
+    <title>Art and Design Portfolio</title>
     <style>
-        .hide {
-  display: none;
-}
-
-.Header3:hover + .hide {
-  display: block;
-  color: rgb(237, 237, 237);
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .menu {
+            width: 100%;
+            background-color: #333;
+            overflow: hidden;
+        }
+        .menu a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .menu a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 10px;
+            width: 90%;
+            margin-top: 20px;
+        }
+        .grid-item {
+            background-color: #ccc;
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+        }
     </style>
 </head>
-
 <body>
-
-<div id="previewContainer"></div>
-
-<div class="nav">
-    <div class="WorkOptions1" onclick="scrollToElement('.Posters')">
-        <h3>Posters</h3>
+    <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
     </div>
 
-    <div class="WorkOptions3" onclick="scrollToElement('.Illustrations')">
-        <h3>Graphic</h3>
+    <div class="grid-container">
+        <div class="grid-item" style="background-color: #ff6666;" onclick="window.location='#'">1</div>
+        <div class="grid-item" style="background-color: #ffcc66;" onclick="window.location='#'">2</div>
+        <div class="grid-item" style="background-color: #99cc66;" onclick="window.location='#'">3</div>
+        <div class="grid-item" style="background-color: #66cccc;" onclick="window.location='#'">4</div>
+        <div class="grid-item" style="background-color: #6699ff;" onclick="window.location='#'">5</div>
+        <div class="grid-item" style="background-color: #cc66ff;" onclick="window.location='#'">6</div>
+        <div class="grid-item" style="background-color: #ff6699;" onclick="window.location='#'">7</div>
+        <div class="grid-item" style="background-color: #ff9966;" onclick="window.location='#'">8</div>
+        <div class="grid-item" style="background-color: #99ff66;" onclick="window.location='#'">9</div>
+        <div class="grid-item" style="background-color: #66ffcc;" onclick="window.location='#'">10</div>
     </div>
-
-    <div class="Header">
-        <h1>sewlie</h1>
-    </div>
-
-    <div class="Header2">
-        <h2>WORK</h2>
-    </div>
-
-    <div class="Header3">
-        <h2>ABOUT</h2>
-    </div>
-
-    <div class="hide">
-        <h2>Sewlie is a multifaceted designer based in NYC.
-
-            <br><br>For him, design is a communicative endeavor, orchestrated by the creator to serve the viewer and, ideally, evoke profound thoughts. He is currently in the final semester of a BFA in Communications Design at CCNY's EDM Program.
-            
-            <br><br>Sewlie founded ILUM New York in 2015, creating a diverse array of clothing items that showcase graphic elements inspired by his upbringing in "The Big Apple." Since then, he is constantly improved his craft and created numerous impactful works. These include posters, book making, illustrations, as well as graphic elements for online livestreamed events and more.
-            <br><br>Reach him at <br>sewlie.art@gmail.com
-        </h2>
-    </div>
-    <div>
-        <div class="Header5">
-            <img class="posterheader" src="../portfolio/assets/posters.svg" alt="">
-        </div>
-        <div class="Header7">
-            <img class="graphicheader" src="../portfolio/assets/graphic.svg" alt="">
-        </div>
-    </div>
-</div>    
-</div>
-
-<div class="poster-container">
-    <div class="container-block"></div>
-    <div class="Posters">
-        
-        <a href="artathon.html" class="Poster">
-            <div class="square-container">
-                <img src="../portfolio/assets/Artboard 1.png" alt="">
-            </div>
-        </a>
-
-        <a href="dna.html" class="Poster">
-            <div class="square-container">
-                <img src="../portfolio/assets/Artboard 3.png" alt="">
-            </div>
-        </a>
-
-        <a href="rosen.html" class="Poster">
-            <div class="square-container">
-                <img src="../portfolio/assets/Artboard 4.png" alt="">
-            </div>
-        </a>
-
-        <a href="sandeman.html" class="Poster">
-            <div class="square-container">
-                <img src="../portfolio/assets/Artboard 5.png" alt="">
-            </div>
-        </a>
-
-        <a href="antsy.html" class="Poster">
-            <div class="square-container">
-                <img src="../portfolio/assets/Artboard 6.jpg" alt="">
-            </div>
-        </a>
-
-        <a href="viceroy.html" class="Poster">
-            <div class="square-container">
-                <img src="../portfolio/assets/Artboard 7.png" alt="">
-            </div>
-        </a>
-    </div>
-</div>
-
-    <div id="books-anchor"></div>
-
-    <div class="graphic-container">
-        <div class="container-block"></div>
-        <div class="Illustrations">
-            
-            <a href="friendly.html" class="Illustration">
-                <div class="square-container">
-                    <img src="../portfolio/assets/Ill1.jpg" alt="">
-                </div>
-            </a>
-    
-            <a href="covid.html" class="Illustration">
-                <div class="square-container2">
-                    <img src="../portfolio/assets/Book 2.png" alt="">
-                </div>
-            </a>
-    
-            <a href="const.html" class="Illustration">
-                <div class="square-container2">
-                    <img src="../portfolio/assets/Book 1.png" alt="">
-                </div>
-            </a>
-    
-            <a href="capital.html" class="Illustration">
-                <div class="square-container2">
-                    <img src="../portfolio/assets/Ill2.png" alt="">
-                </div>
-            </a>
-    
-            <a href="ilu.html" class="Illustration">
-                <div class="square-container2">
-                    <img src="../portfolio/assets/ILU.png" alt="">
-                </div>
-            </a>
-    
-            <a href="nmn.html" class="Illustration">
-                <div class="square-container2">
-                    <img src="../portfolio/assets/NMN.jpg" alt="">
-                </div>
-            </a>
-        </div>
-    </div>
-
-  
-    <script>
-function scrollToPosition(position) {
-        window.scrollTo({
-            top: position,
-            behavior: 'smooth'
-        });
-    }
-
-        function scrollToElement(selector) {
-            const element = document.querySelector(selector);
-            if (element) {
-                element.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        document.addEventListener('scroll', function () {
-    var header5 = document.querySelector('.Header5');
-    var header7 = document.querySelector('.Header7');
-    var scrollPosition = window.scrollY;
-
-    var threshold5 = 550;
-    var threshold7 = 1000;
-
-    if (scrollPosition > threshold5) {
-        header5.classList.add('hidden');
-        header7.classList.remove('hidden');
-    } else {
-        header5.classList.remove('hidden');
-        header7.classList.add('hidden');
-    }
-});
-
-document.querySelector('.Header7').classList.add('hidden');
-
-    </script>
-
 </body>
-
 </html>
