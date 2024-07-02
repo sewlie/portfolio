@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Work</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .back-arrow {
+            display: flex;
+            text-align: left;
+            padding: 10px;
+            background-color: #00000000;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: 900;
+        }
+        .container {
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .year {
+            background: #00000000;
+            border: #000000;
+            border-radius: 10px;
+            border-width: 2px;
+            border-style: solid;
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 80%;
+            box-sizing: border-box;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+            font-size: 1.5em;
+            font-weight: 900;
+        }
+        .year:hover {
+            scale: 1.001;
+            transition: .2s ease-in-out;
+        }
+        .year::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 10px;
+        }
+        .year:hover::before {
+            opacity: 1;
+        }
+        .work-items {
+            display: none;
+            background-color: #ffffff00;
+            padding: 20px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .work-items a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 5px 0;
+        }
+        .work-items a:hover {
+            color: #007BFF;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-2px);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .work-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 20px;
+            padding: 10px;
+            width: 96%;
+        }
+        .work-item {
+            background-color: #ccc;
+            padding-top: 100%;
+            position: relative;
+            cursor: pointer;
+            transition: border 0.3s;
+        }
+        .work-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .work-header {
+            width: 100%;
+            padding: 5px 0 0 30px;
+        }
+        .main-content {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .first-half {
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .second-half {
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+        .preview-image {
+            max-width: 100%;
+            max-height: 90vh; /* Prevent the image from going over a certain height */
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+        .preview-image.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="work-header">
+        <a class="back-arrow" href="index.html">&lt;&lt; home</a>
+    </div>
+    <div class="main-content">
+        <div class="first-half">
+            <div class="container">
+                <div class="year" onclick="toggleWorkItems('work-2021')">2021</div>
+                <div class="work-items" id="work-2021">
+                    <div class="work-container" id="work-container">
+                        <div class="work-item" onmouseover="showPreview('/assets/Artboard 1.png')" onclick="selectImage(this, '/assets/Artboard 1.png')"><img src="/assets/Artboard 1.png" alt=""></div>
+                        <div class="work-item" onmouseover="showPreview('/assets/Artboard 3.png')" onclick="selectImage(this, '/assets/Artboard 3.png')"><img src="/assets/Artboard 3.png" alt=""></div>
+                        <div class="work-item" onmouseover="showPreview('/assets/Artboard 4.png')" onclick="selectImage(this, '/assets/Artboard 4.png')"><img src="/assets/Artboard 4.png" alt=""></div>
+                    </div>
+                </div>
+
+                <div class="year" onclick="toggleWorkItems('work-2020')">2020</div>
+                <div class="work-items" id="work-2020">
+                    <div class="work-container">
+                        <div class="work-item" onmouseover="showPreview('/assets/Artboard 5.png')" onclick="selectImage(this, '/assets/Artboard 5.png')"><img src="/assets/Artboard 5.png" alt=""></div>
+                        <div class="work-item" onmouseover="showPreview('/assets/Artboard 6.jpg')" onclick="selectImage(this, '/assets/Artboard 6.jpg')"><img src="/assets/Artboard 6.jpg" alt=""></div>
+                        <div class="work-item" onmouseover="showPreview('/assets/Artboard 7.png')" onclick="selectImage(this, '/assets/Artboard 7.png')"><img src="/assets/Artboard 7.png" alt=""></div>
+                    </div>
+                </div>
+
+                <div class="year" onclick="toggleWorkItems('work-2019')">2019</div>
+                <div class="work-items" id="work-2019">
+                    <div class="work-container">
+                        <div class="work-item" onmouseover="showPreview('/assets/Book 1.png')" onclick="selectImage(this, '/assets/Book 1.png')"><img src="/assets/Book 1.png" alt=""></div>
+                        <div class="work-item" onmouseover="showPreview('/assets/Book 2.png')" onclick="selectImage(this, '/assets/Book 2.png')"><img src="/assets/Book 2.png" alt=""></div>
+                        <div class="work-item" onmouseover="showPreview('/assets/Ill1.jpg')" onclick="selectImage(this, '/assets/Ill1.jpg')"><img src="/assets/Ill1.jpg" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="second-half">
+            <img src="" alt="Preview" class="preview-image" id="preview-image">
+        </div>
+    </div>
+
+    <script>
+        let selectedImageElement = null;
+        let selectedImageSrc = null;
+
+        function toggleWorkItems(id) {
+            const workItems = document.getElementById(id);
+            if (workItems.style.display === "block") {
+                workItems.style.display = "none";
+            } else {
+                workItems.style.display = "block";
+            }
+        }
+
+        function showPreview(src) {
+            if (selectedImageSrc) return;
+            const previewImage = document.getElementById('preview-image');
+            previewImage.src = src;
+            previewImage.classList.add('visible');
+        }
+
+        function selectImage(element, src) {
+            // If the same image is clicked again, unselect it
+            if (selectedImageSrc === src) {
+                element.classList.remove('selected');
+                const previewImage = document.getElementById('preview-image');
+                previewImage.src = '';
+                previewImage.classList.remove('visible');
+                selectedImageSrc = null;
+                selectedImageElement = null;
+                return;
+            }
+
+            // Remove selected class from all work items
+            const allItems = document.querySelectorAll('.work-item');
+            allItems.forEach(item => item.classList.remove('selected'));
+
+            // Add selected class to the clicked item
+            element.classList.add('selected');
+
+            // Set the selected image src and lock it
+            selectedImageSrc = src;
+            selectedImageElement = element;
+            const previewImage = document.getElementById('preview-image');
+            previewImage.src = src;
+            previewImage.classList.add('visible');
+        }
+    </script>
+</body>
+</html>
