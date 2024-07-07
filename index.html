@@ -4,30 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Art and Design Portfolio</title>
+    <title>SEWLIE: Portfolio</title>
     <style>
         .menu {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             background-color: #ffffff;
-            padding: 20px 10px 0 10px;
-            width: 50%;
+            padding: 10px 10px 10px 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+        }
+        .menu-left {
+            flex: 0;
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 32px;
+        }
+        .menu-left h2 {
+            padding: 0 10px;
+        }
+        .menu-center {
+            flex: 0;
+            display: flex;
+            justify-content: center;
+            padding-right: 30px;
+        }
+        .menu-left a {
+            cursor: default;
         }
         .menu p, .menu a {
             color: rgb(0, 0, 0);
             text-decoration: none;
             padding: 10px;
-            font-family: 'uni-bold';
+            font-family: 'AkzidenzLight', sans-serif;
         }
         .menu a:hover {
             color: rgb(0, 98, 255);
-            font-weight: 600;
+        }
+        .filter-menu {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        .filter-menu button {
+            padding: 8px 15px;
+            margin: 0 10px;
+            background-color: #8282821b;
+            color: rgb(0, 0, 0);
+            border: none;
+            cursor: pointer;
+            font-family: 'AkzidenzBold', sans-serif;
+            border-radius: 5px;
+        }
+        .filter-menu button:hover {
+            background-color: #37373700;
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 15px;
             padding: 10px;
+            margin-top: 100px; /* Adjust based on the height of the menu */
         }
         .grid-item {
             position: relative;
@@ -35,38 +75,174 @@
             padding-top: 100%; /* 1:1 Aspect Ratio */
             background-color: #ffffff;
             text-align: center;
+            cursor: pointer;
         }
-        .grid-item img:hover {
-            scale: 1.01;
-            transition: 0.2s ease-in-out;
+        .grid-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.2s ease-in-out;
+        }
+        .grid-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .grid-item .year-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.952);
+            font-size: 3em;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .grid-item .tag-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #000000aa;
+            color: white;
+            padding: 5px 10px;
+            font-size: 2em;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+        .grid-item:hover .overlay,
+        .grid-item:hover .year-label {
+            opacity: 1;
+        }
+        .preview-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        .preview-overlay img {
+            max-width: 90%;
+            max-height: 90%;
         }
     </style>
 </head>
 <body>
     <div class="menu">
-        <a style="font-weight: 500; cursor: default;">SEWLIE</a>
-        <a href="./work.html">WORK</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
+        <div class="menu-left">
+            <h2 style="cursor: default;">SEWLIE</h2>
+        </div>
+        <div class="filter-menu">
+            <button onclick="filterItems('all')">ALL</button>
+            <button onclick="filterItems('Digital')">DIGITAL</button>
+            <button onclick="filterItems('Physical')">PHYSICAL</button>
+            <button onclick="filterItems('Blockchain')">BLOCKCHAIN</button>
+        </div>
+        <div class="menu-center">
+            <a href="#about">ABOUT</a>
+            <a style="padding: 10px 1px; color: rgb(0, 0, 0); cursor: default;">•</a>
+            <a href="#contact">CONTACT</a>
+        </div>
     </div>
 
-
     <div class="grid-container" id="grid-container">
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Artboard 1.png"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Artboard 3.png"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Artboard 4.png"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Artboard 5.png"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Artboard 6.jpg"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Artboard 7.png"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Book 1.png"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Book 2.png"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Ill1.jpg"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/Ill2 2.png"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/ILU.png"></div>
-        <div class="grid-item" onclick="window.location='#'"><img src="./assets/NMN.jpg"></div>
+        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/Artboard 1.png')">
+            <img src="./assets/Artboard 1.png">
+            <div class="overlay"></div>
+            <div class="year-label">2020</div>
+        </div>
+        <div class="grid-item" data-tag="Digital" data-year="2018" onclick="showPreview('./assets/Artboard 3.png')">
+            <img src="./assets/Artboard 3.png">
+            <div class="overlay"></div>
+            <div class="year-label">2018</div>
+        </div>
+        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/Artboard 4.png')">
+            <img src="./assets/Artboard 4.png">
+            <div class="overlay"></div>
+            <div class="year-label">2020</div>
+        </div>
+        <div class="grid-item" data-tag="Digital" data-year="2018" onclick="showPreview('./assets/Artboard 5.png')">
+            <img src="./assets/Artboard 5.png">
+            <div class="overlay"></div>
+            <div class="year-label">2018</div>
+        </div>
+        <div class="grid-item" data-tag="Digital" data-year="2022" onclick="showPreview('./assets/Artboard 6.jpg')">
+            <img src="./assets/Artboard 6.jpg">
+            <div class="overlay"></div>
+            <div class="year-label">2022</div>
+        </div>
+        <div class="grid-item" data-tag="Digital" data-year="2021" onclick="showPreview('./assets/Artboard 7.png')">
+            <img src="./assets/Artboard 7.png">
+            <div class="overlay"></div>
+            <div class="year-label">2021</div>
+        </div>
+        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="showPreview('./assets/Book 1.png')">
+            <img src="./assets/Book 1.png">
+            <div class="overlay"></div>
+            <div class="year-label">2023</div>
+        </div>
+        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/Book 2.png')">
+            <img src="./assets/Book 2.png">
+            <div class="overlay"></div>
+            <div class="year-label">2020</div>
+        </div>
+        <div class="grid-item" data-tag="Physical" data-year="2022" onclick="showPreview('./assets/Ill1.jpg')">
+            <img src="./assets/Ill1.jpg">
+            <div class="overlay"></div>
+            <div class="year-label">2022</div>
+        </div>
+        <div class="grid-item" data-tag="Digital" data-year="2021" onclick="showPreview('./assets/Ill2 2.png')">
+            <img src="./assets/Ill2 2.png">
+            <div class="overlay"></div>
+            <div class="year-label">2021</div>
+        </div>
+        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="showPreview('./assets/ILU.png')">
+            <img src="./assets/ILU.png">
+            <div class="overlay"></div>
+            <div class="year-label">2015</div>
+        </div>
+        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="showPreview('./assets/NMN.jpg')">
+            <img src="./assets/NMN.jpg">
+            <div class="overlay"></div>
+            <div class="year-label">2015</div>
+        </div>
+        <div class="grid-item" data-tag="Blockchain" data-year="2021" onclick="openExternal('https://www.twitch.tv/collections/5pERBYa_PBfOlQ')">
+            <img src="./assets/YOTG.png">
+            <div class="overlay"></div>
+            <div class="year-label">2021</div>
+        </div>
+        <div class="grid-item" data-tag="Blockchain" data-year="2022" onclick="openExternal('https://www.twitch.tv/collections/KuGY-K-_PBeleQ')">
+            <img src="./assets/P2E-1.jpeg">
+            <div class="overlay"></div>
+            <div class="year-label">2022</div>
+        </div>
+        <div class="grid-item" data-tag="Blockchain" data-year="2023" onclick="openExternal('https://www.twitch.tv/collections/J3bQ83RkSBeSIA')">
+            <img src="./assets/LYS.png">
+            <div class="overlay"></div>
+            <div class="year-label">2023</div>
+        </div>
+    </div>
+
+    <div class="preview-overlay" id="preview-overlay" onclick="hidePreview()">
+        <img id="preview-image" src="">
     </div>
 
     <script>
+        let originalItems = [];
+
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -78,10 +254,43 @@
         document.addEventListener("DOMContentLoaded", function() {
             const gridContainer = document.getElementById("grid-container");
             const gridItems = Array.from(gridContainer.children);
-            const shuffledItems = shuffle(gridItems);
+            originalItems = gridItems.slice();  // Save original order
+            const shuffledItems = shuffle(gridItems.slice());
 
             shuffledItems.forEach(item => gridContainer.appendChild(item));
         });
+
+        function showPreview(src) {
+            const previewOverlay = document.getElementById('preview-overlay');
+            const previewImage = document.getElementById('preview-image');
+            previewImage.src = src;
+            previewOverlay.style.display = 'flex';
+        }
+
+        function hidePreview() {
+            const previewOverlay = document.getElementById('preview-overlay');
+            previewOverlay.style.display = 'none';
+        }
+
+        function filterItems(tag) {
+            const gridContainer = document.getElementById("grid-container");
+            const gridItems = originalItems.slice();  // Use original order
+
+            if (tag === 'all') {
+                const shuffledItems = shuffle(gridItems.slice());
+                gridContainer.innerHTML = '';
+                shuffledItems.forEach(item => gridContainer.appendChild(item));
+            } else {
+                const filteredItems = gridItems.filter(item => item.getAttribute('data-tag') === tag);
+                const sortedItems = filteredItems.sort((a, b) => a.getAttribute('data-year') - b.getAttribute('data-year'));
+                gridContainer.innerHTML = '';
+                sortedItems.forEach(item => gridContainer.appendChild(item));
+            }
+        }
+
+        function openExternal(url) {
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 </html>
