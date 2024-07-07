@@ -18,192 +18,183 @@
     src: url('assets/uni-bold.otf');
 }
 
+body {
+    font-family: 'AkzidenzLight', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+}
 
-    a {
-        color: #ffffff;
-        text-decoration: none;
-    }
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
 
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #ffffff;
-    }
-    .menu {
-        width: 100%;
-        background-color: #ffffff;
-        overflow: hidden;
-    }
-    .menu h1 {
-        float: left;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 0px 15px;
-        text-decoration: none;
-        font-size: 16px;
-    }
-    .menu a {
-        float: left;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
+.menu {
+    width: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+}
 
+.filter-menu {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    color: white;
+}
+
+.filter-menu button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #1c1c1c;
+    color: white;
+    border: none;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    font-family: 'AkzidenzLight', sans-serif;
+    border-radius: 5px;
+}
+
+.filter-menu button:hover {
+    background-color: #373737;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    width: 96%;
+    margin-top: 15px;
+}
+
+.grid-item {
+    background-color: #ccc;
+    padding-top: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.grid-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+.grid-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.grid-item .year-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.grid-item .tag-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #000000aa;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.grid-item:hover .overlay,
+.grid-item:hover .year-label {
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
     .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
-        padding: 10px;
-        width: 96%;
-        margin-top: 15px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
     }
-    .grid-item {
-        background-color: #ccc;
-        padding-top: 100%;
-        position: relative;
-        cursor: pointer;
-    }
-    .grid-item img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+}
 
-    
-    @media (max-width: 600px) {
-        .grid-container {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-        }
-    }
-
-@media only screen and (max-width: 1023px) {
-
+@media (max-width: 1023px) {
     body {
         background-color: rgb(255, 255, 255);
         color: rgb(237, 237, 237);
         font-family: 'AkzidenzLight', sans-serif;
-        margin: 0;
     }
 
-    .nav {
-        /* display: flex; */
+    .nav, .HeaderContainer, .HeaderContainer2, .Header7 {
         position: fixed;
-        height: 100vh;
+    }
+
+    .Header, .Header2, .Header3, .Header4, .Header5, .WorkOptions1, .WorkOptions3, .WorkOptions4, .WorkOptions5, .hide {
+        position: fixed;
+        font-family: 'AkzidenzBold', sans-serif;
     }
 
     .Header {
         font-size: 30px;
         text-align: left;
         margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
-        top: 0%;
-        font-family: 'AkzidenzBold', sans-serif;
+        top: 0;
     }
 
     .Header2 {
         font-size: 18px;
-        text-align: left;
         margin-left: 50px;
         padding-top: 10px;
-        position: fixed;
         top: 90px;
-        font-family: 'AkzidenzBold', sans-serif;
     }
 
     .Header3 {
         font-size: 15px;
         text-align: justify;
         margin-left: 50px;
-        /* margin-right: 1300px; */
-        min-width: 10px;
         max-width: 200px;
-        position: absolute;
         bottom: 5%;
-        font-family: 'AkzidenzBold', sans-serif;
-    }
-
-    .Header3:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-
-    .hide {
-        font-size: 10px;
-        text-align: justify;
-        margin-left: 50px;
-        margin-right: 1200px;
-        min-width: 120px;
-        max-width: 240px;
-        position: fixed;
-        top: 30%;
-        font-family: 'AkzidenzBold', sans-serif;
     }
 
     .Header4 {
         font-size: 15px;
         text-align: justify;
         margin-left: 180px;
-        margin-right: 1300px;
-        min-width: 10px;
-        max-width: 200px;
-        position: fixed;
         top: 83.7%;
-        font-family: 'AkzidenzBold', sans-serif;
+        max-width: 200px;
     }
 
-    .Header4:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-
-    .HeaderContainer {
-        position: fixed;
+    .Header5 {
         font-size: 90px;
-        left: 230px;
-        margin-top: 132px;
-        margin-bottom: 450px;
+        opacity: 1;
+        transition: opacity 0.2s ease;
         z-index: -100;
     }
 
-
-
-    .Header5.hidden {
+    .Header5.hidden, .Header7.hidden {
         opacity: 0;
-    }
-
-    .HeaderContainer2 {
-        position: fixed;
-        font-size: 90px;
-        left: 220px;
-        top: 145px;
-        margin-bottom: 450px;
-        z-index: -100;
     }
 
     .Header7 {
-        position: fixed;
         font-size: 90px;
-        font-family: 'AkzidenzBold', sans-serif;
-        opacity: 1;
-        transition: opacity 0.2s ease;
         transform: rotate(-90deg);
-        z-index: -100;
-    }
-
-    .Header7.hidden {
-        opacity: 0;
     }
 
     .Header8 {
@@ -211,141 +202,78 @@
         font-size: 140px;
         left: 75%;
         top: 200px;
-        font-family: 'AkzidenzBold', sans-serif;
-        z-index: 0;
-        opacity: 1;
+        font-family: 'AkzidenzBold';
+        opacity: 0.1;
         transition: opacity 0.2s ease;
         transform: rotate(-90deg);
-        opacity: 0.1;
         z-index: -10;
     }
 
-    .WorkOptions1 {
+    .WorkOptions1, .WorkOptions3, .WorkOptions4, .WorkOptions5 {
         font-size: 12px;
         text-align: left;
         margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
         top: 155px;
         z-index: 100;
-        min-height: 10px;
-        max-height: 50px;
     }
 
     .WorkOptions3 {
-        font-size: 12px;
-        text-align: left;
-        margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
         top: 180px;
-        min-height: 10px;
-        max-height: 50px;
-        min-width: 10px;
         max-width: 30px;
-        z-index: 100;
     }
 
     .WorkOptions4 {
-        font-size: 12px;
-        text-align: left;
-        margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
         top: 16%;
-        z-index: 0;
     }
 
     .WorkOptions5 {
-        font-size: 12px;
-        text-align: left;
-        margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
         top: 19%;
-        z-index: 0;
     }
 
-    .WorkOptions1:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions2:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions3:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions4:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions5:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions6:hover {
+    .WorkOptions1:hover, .WorkOptions2:hover, .WorkOptions3:hover, .WorkOptions4:hover, .WorkOptions5:hover, .WorkOptions6:hover, .Header3:hover, .Header4:hover {
         color: rgba(255, 255, 255, 0.609);
         cursor: pointer;
     }
 
     .Posters {
-        /* width: 65vw; */
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-end;
         margin: 80px 6vw 0 auto;
     }
 
-    .square-container {
-        width: 22vw; /* Adjust the width and height as needed */
+    .square-container, .square-container2 {
+        width: 22vw;
         height: 22vw;
-        overflow: hidden; /* Hide the overflowing content */
+        overflow: hidden;
         padding: 4px;
     }
 
-    /* Set the background image and position it to show the square portion */
-    .square-container img {
-        width: 100%; /* Make sure the image covers the container */
-        height: auto; /* Maintain aspect ratio */
-        object-fit: cover; /* Cover the entire container */
-        object-position: center center; /* Center the image within the container */
+    .square-container img, .square-container2 img {
+        object-fit: cover;
+        object-position: center;
     }
 
     .Header5 {
-        /* position: fixed; */
-        font-size: 90px;
-        font-family: 'AkzidenzBold', sans-serif;
-        opacity: 1;
-        transition: opacity 0.2s ease;
-        z-index: -100;
         float: left;
     }
 
     .posterheader {
         width: 5vw;
         margin: 126px 0 0 300px;
-        opacity: calc(0.6);
+        opacity: 0.6;
     }
 
-    .poster-container {
+    .poster-container, .graphic-container {
         display: flex;
-        /* flex-direction: row; */
         align-items: flex-start;
     }
 
-    .Poster {
-        /* position: relative; */
-        /* left: 15%; */
-        /* top: 42px; */
+    .Poster, .Illustration {
         border: transparent;
-        /* width: 30vw; */
-        /* height: 30vw; */
     }
 
-    .Poster:hover {
+    .Poster:hover, .Illustration:hover {
         cursor: pointer;
         opacity: 0.95;
     }
@@ -356,354 +284,55 @@
         float: left;
     }
 
-
+    .graphicheader {
+        width: 6vw;
+        margin: 126px 0 0 -72px;
+        opacity: 0.6;
+    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media only screen and (min-width: 1024px) {
-
+@media (min-width: 1024px) {
     body {
         background-color: white;
-        color: rgb(237, 237, 237);
         font-family: 'AkzidenzLight', sans-serif;
-        margin: 0;
     }
-    
-    .nav {
-        /* display: flex; */
-        position: fixed;
-        height: 100vh;
-    }
-    
-    .Header {
-        font-size: 30px;
-        text-align: left;
-        margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
-        top: 0%;
-        font-family: 'AkzidenzBold', sans-serif;
-    }
-    
-    .Header2 {
-        font-size: 18px;
-        text-align: left;
-        margin-left: 50px;
-        padding-top: 10px;
-        position: fixed;
-        top: 90px;
-        font-family: 'AkzidenzBold', sans-serif;
-    }
-    
-    .Header3 {
-        font-size: 15px;
-        text-align: justify;
-        margin-left: 50px;
-        /* margin-right: 1300px; */
-        min-width: 10px;
-        max-width: 200px;
-        position: absolute;
-        bottom: 5%;
-        font-family: 'AkzidenzBold', sans-serif;
-    }
-    
-    .Header3:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    
-    .hide {
-        font-size: 10px;
-        text-align: justify;
-        margin-left: 50px;
-        margin-right: 1200px;
-        min-width: 120px;
-        max-width: 240px;
-        position: fixed;
-        top: 30%;
-        font-family: 'AkzidenzBold', sans-serif;
-    }
-    
-    .Header4 {
-        font-size: 15px;
-        text-align: justify;
-        margin-left: 180px;
-        margin-right: 1300px;
-        min-width: 10px;
-        max-width: 200px;
-        position: fixed;
-        top: 83.7%;
-        font-family: 'AkzidenzBold', sans-serif;
-    }
-    
-    .Header4:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    
+
     .HeaderContainer {
-        position: fixed;
-        font-size: 90px;
         left: 230px;
         margin-top: 132px;
         margin-bottom: 450px;
         z-index: -100;
     }
-    
-    
-    
-    .Header5.hidden {
-        opacity: 0;
-    }
-    
+
     .HeaderContainer2 {
-        position: fixed;
-        font-size: 90px;
         left: 220px;
         top: 145px;
         margin-bottom: 450px;
         z-index: -100;
     }
-    
+
     .Header7 {
-        font-size: 90px;
-        font-family: 'AkzidenzBold', sans-serif;
-        opacity: 1;
-        transition: opacity 0.2s ease;
-        z-index: -100;
         float: left;
     }
-    
-    .Header7.hidden {
-        opacity: 0;
-    }
-    
+
     .Header8 {
-        position: fixed;
-        font-size: 140px;
         left: 75%;
         top: 200px;
-        font-family: 'AkzidenzBold', sans-serif;
-        z-index: 0;
-        opacity: 1;
-        transition: opacity 0.2s ease;
-        transform: rotate(-90deg);
-        opacity: 0.1;
-        z-index: -10;
-    }
-    
-    .WorkOptions1 {
-        font-size: 12px;
-        text-align: left;
-        margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
-        top: 155px;
-        z-index: 100;
-        min-height: 10px;
-        max-height: 50px;
-    }
-    
-    .WorkOptions3 {
-        font-size: 12px;
-        text-align: left;
-        margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
-        top: 180px;
-        min-height: 10px;
-        max-height: 50px;
-        min-width: 10px;
-        max-width: 30px;
-        z-index: 100;
-    }
-    
-    .WorkOptions4 {
-        font-size: 12px;
-        text-align: left;
-        margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
-        top: 16%;
-        z-index: 0;
-    }
-    
-    .WorkOptions5 {
-        font-size: 12px;
-        text-align: left;
-        margin-left: 50px;
-        padding-top: 0px;
-        position: fixed;
-        top: 19%;
-        z-index: 0;
-    }
-    
-    .WorkOptions1:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions2:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions3:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions4:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions5:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    .WorkOptions6:hover {
-        color: rgba(255, 255, 255, 0.609);
-        cursor: pointer;
-    }
-    
-    .Posters {
-        /* width: 65vw; */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        margin: 80px 6vw 0 auto;
-    }
-    
-    .square-container {
-        width: 20vw; /* Adjust the width and height as needed */
-        height: 20vw;
-        overflow: hidden; /* Hide the overflowing content */
-        padding: 4px;
-    }
-    
-    /* Set the background image and position it to show the square portion */
-    .square-container img {
-        width: 100%; /* Make sure the image covers the container */
-        height: auto; /* Maintain aspect ratio */
-        object-fit: cover; /* Cover the entire container */
-        object-position: center center; /* Center the image within the container */
     }
 
-    .square-container2 {
-        width: 20vw; /* Adjust the width and height as needed */
-        height: 20vw;
-        overflow: hidden; /* Hide the overflowing content */
-        padding: 4px;
-    }
-    
-    /* Set the background image and position it to show the square portion */
-    .square-container2 img {
-        width: auto; /* Make sure the image covers the container */
-        height: 100%; /* Maintain aspect ratio */
-        object-fit: cover; /* Cover the entire container */
-        object-position: center center; /* Center the image within the container */
-    }
-    
-    .Header5 {
-        /* position: fixed; */
-        font-size: 90px;
-        font-family: 'AkzidenzBold', sans-serif;
-        opacity: 1;
-        transition: opacity 0.2s ease;
-        z-index: -100;
-        float: left;
-    }
-    
-    .posterheader {
-        width: 5vw;
-        margin: 126px 0 0 300px;
-        opacity: calc(0.6);
-    }
-    
-    .poster-container {
-        display: flex;
-        align-items: flex-start;
-        margin: 0 0 40px 0;
-    }
-    
-    .Poster {
-        border: transparent;
-    }
-    
-    .Poster:hover {
-        cursor: pointer;
-        opacity: 0.95;
-    }
-    
     .container-block {
         width: 62vw;
-        /* height: 100vh; */
-        float: left;
     }
 
-    .graphicheader {
-        width: 6vw;
-        margin: 126px 0 0 -72px;
-        opacity: calc(0.6);
+    .poster-container {
+        margin: 0 0 40px;
     }
 
     .Illustrations {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
         margin: 80px 6vw 0 auto;
     }
 
-    .Illustration {
-        border: transparent;
-    }
-    
     .graphic-container {
-        display: flex;
-        align-items: flex-start;
-        margin: 0 0 80px 0;
+        margin: 0 0 80px;
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
