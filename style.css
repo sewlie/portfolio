@@ -245,7 +245,7 @@ a {
     .square-container, .square-container2 {
         width: 22vw;
         height: 22vw;
-        overflow: hidden;
+        overflow-y: scroll;
         padding: 4px;
     }
 
