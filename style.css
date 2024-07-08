@@ -18,7 +18,6 @@
     src: url('assets/uni-bold.otf');
 }
 
-
 body {
     font-family: 'AkzidenzLight', sans-serif;
     margin: 0;
@@ -27,7 +26,6 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-    overflow-y: hidden;
 }
 
 a {
@@ -66,7 +64,7 @@ a {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 10px;
     width: 96%;
@@ -128,4 +126,213 @@ a {
 .grid-item:hover .overlay,
 .grid-item:hover .year-label {
     opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+    }
+}
+
+@media (max-width: 1023px) {
+    body {
+        background-color: rgb(255, 255, 255);
+        color: rgb(237, 237, 237);
+        font-family: 'AkzidenzLight', sans-serif;
+    }
+
+    .nav, .HeaderContainer, .HeaderContainer2, .Header7 {
+        position: fixed;
+    }
+
+    .Header, .Header2, .Header3, .Header4, .Header5, .WorkOptions1, .WorkOptions3, .WorkOptions4, .WorkOptions5, .hide {
+        position: fixed;
+        font-family: 'AkzidenzBold', sans-serif;
+    }
+
+    .Header {
+        font-size: 30px;
+        text-align: left;
+        margin-left: 50px;
+        top: 0;
+    }
+
+    .Header2 {
+        font-size: 18px;
+        margin-left: 50px;
+        padding-top: 10px;
+        top: 90px;
+    }
+
+    .Header3 {
+        font-size: 15px;
+        text-align: justify;
+        margin-left: 50px;
+        max-width: 200px;
+        bottom: 5%;
+    }
+
+    .Header4 {
+        font-size: 15px;
+        text-align: justify;
+        margin-left: 180px;
+        top: 83.7%;
+        max-width: 200px;
+    }
+
+    .Header5 {
+        font-size: 90px;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+        z-index: -100;
+    }
+
+    .Header5.hidden, .Header7.hidden {
+        opacity: 0;
+    }
+
+    .Header7 {
+        font-size: 90px;
+        transform: rotate(-90deg);
+    }
+
+    .Header8 {
+        position: fixed;
+        font-size: 140px;
+        left: 75%;
+        top: 200px;
+        font-family: 'AkzidenzBold';
+        opacity: 0.1;
+        transition: opacity 0.2s ease;
+        transform: rotate(-90deg);
+        z-index: -10;
+    }
+
+    .WorkOptions1, .WorkOptions3, .WorkOptions4, .WorkOptions5 {
+        font-size: 12px;
+        text-align: left;
+        margin-left: 50px;
+        top: 155px;
+        z-index: 100;
+    }
+
+    .WorkOptions3 {
+        top: 180px;
+        max-width: 30px;
+    }
+
+    .WorkOptions4 {
+        top: 16%;
+    }
+
+    .WorkOptions5 {
+        top: 19%;
+    }
+
+    .WorkOptions1:hover, .WorkOptions2:hover, .WorkOptions3:hover, .WorkOptions4:hover, .WorkOptions5:hover, .WorkOptions6:hover, .Header3:hover, .Header4:hover {
+        color: rgba(255, 255, 255, 0.609);
+        cursor: pointer;
+    }
+
+    .Posters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        margin: 80px 6vw 0 auto;
+    }
+
+    .square-container, .square-container2 {
+        width: 22vw;
+        height: 22vw;
+        overflow: hidden;
+        padding: 4px;
+    }
+
+    .square-container img, .square-container2 img {
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .Header5 {
+        float: left;
+    }
+
+    .posterheader {
+        width: 5vw;
+        margin: 126px 0 0 300px;
+        opacity: 0.6;
+    }
+
+    .poster-container, .graphic-container {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .Poster, .Illustration {
+        border: transparent;
+    }
+
+    .Poster:hover, .Illustration:hover {
+        cursor: pointer;
+        opacity: 0.95;
+    }
+
+    .container-block {
+        width: 51vw;
+        height: 100vh;
+        float: left;
+    }
+
+    .graphicheader {
+        width: 6vw;
+        margin: 126px 0 0 -72px;
+        opacity: 0.6;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        background-color: white;
+        font-family: 'AkzidenzLight', sans-serif;
+    }
+
+    .HeaderContainer {
+        left: 230px;
+        margin-top: 132px;
+        margin-bottom: 450px;
+        z-index: -100;
+    }
+
+    .HeaderContainer2 {
+        left: 220px;
+        top: 145px;
+        margin-bottom: 450px;
+        z-index: -100;
+    }
+
+    .Header7 {
+        float: left;
+    }
+
+    .Header8 {
+        left: 75%;
+        top: 200px;
+    }
+
+    .container-block {
+        width: 62vw;
+    }
+
+    .poster-container {
+        margin: 0 0 40px;
+    }
+
+    .Illustrations {
+        margin: 80px 6vw 0 auto;
+    }
+
+    .graphic-container {
+        margin: 0 0 80px;
+    }
 }
