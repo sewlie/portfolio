@@ -6,244 +6,164 @@
     <link rel="stylesheet" href="style.css">
     <title>Work</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 10px 10px 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+            -webkit-overflow-scrolling: hidden;
+        }
+        .menu-left {
+            flex: 0;
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 32px;
+        }
+        .menu-left h2 {
+            padding: 0 10px;
+            color: black;
+        }
+        .menu-center {
+            flex: 0;
+            display: flex;
+            justify-content: center;
+            padding-right: 30px;
+        }
+        .menu-left a {
+            cursor: default;
+        }
+        .menu p {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 10px;
+            font-family: 'AkzidenzLight', sans-serif;
+        }
+        
+        .menu a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 10px 0;
+            font-family: 'AkzidenzLight', sans-serif;
+        }
+        .menu a:hover {
+            color: rgb(0, 98, 255);
+        }
+        .filter-menu {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        .filter-menu button {
+            padding: 8px 15px;
+            margin: 0 10px;
+            background-color: #8282821b;
+            color: rgb(0, 0, 0);
+            border: none;
+            cursor: pointer;
+            font-family: 'AkzidenzBold', sans-serif;
+            border-radius: 5px;
+        }
+        .filter-menu button:hover {
+            background-color: #37373700;
+        }
+        .work-page {
+            margin-top: 80px; /* Adjust based on the height of the menu */
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .back-arrow {
-            display: flex;
-            text-align: left;
-            padding: 10px;
-            background-color: #00000000;
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-            font-size: 1.5em;
-            font-weight: 900;
-        }
-        .container {
-            width: 100%;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-        .year {
-            background: #00000000;
-            border: #000000;
-            border-radius: 10px;
-            border-width: 2px;
-            border-style: solid;
-            color: rgb(0, 0, 0);
-            padding: 20px;
-            margin: 10px 0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 80%;
-            box-sizing: border-box;
-            position: relative;
-            animation: float 3s ease-in-out infinite;
-            font-size: 1.5em;
-            font-weight: 900;
-        }
-        .year:hover {
-            scale: 1.001;
-            transition: .2s ease-in-out;
-        }
-        .year::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            z-index: -1;
+        .main-image {
+            width: 30%;
+            height: auto;
             opacity: 0;
-            transition: opacity 0.3s;
-            border-radius: 10px;
+            transition: opacity 1s ease-in-out;
         }
-        .year:hover::before {
-            opacity: 1;
-        }
-        .work-items {
-            display: none;
-            background-color: #ffffff00;
-            padding: 20px;
-            margin: 10px 0;
-            width: 100%;
-            box-sizing: border-box;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        .work-items a {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            padding: 5px 0;
-        }
-        .work-items a:hover {
-            color: #007BFF;
-        }
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-2px);
-            }
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        .work-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 20px;
-            padding: 10px;
-            width: 96%;
-        }
-        .work-item {
-            background-color: #ccc;
-            padding-top: 100%;
-            position: relative;
-            cursor: pointer;
-            transition: border 0.3s;
-        }
-        .work-item img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .work-header {
-            width: 100%;
-            padding: 5px 0 0 30px;
-        }
-        .main-content {
+        .thumbnail-container {
             display: flex;
-            width: 100%;
-            justify-content: space-between;
-        }
-        .first-half {
-            width: 50%;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .second-half {
-            width: 50%;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
+            gap: 10px;
             justify-content: center;
-            background-color: #fff;
-            border: 2px solid #ccc;
-            border-radius: 10px;
+            align-items: flex-end;
         }
-        .preview-image {
-            max-width: 100%;
-            max-height: 60vh; /* Prevent the image from going over a certain height */
+        .thumbnail {
+            width: 5%;
+            height: auto;
+            cursor: pointer;
+            opacity: 0.6;
             transition: opacity 0.3s;
-            opacity: 0;
+            padding: 0 20px;
         }
-        .preview-image.visible {
+        .thumbnail:hover {
             opacity: 1;
+        }
+        .fade-in-text {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            margin: 0 0 20px 0;
         }
     </style>
 </head>
 <body>
-    <div class="work-header">
-        <a class="back-arrow" href="index.html">&lt;&lt; home</a>
-    </div>
-    <div class="main-content">
-        <div class="first-half">
-            <div class="container">
-                <div class="year" onclick="toggleWorkItems('work-2021')">2021</div>
-                <div class="work-items" id="work-2021">
-                    <div class="work-container" id="work-container">
-                        <div class="work-item" onmouseover="showPreview('./assets/Artboard 1.png')" onclick="selectImage(this, './assets/Artboard 1.png')"><img src="/assets/Artboard 1.png" alt=""></div>
-                        <div class="work-item" onmouseover="showPreview('./assets/Artboard 3.png')" onclick="selectImage(this, './assets/Artboard 3.png')"><img src="/assets/Artboard 3.png" alt=""></div>
-                        <div class="work-item" onmouseover="showPreview('./assets/Artboard 4.png')" onclick="selectImage(this, './assets/Artboard 4.png')"><img src="/assets/Artboard 4.png" alt=""></div>
-                    </div>
-                </div>
-
-                <div class="year" onclick="toggleWorkItems('work-2020')">2020</div>
-                <div class="work-items" id="work-2020">
-                    <div class="work-container">
-                        <div class="work-item" onmouseover="showPreview('./assets/Artboard 5.png')" onclick="selectImage(this, './assets/Artboard 5.png')"><img src="/assets/Artboard 5.png" alt=""></div>
-                        <div class="work-item" onmouseover="showPreview('./assets/Artboard 6.jpg')" onclick="selectImage(this, './assets/Artboard 6.jpg')"><img src="/assets/Artboard 6.jpg" alt=""></div>
-                        <div class="work-item" onmouseover="showPreview('./assets/Artboard 7.png')" onclick="selectImage(this, './assets/Artboard 7.png')"><img src="/assets/Artboard 7.png" alt=""></div>
-                    </div>
-                </div>
-
-                <div class="year" onclick="toggleWorkItems('work-2019')">2019</div>
-                <div class="work-items" id="work-2019">
-                    <div class="work-container">
-                        <div class="work-item" onmouseover="showPreview('./assets/Book 1.png')" onclick="selectImage(this, './assets/Book 1.png')"><img src="/assets/Book 1.png" alt=""></div>
-                        <div class="work-item" onmouseover="showPreview('./assets/Book 2.png')" onclick="selectImage(this, './assets/Book 2.png')"><img src="/assets/Book 2.png" alt=""></div>
-                        <div class="work-item" onmouseover="showPreview('./assets/Ill1.jpg')" onclick="selectImage(this, './assets/Ill1.jpg')"><img src="/assets/Ill1.jpg" alt=""></div>
-                    </div>
-                </div>
-            </div>
+    <div class="menu">
+        <div class="menu-left">
+            <a href="index.html"><h2 style="cursor: pointer;">SEWLIE</h2></a>
         </div>
-        <div class="second-half">
-            <img src="" alt="Preview" class="preview-image" id="preview-image">
+        <div class="filter-menu">
+            <a href="index.html?filter=all"><button>ALL</button></a>
+            <a href="index.html?filter=Digital"><button>DIGITAL</button></a>
+            <a href="index.html?filter=Physical"><button>PHYSICAL</button></a>
+            <a href="index.html?filter=Blockchain"><button>BLOCKCHAIN</button></a>
+        </div>
+        <div class="menu-center">
+            <a href="#contact">CONTACT</a>
+        </div>
+    </div>
+
+    <div class="work-page">
+        <img id="mainImage" class="main-image" src="./assets/ILU2.png" alt="Main Image">
+        <div class="thumbnail-container">
+            <img class="thumbnail" src="./assets/ILU2.png" onclick="changeMainImage('./assets/ILU2.png')" alt="Thumbnail 1">
+            <img class="thumbnail" src="./assets/NMN2.png" onclick="changeMainImage('./assets/NMN2.png')" alt="Thumbnail 2">
+        </div>
+        <div class="fade-in-text" id="fadeInText">
+            <p>(2015) ILUM New York: The I Love You Cap & The No Means No Cap</p>
         </div>
     </div>
 
     <script>
-        let selectedImageElement = null;
-        let selectedImageSrc = null;
+        let currentIndex = 0;
+        const images = ['./assets/ILU2.png', './assets/NMN2.png'];
+        const mainImage = document.getElementById('mainImage');
+        const fadeInText = document.getElementById('fadeInText');
 
-        function toggleWorkItems(id) {
-            const workItems = document.getElementById(id);
-            if (workItems.style.display === "block") {
-                workItems.style.display = "none";
-            } else {
-                workItems.style.display = "block";
-            }
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                fadeInText.style.opacity = 1;
+            }, 1000);
 
-        function showPreview(src) {
-            if (selectedImageSrc) return;
-            const previewImage = document.getElementById('preview-image');
-            previewImage.src = src;
-            previewImage.classList.add('visible');
-        }
+            mainImage.style.opacity = 1;
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                mainImage.style.opacity = 0;
+                setTimeout(() => {
+                    mainImage.src = images[currentIndex];
+                    mainImage.style.opacity = 1;
+                }, 1000);
+            }, 5000);
+        });
 
-        function selectImage(element, src) {
-            // If the same image is clicked again, unselect it
-            if (selectedImageSrc === src) {
-                element.classList.remove('selected');
-                const previewImage = document.getElementById('preview-image');
-                previewImage.src = '';
-                previewImage.classList.remove('visible');
-                selectedImageSrc = null;
-                selectedImageElement = null;
-                return;
-            }
-
-            // Remove selected class from all work items
-            const allItems = document.querySelectorAll('.work-item');
-            allItems.forEach(item => item.classList.remove('selected'));
-
-            // Add selected class to the clicked item
-            element.classList.add('selected');
-
-            // Set the selected image src and lock it
-            selectedImageSrc = src;
-            selectedImageElement = element;
-            const previewImage = document.getElementById('preview-image');
-            previewImage.src = src;
-            previewImage.classList.add('visible');
+        function changeMainImage(src) {
+            mainImage.style.opacity = 0;
+            setTimeout(() => {
+                mainImage.src = src;
+                mainImage.style.opacity = 1;
+            }, 1000);
         }
     </script>
 </body>
