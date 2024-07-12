@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Work</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px 10px 10px 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+            -webkit-overflow-scrolling: hidden;
+        }
+        .menu-left {
+            flex: 0;
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 32px;
+        }
+        .menu-left h2 {
+            padding: 0 10px;
+            color: black;
+        }
+        .menu-center {
+            flex: 0;
+            display: flex;
+            justify-content: center;
+            padding-right: 30px;
+        }
+        .menu-left a {
+            cursor: default;
+        }
+        .menu p {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 10px;
+            font-family: 'AkzidenzLight', sans-serif;
+        }
+        
+        .menu a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 10px 0;
+            font-family: 'AkzidenzLight', sans-serif;
+        }
+        .menu a:hover {
+            color: rgb(0, 98, 255);
+        }
+        .filter-menu {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        .filter-menu button {
+            padding: 8px 15px;
+            margin: 0 10px;
+            background-color: #8282821b;
+            color: rgb(0, 0, 0);
+            border: none;
+            cursor: pointer;
+            font-family: 'AkzidenzBold', sans-serif;
+            border-radius: 5px;
+        }
+        .filter-menu button:hover {
+            background-color: #37373700;
+        }
+        .work-page {
+            margin-top: 80px; /* Adjust based on the height of the menu */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-image {
+            width: 30%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .thumbnail {
+            width: 5%;
+            height: auto;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            padding: 0 20px;
+        }
+        .thumbnail:hover {
+            opacity: 1;
+        }
+        .fade-in-text {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            margin: 0 0 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-left">
+            <a href="index.html"><h2 style="cursor: pointer;">SEWLIE</h2></a>
+        </div>
+        <div class="filter-menu">
+            <a href="index.html?filter=all"><button>ALL</button></a>
+            <a href="index.html?filter=Digital"><button>DIGITAL</button></a>
+            <a href="index.html?filter=Physical"><button>PHYSICAL</button></a>
+            <a href="index.html?filter=Blockchain"><button>BLOCKCHAIN</button></a>
+        </div>
+        <div class="menu-center">
+            <a href="#contact">CONTACT</a>
+        </div>
+    </div>
+
+    <div class="work-page">
+        <img id="mainImage" class="main-image" src="./assets/CityMag FINAL1.png" alt="Main Image">
+        <div class="thumbnail-container">
+            <img class="thumbnail" src="./assets/CityMag FINAL1.png" onclick="changeMainImage('./assets/CityMag FINAL1.png')" alt="Thumbnail 1">
+            <img class="thumbnail" src="./assets/CityMag FINAL2.png" onclick="changeMainImage('./assets/CityMag FINAL2.png')" alt="Thumbnail 2">
+            <img class="thumbnail" src="./assets/CityMag FINAL3.png" onclick="changeMainImage('./assets/CityMag FINAL3.png')" alt="Thumbnail 3">
+            <img class="thumbnail" src="./assets/CityMag FINAL4.png" onclick="changeMainImage('./assets/CityMag FINAL4.png')" alt="Thumbnail 4">
+        </div>
+        <div class="fade-in-text" id="fadeInText">
+            <p>(2023) City Magazine: Final Editions</p>
+        </div>
+    </div>
+    
+    <script>
+        function changeMainImage(src) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.style.opacity = 0;
+            setTimeout(() => {
+                mainImage.src = src;
+                mainImage.style.opacity = 1;
+            }, 500); // Adjust the duration as needed
+        }
+    
+        document.addEventListener("DOMContentLoaded", function() {
+            const fadeInText = document.getElementById('fadeInText');
+            setTimeout(() => {
+                fadeInText.style.opacity = 1;
+            }, 2000); // Fade-in effect for text after 2 seconds
+        });
+    </script>
+</body>
+</html>

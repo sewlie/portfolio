@@ -160,6 +160,15 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             opacity: 0;
         }
+        .preview-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .preview-overlay img:hover {
+            transform: scale(1.2); /* Adjust the scale as needed */
+        }
     </style>
 </head>
 <body>
@@ -183,11 +192,6 @@
             <img src="./assets/Artboard 1.png">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
-        </div>
-        <div class="grid-item" data-tag="Digital" data-year="2018" onclick="showPreview('./assets/Artboard 3.png')">
-            <img src="./assets/Artboard 3.png">
-            <div class="overlay"></div>
-            <div class="year-label">2018</div>
         </div>
         <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/Artboard 4.png')">
             <img src="./assets/Artboard 4.png">
@@ -253,6 +257,16 @@
             <img src="./assets/LYS.png">
             <div class="overlay"></div>
             <div class="year-label">2023</div>
+        </div>
+        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="window.location.href='work.html'">
+            <img src="./assets/CityMag FINAL3.png">
+            <div class="overlay"></div>
+            <div class="year-label">2023</div>
+        </div>
+        <div class="grid-item" data-tag="Physical" data-year="2024" onclick="showPreview('./assets/wwd cecred.png')">
+            <img src="./assets/wwd cecred.png">
+            <div class="overlay"></div>
+            <div class="year-label">2024</div>
         </div>
     </div>
 
