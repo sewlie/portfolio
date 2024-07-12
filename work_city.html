@@ -74,25 +74,31 @@
             background-color: #37373700;
         }
         .work-page {
-            margin-top: 80px; /* Adjust based on the height of the menu */
+            margin-top: 120px; /* Adjust based on the height of the menu */
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .main-image {
-            width: 30%;
+            width: auto;
             height: auto;
-            opacity: 0;
+            min-height: 60vh;
+            max-height: 65vh;
+            opacity: 1; /* Set initial opacity to 1 */
             transition: opacity 1s ease-in-out;
         }
         .thumbnail-container {
             display: flex;
-            gap: 10px;
+            gap: 15px 15px;
             justify-content: center;
+            width: 50%;
             align-items: flex-end;
+            flex-wrap: wrap;
+            margin: 40px 0 0 0;
+            align-items: center;
         }
         .thumbnail {
-            width: 5%;
+            width: 3%;
             height: auto;
             cursor: pointer;
             opacity: 0.6;
@@ -128,13 +134,23 @@
     <div class="work-page">
         <img id="mainImage" class="main-image" src="./assets/CityMag FINAL1.png" alt="Main Image">
         <div class="thumbnail-container">
-            <img class="thumbnail" src="./assets/CityMag FINAL1.png" onclick="changeMainImage('./assets/CityMag FINAL1.png')" alt="Thumbnail 1">
-            <img class="thumbnail" src="./assets/CityMag FINAL2.png" onclick="changeMainImage('./assets/CityMag FINAL2.png')" alt="Thumbnail 2">
-            <img class="thumbnail" src="./assets/CityMag FINAL3.png" onclick="changeMainImage('./assets/CityMag FINAL3.png')" alt="Thumbnail 3">
+            <img class="thumbnail" src="./assets/CityMag FINAL1.png" onclick="changeMainImage('./assets/CityMag FINAL1.png')" alt="Thumbnail 4">
             <img class="thumbnail" src="./assets/CityMag FINAL4.png" onclick="changeMainImage('./assets/CityMag FINAL4.png')" alt="Thumbnail 4">
-        </div>
-        <div class="fade-in-text" id="fadeInText">
-            <p>(2023) City Magazine: Final Editions</p>
+            <img class="thumbnail" src="./assets/CityMag FINAL5.png" onclick="changeMainImage('./assets/CityMag FINAL5.png')" alt="Thumbnail 5">
+            <img class="thumbnail" src="./assets/CityMag FINAL6.png" onclick="changeMainImage('./assets/CityMag FINAL6.png')" alt="Thumbnail 6">
+            <img class="thumbnail" src="./assets/CityMag FINAL7.png" onclick="changeMainImage('./assets/CityMag FINAL7.png')" alt="Thumbnail 7">
+            <img class="thumbnail" src="./assets/CityMag FINAL8.png" onclick="changeMainImage('./assets/CityMag FINAL8.png')" alt="Thumbnail 8">
+            <img class="thumbnail" src="./assets/CityMag FINAL9.png" onclick="changeMainImage('./assets/CityMag FINAL9.png')" alt="Thumbnail 9">
+            <img class="thumbnail" src="./assets/CityMag FINAL10.png" onclick="changeMainImage('./assets/CityMag FINAL10.png')" alt="Thumbnail 10">
+            <img class="thumbnail" src="./assets/CityMag FINAL11.png" onclick="changeMainImage('./assets/CityMag FINAL11.png')" alt="Thumbnail 11">
+            <img class="thumbnail" src="./assets/CityMag FINAL12.png" onclick="changeMainImage('./assets/CityMag FINAL12.png')" alt="Thumbnail 12">
+            <img class="thumbnail" src="./assets/CityMag FINAL13.png" onclick="changeMainImage('./assets/CityMag FINAL13.png')" alt="Thumbnail 13">
+            <img class="thumbnail" src="./assets/CityMag FINAL14.png" onclick="changeMainImage('./assets/CityMag FINAL14.png')" alt="Thumbnail 14">
+            <img class="thumbnail" src="./assets/CityMag FINAL15.png" onclick="changeMainImage('./assets/CityMag FINAL15.png')" alt="Thumbnail 15">
+            <img class="thumbnail" src="./assets/CityMag FINAL16.png" onclick="changeMainImage('./assets/CityMag FINAL16.png')" alt="Thumbnail 16">
+            <img class="thumbnail" src="./assets/CityMag FINAL17.png" onclick="changeMainImage('./assets/CityMag FINAL17.png')" alt="Thumbnail 17">
+            <img class="thumbnail" src="./assets/CityMag FINAL18.png" onclick="changeMainImage('./assets/CityMag FINAL18.png')" alt="Thumbnail 18">
+            <img class="thumbnail" src="./assets/CityMag FINAL19.png" onclick="changeMainImage('./assets/CityMag FINAL19.png')" alt="Thumbnail 19">
         </div>
     </div>
     

@@ -37,13 +37,12 @@
         .menu-left a {
             cursor: default;
         }
-        .menu p{
+        .menu p {
             color: rgb(0, 0, 0);
             text-decoration: none;
             padding: 10px;
             font-family: 'AkzidenzLight', sans-serif;
         }
-        
         .menu a {
             color: rgb(0, 0, 0);
             text-decoration: none;
@@ -73,10 +72,10 @@
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
             gap: 20px;
             padding: 10px;
-            margin: 100px 0 15px 0; 
+            margin: 100px 0 15px 0;
             width: 96%;
         }
         .grid-item {
@@ -87,7 +86,8 @@
             text-align: center;
             cursor: pointer;
         }
-        .grid-item img {
+        .grid-item img,
+        .grid-item video {
             position: absolute;
             top: 0;
             left: 0;
@@ -139,14 +139,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
             z-index: 10;
         }
-        .preview-overlay img {
-            max-width: 90%;
-            max-height: 90%;
+        .preview-overlay img,
+        .preview-overlay video {
+            max-width: 80%;
+            max-height: 80%;
         }
         .contact-preview {
             width: 300px;
@@ -160,14 +161,18 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             opacity: 0;
         }
-        .preview-overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .preview-overlay img:hover {
-            transform: scale(1.2); /* Adjust the scale as needed */
+        .magnifier {
+            position: absolute;
+            border: 3px solid #000;
+            border-radius: 50%;
+            cursor: none;
+            width: 250px;
+            height: 250px;
+            display: none;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 10;
         }
     </style>
 </head>
@@ -241,7 +246,7 @@
         <div class="grid-item" data-tag="Physical" data-year="2015" onclick="window.location.href='work.html'">
             <img src="./assets/NMN.jpg">
             <div class="overlay"></div>
-            <div class="year-label">2015</div>        
+            <div class="year-label">2015</div>
         </div>
         <div class="grid-item" data-tag="Blockchain" data-year="2021" onclick="window.open('https://www.twitch.tv/collections/5pERBYa_PBfOlQ', '_blank')">
             <img src="./assets/YOTG.png">
@@ -258,8 +263,8 @@
             <div class="overlay"></div>
             <div class="year-label">2023</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="window.location.href='work.html'">
-            <img src="./assets/CityMag FINAL3.png">
+        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="window.location.href='work_city.html'">
+            <img src="./assets/CityMag FINAL1.png">
             <div class="overlay"></div>
             <div class="year-label">2023</div>
         </div>
@@ -268,15 +273,37 @@
             <div class="overlay"></div>
             <div class="year-label">2024</div>
         </div>
+        <div class="grid-item" data-tag="Blockchain" data-year="2024" onclick="window.open('https://www.dropsbot.gg', '_blank')">
+            <img src="./assets/dropsbot.png">
+            <div class="overlay"></div>
+            <div class="year-label">2024</div>
+        </div>
+        <div class="grid-item" data-tag="Blockchain" data-year="2021" onclick="showPreview('./assets/gods.gif')">
+            <img src="./assets/gods.gif">
+            <div class="overlay"></div>
+            <div class="year-label">2021</div>
+        </div>
+        <div class="grid-item" data-tag="Blockchain" data-year="2022" onclick="showPreview('./assets/brave x hive_final.mp4')">
+            <video src="./assets/brave x hive_final.mp4" muted autoplay loop></video>
+            <div class="overlay"></div>
+            <div class="year-label">2022</div>
+        </div>
+        <div class="grid-item" data-tag="Digital" data-year="2024" onclick="showPreview('./assets/VAL_FOUNDERS_POSTER.png')">
+            <img src="./assets/VAL_FOUNDERS_POSTER.png">
+            <div class="overlay"></div>
+            <div class="year-label">2024</div>
+        </div>
     </div>
 
     <div class="preview-overlay" id="preview-overlay" onclick="hidePreview()">
         <img id="preview-image" src="">
+        <video id="preview-video" controls></video>
+        <div id="magnifier" class="magnifier"></div>
     </div>
 
     <div class="preview-overlay" id="contact-preview" onclick="hideContactPreview()">
-        <div class="contact-preview">
-            <p>Contact me at: sewlie@example.com</p>
+        <div class="contact-preview" style="border-radius:10px;">
+            <p style="font-style: bold;">Contact me at: sewlie.art@gmail.com</p>
         </div>
     </div>
 
@@ -310,13 +337,26 @@
         function showPreview(src) {
             const previewOverlay = document.getElementById('preview-overlay');
             const previewImage = document.getElementById('preview-image');
-            previewImage.src = src;
+            const previewVideo = document.getElementById('preview-video');
+
+            if (src.endsWith('.mp4')) {
+                previewImage.style.display = 'none';
+                previewVideo.style.display = 'block';
+                previewVideo.src = src;
+            } else {
+                previewVideo.style.display = 'none';
+                previewImage.style.display = 'block';
+                previewImage.src = src;
+            }
+
             previewOverlay.style.display = 'flex';
         }
 
         function hidePreview() {
             const previewOverlay = document.getElementById('preview-overlay');
             previewOverlay.style.display = 'none';
+            const previewVideo = document.getElementById('preview-video');
+            previewVideo.pause();
         }
 
         function showContactPreview() {
@@ -356,6 +396,32 @@
         function openExternal(url) {
             window.open(url, '_blank');
         }
+
+        const magnifier = document.getElementById('magnifier');
+        const previewImage = document.getElementById('preview-image');
+
+        previewImage.addEventListener('mousemove', function(e) {
+            magnifier.style.display = 'block';
+            const rect = previewImage.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const backgroundPosX = (x / previewImage.width) * 100;
+            const backgroundPosY = (y / previewImage.height) * 100;
+
+            magnifier.style.backgroundImage = `url(${previewImage.src})`;
+            magnifier.style.backgroundSize = `${previewImage.width * 2}px ${previewImage.height * 2}px`;
+            magnifier.style.backgroundPosition = `${backgroundPosX}% ${backgroundPosY}%`;
+
+            const magnifierX = e.clientX - magnifier.offsetWidth / 2;
+            const magnifierY = e.clientY - magnifier.offsetHeight / 2;
+
+            magnifier.style.left = `${magnifierX}px`;
+            magnifier.style.top = `${magnifierY}px`;
+        });
+
+        previewImage.addEventListener('mouseleave', function() {
+            magnifier.style.display = 'none';
+        });
     </script>
 </body>
 </html>
