@@ -167,13 +167,13 @@
 <body>
     <div class="menu">
         <div class="menu-left">
-            <a href="index.html"><h2 style="cursor: pointer;">SEWLIE</h2></a>
+            <a href="/"><h2 style="cursor: pointer;">SEWLIE</h2></a>
         </div>
         <div class="filter-menu">
-            <button onclick="filterItems('all')">ALL</button>
-            <button onclick="filterItems('Digital')">DIGITAL</button>
-            <button onclick="filterItems('Physical')">PHYSICAL</button>
-            <button onclick="filterItems('Blockchain')">BLOCKCHAIN</button>
+            <button onclick="window.location.href='/'">ALL</button>
+            <button onclick="window.location.href='/?filter=Digital'">DIGITAL</button>
+            <button onclick="window.location.href='/?filter=Physical'">PHYSICAL</button>
+            <button onclick="window.location.href='/?filter=Blockchain'">BLOCKCHAIN</button>
         </div>
         <div class="menu-center">
             <a href="#contact" onclick="showContactPreview()">CONTACT</a>
@@ -324,22 +324,28 @@
         });
 
         function showPreview(src) {
-            const previewOverlay = document.getElementById('preview-overlay');
-            const previewImage = document.getElementById('preview-image');
-            const previewVideo = document.getElementById('preview-video');
+    const previewOverlay = document.getElementById('preview-overlay');
+    const previewImage = document.getElementById('preview-image');
+    const previewVideo = document.getElementById('preview-video');
 
-            if (src.endsWith('.mp4')) {
-                previewImage.style.display = 'none';
-                previewVideo.style.display = 'block';
-                previewVideo.src = src;
-            } else {
-                previewVideo.style.display = 'none';
-                previewImage.style.display = 'block';
-                previewImage.src = src;
-            }
+    const baseURL = window.location.origin;
+    const fullPath = src.startsWith('http') ? src : `${baseURL}/${src}`;
 
-            previewOverlay.style.display = 'flex';
-        }
+    if (fullPath.endsWith('.mp4')) {
+        previewImage.style.display = 'none';
+        previewVideo.style.display = 'block';
+        previewVideo.src = fullPath;
+        previewVideo.load(); // Ensure the video is loaded
+        previewVideo.play(); // Start playing the video
+    } else {
+        previewVideo.style.display = 'none';
+        previewImage.style.display = 'block';
+        previewImage.src = fullPath;
+    }
+
+    previewOverlay.style.display = 'flex';
+}
+
 
         function hidePreview() {
             const previewOverlay = document.getElementById('preview-overlay');
