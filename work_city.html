@@ -127,7 +127,7 @@
             <button onclick="window.location.href='/?filter=Blockchain'">BLOCKCHAIN</button>
         </div>
         <div class="menu-center">
-            <a href="#contact">CONTACT</a>
+            <a href="#contact" onclick="showContactPreview()">CONTACT</a>
         </div>
     </div>
 
@@ -170,6 +170,24 @@
                 fadeInText.style.opacity = 1;
             }, 2000); // Fade-in effect for text after 2 seconds
         });
+
+        function showContactPreview() {
+            const contactPreview = document.getElementById('contact-preview');
+            const contactPreviewContent = contactPreview.querySelector('.contact-preview');
+            contactPreview.style.display = 'flex';
+            setTimeout(() => {
+                contactPreviewContent.style.opacity = 1;
+            }, 0);
+        }
+
+        function hideContactPreview() {
+            const contactPreview = document.getElementById('contact-preview');
+            const contactPreviewContent = contactPreview.querySelector('.contact-preview');
+            contactPreviewContent.style.opacity = 0;
+            setTimeout(() => {
+                contactPreview.style.display = 'none';
+            }, 0);
+        }
     </script>
 </body>
 </html>
