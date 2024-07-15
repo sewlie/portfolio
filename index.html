@@ -139,7 +139,7 @@
         }
         .contact-preview {
             width: 300px;
-            height: 300px;
+            height: 150px;
             background-color: #f6f6f6;
             display: flex;
             justify-content: center;
@@ -305,6 +305,11 @@
                 [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
+        }
+
+        function navigateToWorkPage() {
+            history.pushState({}, '', '/work'); // Update the URL to /work
+            window.location.href = 'work.html'; // Navigate to the work.html page
         }
 
         document.addEventListener("DOMContentLoaded", function() {
