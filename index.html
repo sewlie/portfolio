@@ -52,11 +52,7 @@
         .menu a:hover {
             color: rgb(0, 98, 255);
         }
-        .filter-menu {
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-        }
+
         .filter-menu button {
             padding: 8px 15px;
             margin: 0 10px;
@@ -69,14 +65,6 @@
         }
         .filter-menu button:hover {
             background-color: #37373700;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-            gap: 20px;
-            padding: 10px;
-            margin: 100px 0 15px 0;
-            width: 96%;
         }
         .grid-item {
             position: relative;
@@ -191,6 +179,7 @@
             <a href="#contact" onclick="showContactPreview()">CONTACT</a>
         </div>
     </div>
+
 
     <div class="grid-container" id="grid-container">
         <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/Artboard 1.png')">
