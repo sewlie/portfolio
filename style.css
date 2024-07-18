@@ -84,7 +84,7 @@ a {
         padding: 0 10px;
         color: black;
         font-weight: 700;
-        font-size: 24px;
+        font-size: 42px;
     }
     .menu-center {
         flex: 0;
@@ -108,7 +108,7 @@ a {
         padding: 10px 0;
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
-        font-size: 22px;
+        font-size: 28px;
     }
     .menu a:hover {
         color: rgb(0, 98, 255);
@@ -116,15 +116,17 @@ a {
     .filter-menu button {
         padding: 8px 15px;
         margin: 0 10px;
-        background-color: #8282821b;
         color: rgb(0, 0, 0);
         border: none;
         cursor: pointer;
         font-family: 'Roboto', sans-serif;
         border-radius: 5px;
+        font-weight: 700;
+        letter-spacing: .6px;
+        font-size: 16px;
     }
     .filter-menu button:hover {
-        background-color: #37373700;
+
     }
 
 
