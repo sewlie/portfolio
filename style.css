@@ -62,7 +62,7 @@ body::-webkit-scrollbar {
         justify-content: space-between;
         align-items: center;
         background-color: white;
-        padding: 10px 10px 10px 10px;
+        padding: 10px 10px 15px 10px;
         width: 100%;
         position: fixed;
         top: 0;
@@ -73,41 +73,33 @@ body::-webkit-scrollbar {
         flex: 0;
         display: flex;
         justify-content: flex-start;
-        padding-left: 2vw;
+        padding: 20px 20px 20px 3vw;
     }
-    .menu-left h2 {
+    .menu-left a {
         color: black;
         font-weight: 700;
         font-size: 42px;
+        cursor: default;
+        text-decoration: none !important;
     }
     .menu-center {
         flex: 0;
         display: flex;
         justify-content: center;
-        padding-right: 2vw;
+        padding: 20px 3vw 20px 20px;
     }
     .menu-below {
         display: none;
     }
-    .menu-left a {
-        cursor: default;
-    }
-    .menu p {
-        color: rgb(0, 0, 0);
-        text-decoration: none;
-        padding: 10px;
-        font-family: 'Roboto', sans-serif;
-    }
     
-    .menu a {
+    .menu-center a {
         color: rgb(0, 0, 0);
         text-decoration: none;
-        padding: 10px 0;
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
         font-size: 28px;
     }
-    .menu a:hover {
+    .menu-center a:hover {
         color: rgb(0, 98, 255);
     }
     .filter-menu button {
@@ -235,20 +227,23 @@ body::-webkit-scrollbar {
     }
     
     .menu-left-mobile {
-        margin-bottom: 10px;
+        padding-left: 3vw;
+        text-decoration: none !important;
     }
     
-    .menu-left-mobile h2 {
+    .menu-left-mobile a {
         color: black;
         font-weight: 700;
         font-size: 42px;
         margin: 0;
         padding: 0;
+        text-decoration: none !important;
     }
     
     .menu-below {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        padding-left: 3vw;
     }
     
     .menu-below a {
@@ -257,9 +252,11 @@ body::-webkit-scrollbar {
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
         font-size: 28px;
-        line-height: 1.5;
+        line-height: 0.7;
     }
-    
+    .menu-left-mobile h2:hover {
+        color: rgb(0, 98, 255);
+    }
     .menu-below a:hover {
         color: rgb(0, 98, 255);
     }
