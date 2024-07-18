@@ -30,7 +30,7 @@
         .grid-item {
             position: relative;
             width: 100%;
-            padding-top: 100%; /* 1:1 Aspect Ratio */
+            padding-top: 100%;
             background-color: #ccc;
             text-align: center;
             cursor: pointer;
@@ -138,6 +138,14 @@
             <button onclick="window.location.href='/?filter=Blockchain'">BLOCKCHAIN</button>
         </div>
         <div class="menu-center">
+            <a href="#contact" onclick="showContactPreview()">contact</a>
+        </div>
+    </div>
+    <div class="menu-mobile">
+        <div class="menu-left-mobile">
+            <a href="/"><h2 style="cursor: pointer;">sewlie</h2></a>
+        </div>
+        <div class="menu-below">
             <a href="#contact" onclick="showContactPreview()">contact</a>
         </div>
     </div>
@@ -270,19 +278,18 @@
         }
 
         function navigateToWorkPage() {
-            history.pushState({}, '', '/work'); // Update the URL to /work
-            window.location.href = 'work.html'; // Navigate to the work.html page
+            history.pushState({}, '', '/work');
+            window.location.href = 'work.html';
         }
 
         document.addEventListener("DOMContentLoaded", function() {
             const gridContainer = document.getElementById("grid-container");
             const gridItems = Array.from(gridContainer.children);
-            originalItems = gridItems.slice();  // Save original order
+            originalItems = gridItems.slice(); 
             const shuffledItems = shuffle(gridItems.slice());
 
             shuffledItems.forEach(item => gridContainer.appendChild(item));
 
-            // Apply filter from query parameters
             const urlParams = new URLSearchParams(window.location.search);
             const filter = urlParams.get('filter');
             if (filter) {
@@ -302,8 +309,8 @@
         previewImage.style.display = 'none';
         previewVideo.style.display = 'block';
         previewVideo.src = fullPath;
-        previewVideo.load(); // Ensure the video is loaded
-        previewVideo.play(); // Start playing the video
+        previewVideo.load();
+        previewVideo.play();
     } else {
         previewVideo.style.display = 'none';
         previewImage.style.display = 'block';
@@ -341,7 +348,7 @@
 
         function filterItems(tag) {
             const gridContainer = document.getElementById("grid-container");
-            const gridItems = originalItems.slice();  // Use original order
+            const gridItems = originalItems.slice();
 
             if (tag === 'all') {
                 const shuffledItems = shuffle(gridItems.slice());

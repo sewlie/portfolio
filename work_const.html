@@ -10,7 +10,7 @@
     <style>
 
         .work-page {
-            margin-top: 120px; /* Adjust based on the height of the menu */
+            margin-top: 120px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -42,13 +42,13 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             opacity: 0;
-            transition: opacity 0.3s ease-in-out; /* Add transition for opacity */
+            transition: opacity 0.3s ease-in-out;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 11; /* Ensure it appears above other content */
-            border-radius: 10px; /* Adjust if necessary */
+            z-index: 11;
+            border-radius: 10px;
             color: black;
 
         }
@@ -139,7 +139,7 @@
             setTimeout(() => {
                 mainImage.src = src;
                 mainImage.style.opacity = 1;
-            }, 500); // Adjust the duration as needed
+            }, 500);
         }
 
         function showContactPreview() {
