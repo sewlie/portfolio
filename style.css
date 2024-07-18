@@ -33,11 +33,6 @@ body::-webkit-scrollbar {
     display: none;
   }
 
-a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
 .filter-menu {
     display: flex;
     justify-content: center;
@@ -78,10 +73,9 @@ a {
         flex: 0;
         display: flex;
         justify-content: flex-start;
-        padding-left: 32px;
+        padding-left: 2vw;
     }
     .menu-left h2 {
-        padding: 0 10px;
         color: black;
         font-weight: 700;
         font-size: 42px;
@@ -90,7 +84,10 @@ a {
         flex: 0;
         display: flex;
         justify-content: center;
-        padding-right: 30px;
+        padding-right: 2vw;
+    }
+    .menu-below {
+        display: none;
     }
     .menu-left a {
         cursor: default;
@@ -125,9 +122,6 @@ a {
         letter-spacing: .6px;
         font-size: 16px;
     }
-    .filter-menu button:hover {
-
-    }
 
 
 @media (min-width: 1024px) {
@@ -159,11 +153,11 @@ a {
         height: auto;
         min-height: 59vh;
         max-height: 60vh;
-        opacity: 1; /* Set initial opacity to 1 */
+        opacity: 1;
         transition: opacity 1s ease-in-out;
     }
     .work-page {
-        margin-top: 100px; /* Adjust based on the height of the menu */
+        margin-top: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -175,8 +169,6 @@ a {
 
 
 @media (max-width: 1023px) {
-
-
     body {
         background-color: rgb(255, 255, 255);
         color: rgb(237, 237, 237);
@@ -197,11 +189,11 @@ a {
     .main-image {
         width: auto;
         height: 56vw;
-        opacity: 1; /* Set initial opacity to 1 */
+        opacity: 1;
         transition: opacity 1s ease-in-out;
     }
     .work-page {
-        margin-top: 100px; /* Adjust based on the height of the menu */
+        margin-top: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -222,10 +214,54 @@ a {
         display: none;
     }
     .work-page {
-        margin-top: 100px; /* Adjust based on the height of the menu */
+        margin-top: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .menu {
+        display: none;
+    }
+    .menu-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 4vw;
+        width: 100%;
+        position: fixed;
+        background-color: white;
+        padding: 10px 10px 10px 10px;
+        z-index: 2;
+    }
+    
+    .menu-left-mobile {
+        margin-bottom: 10px;
+    }
+    
+    .menu-left-mobile h2 {
+        color: black;
+        font-weight: 700;
+        font-size: 42px;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .menu-below {
+        display: flex;
+        align-items: center;
+    }
+    
+    .menu-below a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 1.5;
+    }
+    
+    .menu-below a:hover {
+        color: rgb(0, 98, 255);
     }
 }
 
