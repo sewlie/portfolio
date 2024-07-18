@@ -1,71 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+        <!-- Required meta tags
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+         Open Graph meta tags
+        <meta property="og:title" content="sewlie.com">
+        <meta property="og:description" content="">
+        <meta property="og:image" content="https://example.com/path-to-your-image.jpg">
+        <meta property="og:url" content="https://example.com/your-page-url">
+        <meta property="og:type" content="website">
+    
+         Twitter Card meta tags
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Your Page Title">
+        <meta name="twitter:description" content="A brief description of your page.">
+        <meta name="twitter:image" content="https://example.com/path-to-your-image.jpg">
+        <meta name="twitter:url" content="https://example.com/your-page-url">
+        -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>SEWLIE: Portfolio</title>
+    <title>sewlie: portfolio</title>
     <style>
-        .menu {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #ffffff;
-            padding: 10px 10px 10px 10px;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 2;
-            -webkit-overflow-scrolling: hidden;
-        }
-        .menu-left {
-            flex: 0;
-            display: flex;
-            justify-content: flex-start;
-            padding-left: 32px;
-        }
-        .menu-left h2 {
-            padding: 0 10px;
-            color: black;
-        }
-        .menu-center {
-            flex: 0;
-            display: flex;
-            justify-content: center;
-            padding-right: 30px;
-        }
-        .menu-left a {
-            cursor: default;
-        }
-        .menu p {
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-            padding: 10px;
-            font-family: 'AkzidenzLight', sans-serif;
-        }
-        .menu a {
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-            padding: 10px 0;
-            font-family: 'AkzidenzLight', sans-serif;
-        }
-        .menu a:hover {
-            color: rgb(0, 98, 255);
-        }
 
-        .filter-menu button {
-            padding: 8px 15px;
-            margin: 0 10px;
-            background-color: #8282821b;
-            color: rgb(0, 0, 0);
-            border: none;
-            cursor: pointer;
-            font-family: 'AkzidenzBold', sans-serif;
-            border-radius: 5px;
-        }
-        .filter-menu button:hover {
-            background-color: #37373700;
-        }
         .grid-item {
             position: relative;
             width: 100%;
@@ -168,7 +129,7 @@
 <body>
     <div class="menu">
         <div class="menu-left">
-            <a href="/"><h2 style="cursor: pointer;">SEWLIE</h2></a>
+            <a href="/"><h2 style="cursor: pointer;">sewlie</h2></a>
         </div>
         <div class="filter-menu">
             <button onclick="window.location.href='/'">ALL</button>
@@ -177,7 +138,7 @@
             <button onclick="window.location.href='/?filter=Blockchain'">BLOCKCHAIN</button>
         </div>
         <div class="menu-center">
-            <a href="#contact" onclick="showContactPreview()">CONTACT</a>
+            <a href="#contact" onclick="showContactPreview()">contact</a>
         </div>
     </div>
 
