@@ -195,7 +195,54 @@ body::-webkit-scrollbar {
         flex-direction: column;
         align-items: center;
     }
-
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        padding: 10px 10px 15px 10px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        -webkit-overflow-scrolling: hidden;
+    }
+    .menu-left {
+        flex: 0;
+        display: flex;
+        justify-content: flex-start;
+        padding: 20px 20px 20px 3vw;
+    }
+    .menu-left a {
+        color: black;
+        font-weight: 700;
+        font-size: 42px;
+        cursor: default;
+        text-decoration: none !important;
+    }
+    .menu-center {
+        flex: 0;
+        display: flex;
+        justify-content: center;
+        padding: 20px 3vw 20px 20px;
+    }
+    .menu-below {
+        display: none;
+    }
+    
+    .menu-center a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+    }
+    .menu-center a:hover {
+        color: rgb(0, 98, 255);
+    }
+    .filter-menu {
+        display: none;
+    }
 }
 
 @media (max-width: 800px) {
@@ -207,62 +254,14 @@ body::-webkit-scrollbar {
         margin: 100px 0 15px 0;
         width: 96%;
     }
-    .filter-menu {
-        display: none;
-    }
+
     .work-page {
         margin-top: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .menu-mobile {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 4vw;
-        width: 100%;
-        position: fixed;
-        background-color: white;
-        padding: 10px 10px 10px 10px;
-        z-index: 2;
-    }
     
-    .menu-left-mobile {
-        padding-left: 3vw;
-        text-decoration: none !important;
-    }
-    
-    .menu-left-mobile a {
-        color: black;
-        font-weight: 700;
-        font-size: 42px;
-        margin: 0;
-        padding: 0;
-        text-decoration: none !important;
-    }
-    
-    .menu-below {
-        display: flex;
-        align-items: flex-start;
-        padding-left: 3vw;
-        margin-bottom: 18px;
-    }
-    
-    .menu-below a {
-        color: rgb(0, 0, 0);
-        text-decoration: none;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 700;
-        font-size: 28px;
-        line-height: 0.7;
-    }
-    .menu-left-mobile h2:hover {
-        color: rgb(0, 98, 255);
-    }
-    .menu-below a:hover {
-        color: rgb(0, 98, 255);
-    }
 }
 
 @media (max-width: 700px) {
