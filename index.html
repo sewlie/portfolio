@@ -1,32 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-        <!-- Required meta tags
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-         Open Graph meta tags
-        <meta property="og:title" content="sewlie.com">
-        <meta property="og:description" content="">
-        <meta property="og:image" content="https://example.com/path-to-your-image.jpg">
-        <meta property="og:url" content="https://example.com/your-page-url">
-        <meta property="og:type" content="website">
-    
-         Twitter Card meta tags
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Your Page Title">
-        <meta name="twitter:description" content="A brief description of your page.">
-        <meta name="twitter:image" content="https://example.com/path-to-your-image.jpg">
-        <meta name="twitter:url" content="https://example.com/your-page-url">
-        -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
     <title>sewlie: portfolio</title>
     <style>
-
         .grid-item {
             position: relative;
             width: 100%;
@@ -138,7 +118,7 @@
     </style>
 </head>
 <body>
-    <div class="menu">
+    <nav class="menu">
         <div class="menu-left">
             <a href="/" style="cursor: pointer;">sewlie</a>
         </div>
@@ -149,10 +129,9 @@
             <button onclick="window.location.href='/?filter=Blockchain'">BLOCKCHAIN</button>
         </div>
         <div class="menu-center">
-            <a href="#contact" onclick="showContactPreview()">contact</a>
+            <a href="#" onclick="event.preventDefault(); showContactPreview()">contact</a>
         </div>
-    </div>
-
+    </nav>
 
     <div class="grid-container" id="grid-container">
         <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/Artboard 1.png')">
@@ -160,8 +139,8 @@
             <div class="overlay"></div>
             <div class="year-label">2020</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/Artboard 4.png')">
-            <img src="./assets/Artboard 4.png">
+        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/sandeman.jpg')">
+            <img src="./assets/sandeman.jpg">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
         </div>
@@ -180,7 +159,7 @@
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="window.location.href='work_const.html'">
+        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="window.location.href='./physical/constitution.html'">
             <img src="./assets/Book 1.png">
             <div class="overlay"></div>
             <div class="year-label">2023</div>
@@ -200,12 +179,12 @@
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="window.location.href='work.html'">
+        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="window.location.href='./physical/ilum.html'">
             <img src="./assets/ILU.png">
             <div class="overlay"></div>
             <div class="year-label">2015</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="window.location.href='work.html'">
+        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="window.location.href='./physical/ilum.html'">
             <img src="./assets/NMN.jpg">
             <div class="overlay"></div>
             <div class="year-label">2015</div>
@@ -225,7 +204,7 @@
             <div class="overlay"></div>
             <div class="year-label">2023</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="window.location.href='work_city.html'">
+        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="window.location.href='./physical/city_mag.html'">
             <img src="./assets/CityMag FINAL1.png">
             <div class="overlay"></div>
             <div class="year-label">2023</div>
@@ -246,14 +225,9 @@
             <div class="year-label">2021</div>
         </div>
         <div class="grid-item" data-tag="Blockchain" data-year="2022" onclick="showPreview('./assets/brave x hive_final.mp4')">
-            <video src="./assets/brave x hive_final.mp4" muted autoplay loop></video>
+            <img src="./assets/1Hive.png">
             <div class="overlay"></div>
             <div class="year-label">2022</div>
-        </div>
-        <div class="grid-item" data-tag="Digital" data-year="2024" onclick="showPreview('./assets/VAL_FOUNDERS_POSTER.png')">
-            <img src="./assets/VAL_FOUNDERS_POSTER.png">
-            <div class="overlay"></div>
-            <div class="year-label">2024</div>
         </div>
     </div>
 
@@ -301,28 +275,27 @@
         });
 
         function showPreview(src) {
-    const previewOverlay = document.getElementById('preview-overlay');
-    const previewImage = document.getElementById('preview-image');
-    const previewVideo = document.getElementById('preview-video');
+            const previewOverlay = document.getElementById('preview-overlay');
+            const previewImage = document.getElementById('preview-image');
+            const previewVideo = document.getElementById('preview-video');
 
-    const baseURL = window.location.origin;
-    const fullPath = src.startsWith('http') ? src : `${baseURL}/${src}`;
+            const baseURL = window.location.origin;
+            const fullPath = src.startsWith('http') ? src : `${baseURL}/${src}`;
 
-    if (fullPath.endsWith('.mp4')) {
-        previewImage.style.display = 'none';
-        previewVideo.style.display = 'block';
-        previewVideo.src = fullPath;
-        previewVideo.load();
-        previewVideo.play();
-    } else {
-        previewVideo.style.display = 'none';
-        previewImage.style.display = 'block';
-        previewImage.src = fullPath;
-    }
+            if (fullPath.endsWith('.mp4')) {
+                previewImage.style.display = 'none';
+                previewVideo.style.display = 'block';
+                previewVideo.src = fullPath;
+                previewVideo.load();
+                previewVideo.play();
+            } else {
+                previewVideo.style.display = 'none';
+                previewImage.style.display = 'block';
+                previewImage.src = fullPath;
+            }
 
-    previewOverlay.style.display = 'flex';
-}
-
+            previewOverlay.style.display = 'flex';
+        }
 
         function hidePreview() {
             const previewOverlay = document.getElementById('preview-overlay');
@@ -379,8 +352,6 @@
             const y = e.clientY - rect.top;
             const backgroundPosX = (x / previewImage.width) * 100;
             const backgroundPosY = (y / previewImage.height) * 100;
-
-
 
             const magnifierX = e.clientX - magnifier.offsetWidth / 2;
             const magnifierY = e.clientY - magnifier.offsetHeight / 2;

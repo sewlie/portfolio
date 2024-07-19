@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
     <title>Work</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <style>
         .thumbnail {
             width: 5%;
@@ -61,7 +60,7 @@
     </style>
 </head>
 <body>
-    <div class="menu">
+    <nav class="menu">
         <div class="menu-left">
             <a href="/" style="cursor: pointer;">sewlie</a>
         </div>
@@ -74,14 +73,14 @@
         <div class="menu-center">
             <a href="#" onclick="event.preventDefault(); showContactPreview()">contact</a>
         </div>
-    </div>
+    </nav>
     
 
     <div class="work-page">
-        <img id="mainImage" class="main-image" src="./assets/ILU2.png" alt="Main Image">
+        <img id="mainImage" class="main-image" src="/assets/ILU2.png" alt="Main Image">
         <div class="thumbnail-container">
-            <img class="thumbnail" src="./assets/ILU2.png" onclick="changeMainImage('./assets/ILU2.png')" alt="Thumbnail 1">
-            <img class="thumbnail" src="./assets/NMN2.png" onclick="changeMainImage('./assets/NMN2.png')" alt="Thumbnail 2">
+            <img class="thumbnail" src="/assets/ILU2.png" onclick="changeMainImage('/assets/ILU2.png')" alt="Thumbnail 1">
+            <img class="thumbnail" src="/assets/NMN2.png" onclick="changeMainImage('/assets/NMN2.png')" alt="Thumbnail 2">
         </div>
         <div class="fade-in-text" id="fadeInText">
             <p></p>
@@ -96,7 +95,7 @@
 
     <script>
         let currentIndex = 0;
-        const images = ['./assets/ILU2.png', './assets/NMN2.png'];
+        const images = ['/assets/ILU2.png', '/assets/NMN2.png'];
         const mainImage = document.getElementById('mainImage');
         const fadeInText = document.getElementById('fadeInText');
 
