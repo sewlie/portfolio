@@ -1,63 +1,43 @@
-@font-face {
-    font-family: 'AkzidenzBold';
-    src: url('assets/AkzidenzBold.ttf');
-}
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #ffffff;
 
-@font-face {
-    font-family: 'AkzidenzRoman';
-    src: url('assets/AkzidenzRoman.ttf');
-}
+    }
 
-@font-face {
-    font-family: 'AkzidenzLight';
-    src: url('assets/AkzidenzLight.ttf');
-}
+    body::-webkit-scrollbar {
+        display: none;
+    }
 
-@font-face {
-    font-family: 'uni-bold';
-    src: url('assets/uni-bold.otf');
-}
+    .filter-menu {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+    }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
+    .filter-menu2 {
+        display: none;
+    }
 
-}
+    .contact-preview {
+        width: 300px;
+        height: 300px;
+        background-color: #f6f6f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        color: black;
+    }
 
-body::-webkit-scrollbar {
-    display: none;
-  }
-
-.filter-menu {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-
-.filter-menu2 {
-    display: none;
-}
-
-.contact-preview {
-    width: 300px;
-    height: 300px;
-    background-color: #f6f6f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    color: black;
-}
-
-.menu {
+    .menu {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -67,7 +47,7 @@ body::-webkit-scrollbar {
         top: 0;
         z-index: 2;
         -webkit-overflow-scrolling: hidden;
-    }
+        }
     .menu-left {
         flex: 0;
         display: flex;
@@ -90,7 +70,7 @@ body::-webkit-scrollbar {
     .menu-below {
         display: none;
     }
-    
+
     .menu-center a {
         color: rgb(0, 0, 0);
         text-decoration: none;
