@@ -1,0 +1,128 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    -webkit-overflow-scrolling: hidden;
+}
+
+.menu-left {
+    flex: 0;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 20px 20px 3vw;
+}
+
+.menu-left a {
+    color: black;
+    font-weight: 700;
+    font-size: 42px;
+    cursor: default;
+    text-decoration: none !important;
+}
+
+.menu-center {
+    flex: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px 3vw 20px 20px;
+}
+
+.menu-center a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.menu-center a:hover {
+    color: rgb(0, 98, 255);
+}
+
+.filter-menu {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.filter-menu button {
+    padding: 8px 15px;
+    margin: 0 10px;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: #f6f6f600;
+}
+
+.filter-menu button:hover {
+    background-color: rgb(0, 98, 255);
+    color: white;
+}
+
+
+
+
+
+
+@media (max-width: 1023px) {
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        -webkit-overflow-scrolling: hidden;
+    }
+
+    .menu-left {
+        flex: 0;
+        display: flex;
+        justify-content: flex-start;
+        padding: 20px 20px 20px 3vw;
+    }
+
+    .menu-left a {
+        color: black;
+        font-weight: 700;
+        font-size: 42px;
+        cursor: default;
+        text-decoration: none !important;
+    }
+
+    .menu-center {
+        flex: 0;
+        display: flex;
+        justify-content: center;
+        padding: 20px 3vw 20px 20px;
+    }
+
+    .menu-center a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+    }
+
+    .menu-center a:hover {
+        color: rgb(0, 98, 255);
+    }
+
+    .filter-menu {
+        display: none;
+    }
+}
+
