@@ -89,45 +89,6 @@
             max-width: 80%;
             max-height: 80%;
         }
-        .preview-controls {
-            position: absolute;
-            top: 50%;
-            width: 95%;
-            display: none;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
-        .preview-controls button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 4em;
-            cursor: pointer;
-        }
-        .contact-preview {
-            width: 300px;
-            height: 150px;
-            background-color: #f6f6f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            color: black;
-        }
-
-        @media (max-width: 1023px) {
-            .preview-controls {
-                position: absolute;
-                top: 90%;
-                width: 95%;
-                display: none;
-                justify-content: space-between;
-                transform: translateY(-50%);
-            }
-        }
     </style>
 </head>
 <body>
@@ -172,7 +133,7 @@
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showcovidPreview(0)">
+        <div class="grid-item" data-tag="Physical" data-year="2020" onclick="showcovidPreview(0)">
             <img src="./assets/Book 2_thumb.png">
             <div class="overlay"></div>
             <div class="year-label">2020</div>

@@ -26,6 +26,35 @@ body::-webkit-scrollbar {
     color: black;
 }
 
+.preview-controls {
+    position: absolute;
+    top: 50%;
+    width: 95%;
+    display: none;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+.preview-controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 4em;
+    cursor: pointer;
+}
+.contact-preview {
+    width: 300px;
+    height: 150px;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    color: black;
+}
+
 @media (min-width: 1024px) {
     body {
         background-color: white;
@@ -99,6 +128,14 @@ body::-webkit-scrollbar {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .preview-controls {
+        position: absolute;
+        top: 90%;
+        width: 95%;
+        display: none;
+        justify-content: space-between;
+        transform: translateY(-50%);
     }
 }
 
