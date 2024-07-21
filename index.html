@@ -92,7 +92,7 @@
         .preview-controls {
             position: absolute;
             top: 50%;
-            width: 85%;
+            width: 95%;
             display: none;
             justify-content: space-between;
             transform: translateY(-50%);
@@ -116,6 +116,17 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             opacity: 0;
             color: black;
+        }
+
+        @media (max-width: 1023px) {
+            .preview-controls {
+                position: absolute;
+                top: 90%;
+                width: 70%;
+                display: none;
+                justify-content: space-between;
+                transform: translateY(-50%);
+            }
         }
     </style>
 </head>
@@ -161,7 +172,7 @@
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview(5)">
+        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showcovidPreview(0)">
             <img src="./assets/Book 2_thumb.png">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
@@ -293,6 +304,16 @@
             './assets/NMN.jpg'
         ];
 
+        const covidImages = [
+            './assets/covid_bookcover.png',
+            './assets/covid_book1.png',
+            './assets/covid_book2.png',
+            './assets/covid_book3.png',
+            './assets/covid_book4.png',
+            './assets/covid_book5.png',
+            './assets/covid_book6.png',
+        ];
+
         function showPreview(index) {
             currentGallery = [items[index]];
             currentIndex = 0;
@@ -315,6 +336,16 @@
 
         function showilumPreview(index) {
             currentGallery = ilumImages;
+            currentIndex = index;
+            updatePreview();
+            const previewOverlay = document.getElementById('preview-overlay');
+            const previewControls = document.getElementById('preview-controls');
+            previewOverlay.style.display = 'flex';
+            previewControls.style.display = 'flex';
+        }
+
+        function showcovidPreview(index) {
+            currentGallery = covidImages;
             currentIndex = index;
             updatePreview();
             const previewOverlay = document.getElementById('preview-overlay');
