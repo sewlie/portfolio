@@ -66,6 +66,7 @@
 .filter-menu button:hover {
     background-color: rgb(0, 98, 255);
     color: white;
+    transition: 0.3s ease-in-out;
 }
 
 
