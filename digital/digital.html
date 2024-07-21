@@ -102,19 +102,6 @@
             opacity: 0;
             color: black;
         }
-        .magnifier {
-            position: absolute;
-            border: 3px solid #000;
-            border-radius: 50%;
-            cursor: none;
-            width: 250px;
-            height: 250px;
-            display: none;
-            background-repeat: no-repeat;
-            background-position: center;
-            pointer-events: none;
-            z-index: 10;
-        }
     </style>
 </head>
 <body>
@@ -169,7 +156,6 @@
     <div class="preview-overlay" id="preview-overlay" onclick="hidePreview()">
         <img id="preview-image" src="">
         <video id="preview-video" controls></video>
-        <div id="magnifier" class="magnifier"></div>
     </div>
 
     <div class="preview-overlay" id="contact-preview" onclick="hideContactPreview()">
@@ -260,31 +246,6 @@
         function openExternal(url) {
             window.open(url, '_blank');
         }
-
-        const magnifier = document.getElementById('magnifier');
-        const previewImage = document.getElementById('preview-image');
-
-        previewImage.addEventListener('mousemove', function(e) {
-            magnifier.style.display = 'block';
-            const rect = previewImage.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const backgroundPosX = (x / previewImage.width) * 100;
-            const backgroundPosY = (y / previewImage.height) * 100;
-
-            const magnifierX = e.clientX - magnifier.offsetWidth / 2;
-            const magnifierY = e.clientY - magnifier.offsetHeight / 2;
-
-            magnifier.style.backgroundImage = `url(${previewImage.src})`;
-            magnifier.style.backgroundSize = `${previewImage.width * 2}px ${previewImage.height * 2}px`;
-            magnifier.style.backgroundPosition = `${backgroundPosX}% ${backgroundPosY}%`;
-            magnifier.style.left = `${magnifierX}px`;
-            magnifier.style.top = `${magnifierY}px`;
-        });
-
-        previewImage.addEventListener('mouseleave', function() {
-            magnifier.style.display = 'none';
-        });
     </script>
 </body>
 </html>
