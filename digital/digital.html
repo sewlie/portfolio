@@ -124,9 +124,9 @@
         </div>
         <div class="filter-menu">
             <button onclick="window.location.href='/'">ALL</button>
-            <button onclick="window.location.href='/?filter=Digital'">DIGITAL</button>
-            <button onclick="window.location.href='/?filter=Physical'">PHYSICAL</button>
-            <button onclick="window.location.href='/?filter=Blockchain'">BLOCKCHAIN</button>
+            <button style="color: white; background-color: rgb(0, 98, 255);" onclick="window.location.href='/digital/digital.html'">DIGITAL</button>
+            <button onclick="window.location.href='/physical/physical.html'">PHYSICAL</button>
+            <button onclick="window.location.href='/blockchain/blockchain.html'">BLOCKCHAIN</button>
         </div>
         <div class="menu-center">
             <a href="#" onclick="event.preventDefault(); showContactPreview()">contact</a>
@@ -134,102 +134,42 @@
     </nav>
 
     <div class="grid-container" id="grid-container">
-        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/Artboard 1.png')">
-            <img src="./assets/Artboard 1.png">
+        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('/assets/Artboard 1.png')">
+            <img src="/assets/Artboard 1.png">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/sandeman.jpg')">
-            <img src="./assets/sandeman.jpg">
+        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('/assets/sandeman.jpg')">
+            <img src="/assets/sandeman.jpg">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2018" onclick="showPreview('./assets/Artboard 5.png')">
-            <img src="./assets/Artboard 5.png">
+        <div class="grid-item" data-tag="Digital" data-year="2018" onclick="showPreview('/assets/Artboard 5.png')">
+            <img src="/assets/Artboard 5.png">
             <div class="overlay"></div>
             <div class="year-label">2018</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2022" onclick="showPreview('./assets/Artboard 6.jpg')">
-            <img src="./assets/Artboard 6.jpg">
+        <div class="grid-item" data-tag="Digital" data-year="2022" onclick="showPreview('/assets/Artboard 6.jpg')">
+            <img src="/assets/Artboard 6.jpg">
             <div class="overlay"></div>
             <div class="year-label">2022</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2021" onclick="showPreview('./assets/Artboard 7.png')">
-            <img src="./assets/Artboard 7.png">
+        <div class="grid-item" data-tag="Digital" data-year="2021" onclick="showPreview('/assets/Artboard 7.png')">
+            <img src="/assets/Artboard 7.png">
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="window.location.href='constitution.html'">
-            <img src="./assets/Book 1.png">
-            <div class="overlay"></div>
-            <div class="year-label">2023</div>
-        </div>
-        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('./assets/Book 2.png')">
-            <img src="./assets/Book 2_thumb.png">
+        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('/assets/Book 2.png')">
+            <img src="/assets/Book 2_thumb.png">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2022" onclick="showPreview('./assets/Ill1.jpg')">
-            <img src="./assets/Ill1.jpg">
-            <div class="overlay"></div>
-            <div class="year-label">2022</div>
-        </div>
-        <div class="grid-item" data-tag="Digital" data-year="2021" onclick="showPreview('./assets/Ill2 2.png')">
-            <img src="./assets/Ill2 2.png">
+        <div class="grid-item" data-tag="Digital" data-year="2021" onclick="showPreview('/assets/Ill2 2.png')">
+            <img src="/assets/Ill2 2.png">
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="window.location.href='ilum.html'">
-            <img src="./assets/ILU.png">
-            <div class="overlay"></div>
-            <div class="year-label">2015</div>
-        </div>
-        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="window.location.href='ilum.html'">
-            <img src="./assets/NMN.jpg">
-            <div class="overlay"></div>
-            <div class="year-label">2015</div>
-        </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2021" onclick="window.open('https://www.twitch.tv/collections/5pERBYa_PBfOlQ', '_blank')">
-            <img src="./assets/YOTG.png">
-            <div class="overlay"></div>
-            <div class="year-label">2021</div>
-        </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2022" onclick="window.open('https://www.twitch.tv/collections/KuGY-K-_PBeleQ', '_blank')">
-            <img src="./assets/P2E-1.jpeg">
-            <div class="overlay"></div>
-            <div class="year-label">2022</div>
-        </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2023" onclick="window.open('https://www.twitch.tv/collections/J3bQ83RkSBeSIA', '_blank')">
-            <img src="./assets/LYS.png">
-            <div class="overlay"></div>
-            <div class="year-label">2023</div>
-        </div>
-        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="window.location.href='city_mag.html'">
-            <img src="./assets/CityMag FINAL1.png">
-            <div class="overlay"></div>
-            <div class="year-label">2023</div>
-        </div>
-        <div class="grid-item" data-tag="Physical" data-year="2024" onclick="showPreview('./assets/wwd cecred.png')">
-            <img src="./assets/wwd cecred.png">
-            <div class="overlay"></div>
-            <div class="year-label">2024</div>
-        </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2024" onclick="window.open('https://www.dropsbot.gg', '_blank')">
-            <img src="./assets/dropsbot.png">
-            <div class="overlay"></div>
-            <div class="year-label">2024</div>
-        </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2021" onclick="showPreview('./assets/gods.gif')">
-            <img src="./assets/gods.gif">
-            <div class="overlay"></div>
-            <div class="year-label">2021</div>
-        </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2022" onclick="showPreview('./assets/brave x hive_final.mp4')">
-            <img src="./assets/1Hive.png">
-            <div class="overlay"></div>
-            <div class="year-label">2022</div>
-        </div>
-    </div>
+
 
     <div class="preview-overlay" id="preview-overlay" onclick="hidePreview()">
         <img id="preview-image" src="">
@@ -320,22 +260,6 @@
             setTimeout(() => {
                 contactPreview.style.display = 'none';
             }, 0);
-        }
-
-        function filterItems(tag) {
-            const gridContainer = document.getElementById("grid-container");
-            const gridItems = originalItems.slice();
-
-            if (tag === 'all') {
-                const shuffledItems = shuffle(gridItems.slice());
-                gridContainer.innerHTML = '';
-                shuffledItems.forEach(item => gridContainer.appendChild(item));
-            } else {
-                const filteredItems = gridItems.filter(item => item.getAttribute('data-tag') === tag);
-                const sortedItems = filteredItems.sort((a, b) => a.getAttribute('data-year') - b.getAttribute('data-year'));
-                gridContainer.innerHTML = '';
-                sortedItems.forEach(item => gridContainer.appendChild(item));
-            }
         }
 
         function openExternal(url) {
