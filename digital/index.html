@@ -154,12 +154,16 @@
     </div>  
 
 
-    <div class="preview-overlay" id="preview-overlay" onclick="hidePreview()">
+    <div class="preview-overlay" id="preview-overlay" onclick="hidePreview(event)">
         <img id="preview-image" src="">
         <video id="preview-video" controls></video>
+        <div class="preview-controls" id="preview-controls">
+            <button onclick="prevImage()">&#10094;</button>
+            <button onclick="nextImage()">&#10095;</button>
+        </div>
     </div>
 
-    <div class="preview-overlay" id="contact-preview" onclick="hideContactPreview()">
+    <div class="preview-overlay" id="contact-preview" onclick="hideContactPreview(event)">
         <div class="contact-preview" style="border-radius:10px;">
             <p style="font-weight: 700;">Contact me at: sewlie.art@gmail.com</p>
         </div>
@@ -223,17 +227,13 @@
         function hideContactPreview(event) {
             const contactPreview = document.getElementById('contact-preview');
             const contactPreviewContent = contactPreview.querySelector('.contact-preview');
-            
+
             if (event.target === contactPreview) {
                 contactPreviewContent.style.opacity = 0;
                 setTimeout(() => {
                     contactPreview.style.display = 'none';
                 }, 0);
             }
-        }
-
-        function openExternal(url) {
-            window.open(url, '_blank');
         }
     </script>
 </body>

@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="/stylesheets/navbar.css">
     <title>sewlie: portfolio</title>
     <style>
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+            -webkit-overflow-scrolling: hidden;
+            box-shadow: 0 4px 10px -6px rgba(0, 0, 0, 0.5); /* Blurred bottom border */
+        }
         .grid-item {
             position: relative;
             width: 100%;
@@ -209,7 +221,7 @@
         </div>
     </div>
 
-    <div class="preview-overlay" id="contact-preview" onclick="hideContactPreview()">
+    <div class="preview-overlay" id="contact-preview" onclick="hideContactPreview(event)">
         <div class="contact-preview" style="border-radius:10px;">
             <p style="font-weight: 700;">Contact me at: sewlie.art@gmail.com</p>
         </div>
@@ -366,7 +378,7 @@
         function hideContactPreview(event) {
             const contactPreview = document.getElementById('contact-preview');
             const contactPreviewContent = contactPreview.querySelector('.contact-preview');
-            
+
             if (event.target === contactPreview) {
                 contactPreviewContent.style.opacity = 0;
                 setTimeout(() => {
