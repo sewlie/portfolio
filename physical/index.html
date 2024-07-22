@@ -138,9 +138,9 @@
         </div>
     </div>
 
-    <div class="preview-overlay" id="contact-preview" onclick="hideContactPreview()">
+    <div class="preview-overlay" id="contact-preview" onclick="hideContactPreview(event)">
         <div class="contact-preview" style="border-radius:10px;">
-            <p style="font-weight: 700; text-align: left;">If you have any questions about my work or would like more information, you can reach me at: sewlie.art@gmail.com</p>
+            <p style="font-weight: 700;">Contact me at: sewlie.art@gmail.com</p>
         </div>
     </div>
 
@@ -297,7 +297,7 @@
         function hideContactPreview(event) {
             const contactPreview = document.getElementById('contact-preview');
             const contactPreviewContent = contactPreview.querySelector('.contact-preview');
-            
+
             if (event.target === contactPreview) {
                 contactPreviewContent.style.opacity = 0;
                 setTimeout(() => {
