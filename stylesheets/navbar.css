@@ -87,7 +87,6 @@
         top: 0;
         z-index: 2;
         -webkit-overflow-scrolling: hidden;
-        border-bottom: 2px solid #00000008;
     }
 
     .menu-left {
