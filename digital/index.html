@@ -177,9 +177,7 @@
             const gridContainer = document.getElementById("grid-container");
             const gridItems = Array.from(gridContainer.children);
             originalItems = gridItems.slice(); 
-            const shuffledItems = shuffle(gridItems.slice());
 
-            shuffledItems.forEach(item => gridContainer.appendChild(item));
 
             const urlParams = new URLSearchParams(window.location.search);
             const filter = urlParams.get('filter');
