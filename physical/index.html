@@ -294,13 +294,16 @@
             }, 0);
         }
 
-        function hideContactPreview() {
+        function hideContactPreview(event) {
             const contactPreview = document.getElementById('contact-preview');
             const contactPreviewContent = contactPreview.querySelector('.contact-preview');
-            contactPreviewContent.style.opacity = 0;
-            setTimeout(() => {
-                contactPreview.style.display = 'none';
-            }, 0);
+            
+            if (event.target === contactPreview) {
+                contactPreviewContent.style.opacity = 0;
+                setTimeout(() => {
+                    contactPreview.style.display = 'none';
+                }, 0);
+            }
         }
 
         function filterItems(tag) {
