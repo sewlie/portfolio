@@ -168,11 +168,6 @@
     <script>
         let originalItems = [];
 
-        function navigateToWorkPage() {
-            history.pushState({}, '', '/work');
-            window.location.href = 'work.html';
-        }
-
         document.addEventListener("DOMContentLoaded", function() {
             const gridContainer = document.getElementById("grid-container");
             const gridItems = Array.from(gridContainer.children);
