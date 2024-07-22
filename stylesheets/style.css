@@ -137,6 +137,12 @@ body::-webkit-scrollbar {
         justify-content: space-between;
         transform: translateY(-50%);
     }
+    .overlay {
+        display: none;
+    }
+    .year-label {
+        display: none;
+    }
 }
 
 @media (max-width: 800px) {
