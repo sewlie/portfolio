@@ -108,7 +108,7 @@ body::-webkit-scrollbar {
         grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
         gap: 2vw;
         padding: 10px;
-        margin: 100px 0 15px 0;
+        margin: 75px 0 15px 0;
         width: 96%;
     }
 
@@ -151,7 +151,7 @@ body::-webkit-scrollbar {
         grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
         gap: 2vw;
         padding: 10px;
-        margin: 100px 0 15px 0;
+        margin: 75px 0 15px 0;
         width: 96%;
     }
 
@@ -169,7 +169,7 @@ body::-webkit-scrollbar {
         grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
         gap: 2vw;
         padding: 10px;
-        margin: 100px 0 15px 0;
+        margin: 75px 0 15px 0;
         width: 96%;
     }
 }
@@ -180,7 +180,7 @@ body::-webkit-scrollbar {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 2vw;
         padding: 10px;
-        margin: 100px 0 15px 0;
+        margin: 75px 0 15px 0;
         width: 96%;
     }
 }
@@ -191,7 +191,7 @@ body::-webkit-scrollbar {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 2vw;
         padding: 10px;
-        margin: 100px 0 15px 0;
+        margin: 75px 0 15px 0;
         width: 96%;
     }
 }
