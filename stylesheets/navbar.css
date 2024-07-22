@@ -14,13 +14,13 @@
     flex: 0;
     display: flex;
     justify-content: flex-start;
-    padding: 20px 20px 20px 6vw;
+    padding: 20px 20px 20px 3vw;
 }
 
 .menu-left a {
     color: black;
     font-weight: 700;
-    font-size: 42px;
+    font-size: 36px;
     cursor: default;
     text-decoration: none !important;
 }
@@ -29,7 +29,7 @@
     flex: 0;
     display: flex;
     justify-content: center;
-    padding: 20px 6vw 20px 20px;
+    padding: 20px 3vw 20px 20px;
 }
 
 .menu-center a {
@@ -37,7 +37,7 @@
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 36px;
 }
 
 .menu-center a:hover {
@@ -92,13 +92,13 @@
         flex: 0;
         display: flex;
         justify-content: flex-start;
-        padding: 20px 20px 20px 3vw;
+        padding: 20px 20px 20px 5vw;
     }
 
     .menu-left a {
         color: black;
         font-weight: 700;
-        font-size: 42px;
+        font-size: 36px;
         cursor: default;
         text-decoration: none !important;
     }
@@ -107,7 +107,7 @@
         flex: 0;
         display: flex;
         justify-content: center;
-        padding: 20px 3vw 20px 20px;
+        padding: 20px 5vw 20px 20px;
     }
 
     .menu-center a {
@@ -115,7 +115,7 @@
         text-decoration: none;
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
-        font-size: 28px;
+        font-size: 36px;
     }
 
     .menu-center a:hover {

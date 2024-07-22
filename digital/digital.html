@@ -121,6 +121,11 @@
     </nav>
 
     <div class="grid-container" id="grid-container">
+        <div class="grid-item" data-tag="Digital" data-year="2018" onclick="showPreview('/assets/Artboard 5.png')">
+            <img src="/assets/Artboard 5.png">
+            <div class="overlay"></div>
+            <div class="year-label">2018</div>
+        </div>
         <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview('/assets/Artboard 1.png')">
             <img src="/assets/Artboard 1.png">
             <div class="overlay"></div>
@@ -130,16 +135,6 @@
             <img src="/assets/sandeman.jpg">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
-        </div>
-        <div class="grid-item" data-tag="Digital" data-year="2018" onclick="showPreview('/assets/Artboard 5.png')">
-            <img src="/assets/Artboard 5.png">
-            <div class="overlay"></div>
-            <div class="year-label">2018</div>
-        </div>
-        <div class="grid-item" data-tag="Digital" data-year="2022" onclick="showPreview('/assets/Artboard 6.jpg')">
-            <img src="/assets/Artboard 6.jpg">
-            <div class="overlay"></div>
-            <div class="year-label">2022</div>
         </div>
         <div class="grid-item" data-tag="Digital" data-year="2021" onclick="showPreview('/assets/Artboard 7.png')">
             <img src="/assets/Artboard 7.png">
@@ -151,6 +146,12 @@
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
+        <div class="grid-item" data-tag="Digital" data-year="2022" onclick="showPreview('/assets/Artboard 6.jpg')">
+            <img src="/assets/Artboard 6.jpg">
+            <div class="overlay"></div>
+            <div class="year-label">2022</div>
+        </div>
+    </div>  
 
 
     <div class="preview-overlay" id="preview-overlay" onclick="hidePreview()">
@@ -166,14 +167,6 @@
 
     <script>
         let originalItems = [];
-
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
 
         function navigateToWorkPage() {
             history.pushState({}, '', '/work');
