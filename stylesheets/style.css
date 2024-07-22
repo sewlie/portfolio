@@ -40,6 +40,7 @@ body::-webkit-scrollbar {
     color: white;
     font-size: 4em;
     cursor: pointer;
+    padding: 10px 30px;
 }
 .contact-preview {
     width: 300px;
