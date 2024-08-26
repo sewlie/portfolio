@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css">
@@ -79,7 +79,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgb(255, 255, 255);
             justify-content: center;
             align-items: center;
             z-index: 10;
@@ -87,9 +87,10 @@
         .preview-overlay img,
         .preview-overlay video {
             max-width: 80%;
-            max-height: 80%;
+            max-height: 70%;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
         }
-        
+
     </style>
 </head>
 <body>
@@ -109,102 +110,102 @@
     </nav>
 
     <div class="grid-container" id="grid-container">
-        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview(0)">
+        <div class="grid-item" data-tag="Digital" data-year="2020" data-info="<p>The I Love You Cap</p><p>Created in 2015, a time when things were simpler. But not as simple as it was when we were kids, and you saw that girl that just rocked your world. The whispers and the looks, you know it was mutual but you we're scared to take that first step. Happiness being just a step away and all that's missing is your words and of course, you.</p>" onclick="showPreview(0)">
             <img src="./assets/Artboard 1.png">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2020" onclick="showPreview(1)">
+        <div class="grid-item" data-tag="Digital" data-year="2020" data-info="Sandeman Wines (2020). Scanned hand-cut paper." onclick="showPreview(1)">
             <img src="./assets/sandeman.jpg">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2018" onclick="showPreview(2)">
+        <div class="grid-item" data-tag="Digital" data-year="2018" data-info="Info about Artboard 5" onclick="showPreview(2)">
             <img src="./assets/Artboard 5.png">
             <div class="overlay"></div>
             <div class="year-label">2018</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2022" onclick="showPreview(3)">
+        <div class="grid-item" data-tag="Digital" data-year="2022" data-info="Info about Artboard 6" onclick="showPreview(3)">
             <img src="./assets/Artboard 6.jpg">
             <div class="overlay"></div>
             <div class="year-label">2022</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2021" onclick="showPreview(4)">
+        <div class="grid-item" data-tag="Digital" data-year="2021" data-info="Info about Artboard 7" onclick="showPreview(4)">
             <img src="./assets/Artboard 7.png">
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2020" onclick="showcovidPreview(0)">
+        <div class="grid-item" data-tag="Physical" data-year="2020" data-info="Info about Book 2" onclick="showcovidPreview(0)">
             <img src="./assets/Book 2_thumb.png">
             <div class="overlay"></div>
             <div class="year-label">2020</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2022" onclick="showPreview(6)">
+        <div class="grid-item" data-tag="Physical" data-year="2022" data-info="Info about Ill1" onclick="showPreview(6)">
             <img src="./assets/Ill1.jpg">
             <div class="overlay"></div>
             <div class="year-label">2022</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2021" onclick="showPreview(7)">
+        <div class="grid-item" data-tag="Digital" data-year="2021" data-info="Info about Ill2" onclick="showPreview(7)">
             <img src="./assets/Ill2 2.png">
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="showilumPreview(0)">
+        <div class="grid-item" data-tag="Physical" data-year="2015" data-info="<p>The I Love You Cap</p><p>Created in 2015, a time when things were simpler. But not as simple as it was when we were kids, and you saw that girl that just rocked your world. The whispers and the looks, you know it was mutual but you we're scared to take that first step. Happiness being just a step away and all that's missing is your words and of course, you.</p>" onclick="showilumPreview(0)">
             <img src="./assets/ILU.png">
             <div class="overlay"></div>
             <div class="year-label">2015</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2015" onclick="showilumPreview(1)">
+        <div class="grid-item" data-tag="Physical" data-year="2015" data-info="Info about NMN" onclick="showilumPreview(1)">
             <img src="./assets/NMN.jpg">
             <div class="overlay"></div>
             <div class="year-label">2015</div>
         </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2021" onclick="window.open('https://www.twitch.tv/videos/1578871875?collection=5pERBYa_PBfOlQ&t=2h5m4s', '_blank')">
+        <div class="grid-item" data-tag="Blockchain" data-year="2021" data-info="Info about YOTG" onclick="window.open('https://www.twitch.tv/videos/1578871875?collection=5pERBYa_PBfOlQ&t=2h5m4s', '_blank')">
             <img src="./assets/YOTG.png">
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2022" onclick="window.open('https://www.twitch.tv/videos/1575720852?collection=KuGY-K-_PBeleQ&t=4h14m40s', '_blank')">
+        <div class="grid-item" data-tag="Blockchain" data-year="2022" data-info="Info about P2E-1" onclick="window.open('https://www.twitch.tv/videos/1575720852?collection=KuGY-K-_PBeleQ&t=4h14m40s', '_blank')">
             <img src="./assets/P2E-1.png">
             <div class="overlay"></div>
             <div class="year-label">2022</div>
         </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2023" onclick="window.open('https://www.twitch.tv/videos/1826225238?collection=J3bQ83RkSBeSIA', '_blank')">
+        <div class="grid-item" data-tag="Blockchain" data-year="2023" data-info="Info about LYS" onclick="window.open('https://www.twitch.tv/videos/1826225238?collection=J3bQ83RkSBeSIA', '_blank')">
             <img src="./assets/LYS.png">
             <div class="overlay"></div>
             <div class="year-label">2023</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2023" onclick="showCityMagPreview(0)">
+        <div class="grid-item" data-tag="Physical" data-year="2023" data-info="Info about CityMag FINAL1" onclick="showCityMagPreview(0)">
             <img src="./assets/CityMag FINAL1.png">
             <div class="overlay"></div>
             <div class="year-label">2023</div>
         </div>
-        <div class="grid-item" data-tag="Physical" data-year="2024" onclick="showPreview(14)">
+        <div class="grid-item" data-tag="Physical" data-year="2024" data-info="Info about wwd cecred" onclick="showPreview(14)">
             <img src="./assets/wwd cecred.png">
             <div class="overlay"></div>
             <div class="year-label">2024</div>
         </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2024" onclick="window.open('https://www.dropsbot.gg', '_blank')">
+        <div class="grid-item" data-tag="Blockchain" data-year="2024" data-info="Info about Dropsbot" onclick="window.open('https://www.dropsbot.gg', '_blank')">
             <img src="./assets/dropsbot.png">
             <div class="overlay"></div>
             <div class="year-label">2024</div>
         </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2021" onclick="showPreview(16)">
+        <div class="grid-item" data-tag="Blockchain" data-year="2021" data-info="Info about gods.gif" onclick="showPreview(16)">
             <img src="./assets/gods.gif">
             <div class="overlay"></div>
             <div class="year-label">2021</div>
         </div>
-        <div class="grid-item" data-tag="Blockchain" data-year="2022" onclick="showPreview(17)">
+        <div class="grid-item" data-tag="Blockchain" data-year="2022" data-info="Info about brave x hive_final.mp4" onclick="showPreview(17)">
             <img src="./assets/1Hive.png">
             <div class="overlay"></div>
             <div class="year-label">2022</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2023" onclick="window.open('https://sewlie.github.io/FREDS-REPO/', '_blank')">
+        <div class="grid-item" data-tag="Digital" data-year="2023" data-info="Info about fredslabs" onclick="window.open('https://sewlie.github.io/FREDS-REPO/', '_blank')">
             <img src="./assets/fredslabs.jpg">
             <div class="overlay"></div>
             <div class="year-label">2023</div>
         </div>
-        <div class="grid-item" data-tag="Digital" data-year="2023" onclick="showPreview(18)">
+        <div class="grid-item" data-tag="Digital" data-year="2023" data-info="Info about syph" onclick="showPreview(18)">
             <img src="./assets/syph.png">
             <div class="overlay"></div>
             <div class="year-label">2023</div>
@@ -214,11 +215,13 @@
     <div class="preview-overlay" id="preview-overlay" onclick="hidePreview(event)">
         <img id="preview-image" src="">
         <video id="preview-video" controls></video>
-        <div class="info-icon" onclick="showInfo(event, 'Information about the previewed image')">info</div>
+
         <div class="preview-controls" id="preview-controls">
             <button onclick="prevImage()">&#10094;</button>
+
             <button onclick="nextImage()">&#10095;</button>
         </div>
+        <div class="info-icon" onclick="showCurrentInfo(event)">INFO</div>
     </div>
 
     <div class="preview-overlay" id="contact-preview" onclick="hideContactPreview(event)">
@@ -234,6 +237,7 @@
     <script>
         let currentIndex = 0;
         let currentGallery = [];
+        let currentInfoText = '';
 
         const items = [
             './assets/Artboard 1.png',
@@ -278,8 +282,8 @@
         ];
 
         const ilumImages = [
-            './assets/ILU.png',
-            './assets/NMN.jpg'
+            './assets/ILU2.jpg',
+            './assets/NMN (1).jpg'
         ];
 
         const covidImages = [
@@ -300,6 +304,9 @@
             const previewControls = document.getElementById('preview-controls');
             previewOverlay.style.display = 'flex';
             previewControls.style.display = 'none';
+
+            const gridItem = document.querySelector(`.grid-item[onclick="showPreview(${index})"]`);
+            currentInfoText = gridItem.getAttribute('data-info');
         }
 
         function showCityMagPreview(index) {
@@ -310,6 +317,9 @@
             const previewControls = document.getElementById('preview-controls');
             previewOverlay.style.display = 'flex';
             previewControls.style.display = 'flex';
+
+            const gridItem = document.querySelector(`.grid-item[onclick="showCityMagPreview(${index})"]`);
+            currentInfoText = gridItem.getAttribute('data-info');
         }
 
         function showilumPreview(index) {
@@ -320,6 +330,9 @@
             const previewControls = document.getElementById('preview-controls');
             previewOverlay.style.display = 'flex';
             previewControls.style.display = 'flex';
+
+            const gridItem = document.querySelector(`.grid-item[onclick="showilumPreview(${index})"]`);
+            currentInfoText = gridItem.getAttribute('data-info');
         }
 
         function showcovidPreview(index) {
@@ -330,6 +343,9 @@
             const previewControls = document.getElementById('preview-controls');
             previewOverlay.style.display = 'flex';
             previewControls.style.display = 'flex';
+
+            const gridItem = document.querySelector(`.grid-item[onclick="showcovidPreview(${index})"]`);
+            currentInfoText = gridItem.getAttribute('data-info');
         }
 
         function hidePreview(event) {
@@ -371,34 +387,18 @@
             updatePreview();
         }
 
-        function showContactPreview() {
-            const contactPreview = document.getElementById('contact-preview');
-            const contactPreviewContent = contactPreview.querySelector('.contact-preview');
-            contactPreview.style.display = 'flex';
-            setTimeout(() => {
-                contactPreviewContent.style.opacity = 1;
-            }, 0);
-        }
-
-        function hideContactPreview(event) {
-            const contactPreview = document.getElementById('contact-preview');
-            const contactPreviewContent = contactPreview.querySelector('.contact-preview');
-
-            if (event.target === contactPreview) {
-                contactPreviewContent.style.opacity = 0;
-                setTimeout(() => {
-                    contactPreview.style.display = 'none';
-                }, 0);
-            }
+        function showCurrentInfo(event) {
+            event.stopPropagation();
+            showInfo(event, currentInfoText);
         }
 
         function showInfo(event, infoText) {
             event.stopPropagation();
             const infoOverlay = document.getElementById('info-overlay');
             const infoTextElement = document.getElementById('info-text');
-            infoTextElement.textContent = infoText;
+            infoTextElement.innerHTML = infoText; // Use innerHTML to support HTML tags like <p>
             infoOverlay.style.display = 'flex';
-        }
+        }   
 
         function hideInfo(event) {
             const infoOverlay = document.getElementById('info-overlay');
