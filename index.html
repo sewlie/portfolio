@@ -388,6 +388,27 @@
             updatePreview();
         }
 
+        function showContactPreview() {
+            const contactPreview = document.getElementById('contact-preview');
+            const contactPreviewContent = contactPreview.querySelector('.contact-preview');
+            contactPreview.style.display = 'flex';
+            setTimeout(() => {
+                contactPreviewContent.style.opacity = 1;
+            }, 0);
+        }
+
+        function hideContactPreview(event) {
+            const contactPreview = document.getElementById('contact-preview');
+            const contactPreviewContent = contactPreview.querySelector('.contact-preview');
+
+            if (event.target === contactPreview) {
+                contactPreviewContent.style.opacity = 0;
+                setTimeout(() => {
+                    contactPreview.style.display = 'none';
+                }, 0);
+            }
+        }
+
         function showCurrentInfo(event) {
             event.stopPropagation();
             showInfo(event, currentInfoText);
