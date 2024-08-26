@@ -282,11 +282,11 @@ body::-webkit-scrollbar {
     .info-overlay p {
         color: white;
         font-size: 18px;
-        margin: 0;
+        margin: 0 20px;
         padding: 20px;
         border-radius: 10px;
         text-align: left;
-        width: 390px;
+        width: 75%;
     }
 }
 
@@ -330,7 +330,15 @@ body::-webkit-scrollbar {
         margin: 69px 0 15px 0;
         width: 96%;
     }
-    
+    .info-overlay p {
+        color: white;
+        font-size: 18px;
+        margin: 0 20px;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        width: 75%;
+    }
 }
 
 @media (max-width: 525px) {
