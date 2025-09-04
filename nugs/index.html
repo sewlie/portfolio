@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>3D Image Mouse Scrubber</title>
+<title>3D Image Scrubber with Slider</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
 html, body { height: 100%; margin: 0; }
@@ -32,6 +32,39 @@ body {
   display: block;
   cursor: pointer;
 }
+
+/* Slider styling */
+#slider {
+  width: 50vw;
+  margin: 20px 0;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: #333;
+  border-radius: 4px;
+  outline: none;
+}
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(255,255,255,0.8);
+  transition: background 0.2s;
+}
+#slider::-webkit-slider-thumb:hover { background: #ff4444; }
+#slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(255,255,255,0.8);
+  transition: background 0.2s;
+}
+#slider::-moz-range-thumb:hover { background: #ff4444; }
 </style>
 </head>
 <body>
@@ -40,12 +73,15 @@ body {
   <img id="image" src="3d scan jpg/frame-07.jpg" alt="3D object frame" />
 </div>
 
+<input type="range" id="slider" min="1" max="36" step="1" value="7">
+
 <script>
 const TOTAL_FRAMES = 36;
 const FOLDER = "3d scan jpg";
 const START_FRAME = 7;
 
 const img = document.getElementById('image');
+const slider = document.getElementById('slider');
 let currentFrame = START_FRAME;
 
 // Preload all frames
@@ -58,19 +94,42 @@ for(let i=1;i<=TOTAL_FRAMES;i++){
 
 // Set initial frame
 img.src = frames[START_FRAME].src;
+slider.value = START_FRAME;
 
-// --- Mouse X scrubbing ---
+// --- Update frame ---
+function setFrame(frame){
+  frame = Math.min(Math.max(frame,1),TOTAL_FRAMES);
+  if(frame !== currentFrame){
+    currentFrame = frame;
+    img.src = frames[currentFrame].src;
+    slider.value = currentFrame;
+  }
+}
+
+// --- Mouse support ---
 img.addEventListener('mousemove', e => {
   const rect = img.getBoundingClientRect();
   let ratio = (e.clientX - rect.left)/rect.width;
   ratio = Math.min(Math.max(ratio,0),1);
+  const frame = Math.round(ratio*(TOTAL_FRAMES-1)) + 1;
+  setFrame(frame);
+});
 
-  const frame = Math.round(ratio*(TOTAL_FRAMES-1))+1;
-  if(frame !== currentFrame){
-    currentFrame = frame;
-    img.src = frames[currentFrame].src;
-  }
+// --- Touch support ---
+img.addEventListener('touchstart', e => {
+  setFrame(Math.round(((e.touches[0].clientX - img.getBoundingClientRect().left)/img.getBoundingClientRect().width)*(TOTAL_FRAMES-1)) + 1);
+  e.preventDefault();
+});
+img.addEventListener('touchmove', e => {
+  setFrame(Math.round(((e.touches[0].clientX - img.getBoundingClientRect().left)/img.getBoundingClientRect().width)*(TOTAL_FRAMES-1)) + 1);
+  e.preventDefault();
+});
+
+// --- Slider support ---
+slider.addEventListener('input', e => {
+  setFrame(Number(e.target.value));
 });
 </script>
+
 </body>
 </html>
