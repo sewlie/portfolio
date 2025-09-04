@@ -2,16 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>3D Image Slider Viewer with Zoom</title>
+<title>3D Image Mouse Scrubber</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-:root {
-  --slider-height: 10px;
-  --thumb-size: 20px;
-  --accent: #ffffff;
-  --track: #333333;
-}
-
 html, body { height: 100%; margin: 0; }
 body {
   background: #000;
@@ -37,173 +30,46 @@ body {
   max-height: 100%;
   object-fit: contain;
   display: block;
-  cursor: zoom-in;
-  transition: transform 0.2s ease;
-}
-
-/* Zoom square */
-#zoom {
-  position: absolute;
-  pointer-events: none;
-  width: 150px;
-  height: 150px;
-  display: none;
-  border: 2px solid #fff;
-  overflow: hidden;
-  box-shadow: 0 0 12px rgba(255,255,255,0.5);
-  background: #000;
-}
-
-#zoom img {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  object-fit: contain;
-}
-
-/* Slider */
-#sliderWrap {
-  width: 50vw;
-  padding: 18px 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#track {
-  position: relative;
-  width: 100%;
-  height: var(--slider-height);
-  background: var(--track);
-  border-radius: 999px;
-  user-select: none;
-  touch-action: none;
-}
-
-#progress {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(to right, #777, var(--accent));
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-#thumb {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: var(--thumb-size);
-  height: var(--thumb-size);
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px rgba(255,255,255,0.7);
   cursor: pointer;
 }
-#thumb:hover { background: #ff4444; }
-#thumb:active { transform: translate(-50%, -50%) scale(0.98); }
-
 </style>
 </head>
 <body>
 
 <div id="viewer">
   <img id="image" src="3d scan jpg/frame-07.jpg" alt="3D object frame" />
-  <div id="zoom"><img id="zoomImg" src="" /></div>
-</div>
-
-<div id="sliderWrap">
-  <div id="track" aria-label="Frame slider">
-    <div id="progress"></div>
-    <div id="thumb" role="slider" aria-valuemin="1" aria-valuemax="36" aria-valuenow="7" tabindex="0"></div>
-  </div>
 </div>
 
 <script>
 const TOTAL_FRAMES = 36;
 const FOLDER = "3d scan jpg";
 const START_FRAME = 7;
-const FILENAME = index => `${FOLDER}/frame-${String(index).padStart(2,'0')}.jpg`;
 
 const img = document.getElementById('image');
-const track = document.getElementById('track');
-const thumb = document.getElementById('thumb');
-const progress = document.getElementById('progress');
-const zoom = document.getElementById('zoom');
-const zoomImg = document.getElementById('zoomImg');
+let currentFrame = START_FRAME;
 
-let value = START_FRAME;
-let dragging = false;
-
-function clamp(n,min,max){return Math.max(min,Math.min(max,n));}
-function valueToRatio(v){return (v-1)/(TOTAL_FRAMES-1);}
-function ratioToValue(r){return Math.round(r*(TOTAL_FRAMES-1))+1;}
-
-function setValue(v,{updateImage=true}={}){
-  value = clamp(v,1,TOTAL_FRAMES);
-  const ratio = valueToRatio(value);
-  const rect = track.getBoundingClientRect();
-  const x = ratio*rect.width;
-  progress.style.width = `${ratio*100}%`;
-  thumb.style.left = `${x}px`;
-  thumb.setAttribute('aria-valuenow', value);
-
-  if(updateImage){
-    img.src = FILENAME(value);
-    zoomImg.src = FILENAME(value);
-  }
+// Preload all frames
+let frames = [];
+for(let i=1;i<=TOTAL_FRAMES;i++){
+  const frame = new Image();
+  frame.src = `${FOLDER}/frame-${String(i).padStart(2,'0')}.jpg`;
+  frames[i] = frame;
 }
 
-// Pointer events
-function pointerToRatio(clientX){return clamp((clientX-track.getBoundingClientRect().left)/track.getBoundingClientRect().width,0,1);}
-function onPointerDown(e){dragging=true; track.setPointerCapture?.(e.pointerId); setValue(ratioToValue(pointerToRatio(e.clientX))); e.preventDefault();}
-function onPointerMove(e){if(!dragging) return; setValue(ratioToValue(pointerToRatio(e.clientX))); e.preventDefault();}
-function onPointerUp(e){dragging=false; track.releasePointerCapture?.(e.pointerId); e.preventDefault();}
+// Set initial frame
+img.src = frames[START_FRAME].src;
 
-track.addEventListener('pointerdown',onPointerDown);
-window.addEventListener('pointermove',onPointerMove);
-window.addEventListener('pointerup',onPointerUp);
-thumb.addEventListener('keydown',e=>{
-  if(e.key==='ArrowRight'||e.key==='ArrowUp') setValue(value+1);
-  else if(e.key==='ArrowLeft'||e.key==='ArrowDown') setValue(value-1);
-  else if(e.key==='Home') setValue(1);
-  else if(e.key==='End') setValue(TOTAL_FRAMES);
-  else if(e.key==='PageUp') setValue(value+Math.ceil(TOTAL_FRAMES/10));
-  else if(e.key==='PageDown') setValue(value-Math.ceil(TOTAL_FRAMES/10));
-  e.preventDefault();
-});
-
-setValue(START_FRAME);
-
-// --- Zoom ---
-img.addEventListener('mouseenter',()=>{ zoom.style.display='block'; zoomImg.src=img.src; });
-img.addEventListener('mouseleave',()=>{ zoom.style.display='none'; });
-
-img.addEventListener('mousemove',e=>{
+// --- Mouse X scrubbing ---
+img.addEventListener('mousemove', e => {
   const rect = img.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+  let ratio = (e.clientX - rect.left)/rect.width;
+  ratio = Math.min(Math.max(ratio,0),1);
 
-  const scale = 2; // zoom
-  const lensWidth = zoom.offsetWidth;
-  const lensHeight = zoom.offsetHeight;
-
-  // Calculate the relative position inside the actual displayed image
-  const imgWidth = img.clientWidth;
-  const imgHeight = img.clientHeight;
-
-  const rx = x / imgWidth;
-  const ry = y / imgHeight;
-
-  // Position zoom lens
-  zoom.style.left = `${e.clientX}px`;
-  zoom.style.top = `${e.clientY}px`;
-
-  // Position zoomed image inside lens
-  zoomImg.style.left = `${-rx * imgWidth * scale + lensWidth/2}px`;
-  zoomImg.style.top = `${-ry * imgHeight * scale + lensHeight/2}px`;
+  const frame = Math.round(ratio*(TOTAL_FRAMES-1))+1;
+  if(frame !== currentFrame){
+    currentFrame = frame;
+    img.src = frames[currentFrame].src;
+  }
 });
 </script>
 </body>
