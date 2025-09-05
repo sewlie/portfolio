@@ -20,8 +20,8 @@ body {
 #viewer {
   flex: 1;
   display: flex;
-  align-items: center;    /* vertically center */
-  justify-content: center; /* horizontally center */
+  align-items: center;
+  justify-content: center;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -29,10 +29,10 @@ body {
 
 /* Main image */
 #image {
-  width: 100%;          /* maximize width */
-  height: auto;         /* maintain aspect ratio */
-  max-height: 100%;     /* don’t exceed viewport height */
-  object-fit: contain;  /* scale properly */
+  width: 100%;          
+  height: auto;         
+  max-height: 100%;     
+  object-fit: contain;  
   display: block;
   cursor: pointer;
 }
@@ -71,6 +71,25 @@ body {
   transition: background 0.2s;
 }
 #slider::-moz-range-thumb:hover { background: #ff4444; }
+
+/* Loading overlay */
+#loadingOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  z-index: 10;
+  transition: opacity 0.5s ease;
+}
+#loadingOverlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -81,6 +100,8 @@ body {
 
 <input type="range" id="slider" min="1" max="36" step="1" value="7">
 
+<div id="loadingOverlay">Loading 0%</div>
+
 <script>
 const TOTAL_FRAMES = 36;
 const FOLDER = "3d scan jpg";
@@ -89,13 +110,26 @@ const SCRUB_WIDTH = 0.75; // 75% of image width
 
 const img = document.getElementById('image');
 const slider = document.getElementById('slider');
+const loadingOverlay = document.getElementById('loadingOverlay');
+
 let currentFrame = START_FRAME;
 
 // Preload all frames
 let frames = [];
+let loadedCount = 0;
+
 for(let i=1;i<=TOTAL_FRAMES;i++){
   const frame = new Image();
   frame.src = `${FOLDER}/frame-${String(i).padStart(2,'0')}.jpg`;
+  frame.onload = () => {
+    loadedCount++;
+    loadingOverlay.textContent = `Loading ${Math.round((loadedCount/TOTAL_FRAMES)*100)}%`;
+    if(loadedCount === TOTAL_FRAMES){
+      setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+      }, 300);
+    }
+  };
   frames[i] = frame;
 }
 
@@ -113,15 +147,14 @@ function setFrame(frame){
   }
 }
 
-// --- Convert X to reversed frame ---
+// --- Convert X to frame (NORMAL direction) ---
 function getScrubFrame(clientX){
   const rect = img.getBoundingClientRect();
   const scrubWidth = rect.width * SCRUB_WIDTH;
-  const scrubStart = rect.left + (rect.width - scrubWidth)/2; // center
+  const scrubStart = rect.left + (rect.width - scrubWidth)/2; 
   let ratio = (clientX - scrubStart) / scrubWidth;
   ratio = Math.min(Math.max(ratio, 0), 1);
-  // reversed direction
-  return TOTAL_FRAMES - Math.round(ratio * (TOTAL_FRAMES - 1));
+  return Math.round(ratio * (TOTAL_FRAMES - 1)) + 1;
 }
 
 // --- Mouse support ---
@@ -139,10 +172,9 @@ img.addEventListener('touchmove', e => {
   e.preventDefault(); 
 });
 
-// --- Slider support (reversed) ---
+// --- Slider support (NORMAL direction) ---
 slider.addEventListener('input', e => {
-  const frame = TOTAL_FRAMES - Number(e.target.value) + 1;
-  setFrame(frame);
+  setFrame(Number(e.target.value));
 });
 </script>
 
