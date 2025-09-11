@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>3D Nugs — Visual-only Slider</title>
+<title>3D Nugs — Autoplay When Idle</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
   html, body { height: 100%; margin: 0; }
@@ -16,18 +16,16 @@
     color: #fff;
   }
 
-  /* Image container */
   #viewer {
     flex: 1;
     display: flex;
-    align-items: center;    /* vertically center */
-    justify-content: center; /* horizontally center */
+    align-items: center;
+    justify-content: center;
     width: 100%;
     position: relative;
     overflow: hidden;
   }
 
-  /* Main image maximized width-wise */
   #image {
     width: 100%;
     height: auto;
@@ -37,7 +35,6 @@
     cursor: pointer;
   }
 
-  /* Slider styling (visual only) */
   #slider {
     position: relative;
     z-index: 2;
@@ -49,11 +46,9 @@
     background: #333;
     border-radius: 4px;
     outline: none;
-    pointer-events: none; /* <-- makes it non-clickable (visual only) */
+    pointer-events: none;
     cursor: default;
   }
-
-  /* thumb styles still apply visually when value changes */
   #slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 20px;
@@ -61,7 +56,6 @@
     border-radius: 50%;
     background: #fff;
     box-shadow: 0 0 5px rgba(255,255,255,0.8);
-    transition: background 0.2s;
   }
   #slider::-moz-range-thumb {
     width: 20px;
@@ -69,10 +63,8 @@
     border-radius: 50%;
     background: #fff;
     box-shadow: 0 0 5px rgba(255,255,255,0.8);
-    transition: background 0.2s;
   }
 
-  /* Loading overlay */
   #loadingOverlay {
     position: fixed;
     inset: 0;
@@ -92,7 +84,6 @@
     <img id="image" src="3d scan jpg/frame-07.jpg" alt="3D object frame" />
   </div>
 
-  <!-- Visual-only slider: pointer-events disabled so it can't be clicked -->
   <input type="range" id="slider" min="1" max="36" step="1" value="7" aria-hidden="true" tabindex="-1">
 
   <div id="loadingOverlay">Loading 3D Object...</div>
@@ -101,13 +92,12 @@
   const TOTAL_FRAMES = 36;
   const FOLDER = "3d scan jpg";
   const START_FRAME = 7;
-  const SCRUB_WIDTH = 0.75; // 75% of image width (centered window)
+  const SCRUB_WIDTH = 0.75;
 
   const img = document.getElementById('image');
   const slider = document.getElementById('slider');
   const loadingOverlay = document.getElementById('loadingOverlay');
 
-  // frames array and preload
   let frames = [];
   let loadedCount = 0;
 
@@ -116,33 +106,24 @@
     frame.src = `${FOLDER}/frame-${String(i).padStart(2,'0')}.jpg`;
     frame.onload = () => {
       loadedCount++;
-      // optional: show percentage
       loadingOverlay.textContent = `Loading ${Math.round((loadedCount / TOTAL_FRAMES) * 100)}%`;
-      if (loadedCount === TOTAL_FRAMES) {
-        // hide overlay when done
-        loadingOverlay.style.display = 'none';
-      }
+      if (loadedCount === TOTAL_FRAMES) loadingOverlay.style.display = 'none';
     };
     frames[i] = frame;
   }
 
-  // We'll display reversed frames (images were captured in opposite sequence)
-  // Map slider value (1..TOTAL_FRAMES) -> actual image index (reversed)
   function sliderToImageIndex(sliderValue) {
     return TOTAL_FRAMES - sliderValue + 1;
   }
 
-  // initial current image index (reversed mapping of START_FRAME)
   let currentImageIndex = sliderToImageIndex(START_FRAME);
 
-  // initial display
   function showImageByIndex(idx) {
     img.src = frames[idx].src;
   }
   showImageByIndex(currentImageIndex);
-  slider.value = START_FRAME; // visual slider shows START_FRAME
+  slider.value = START_FRAME;
 
-  // update helpers
   function setFrameFromSliderValue(sliderValue) {
     const imageIndex = sliderToImageIndex(sliderValue);
     if (imageIndex !== currentImageIndex) {
@@ -151,48 +132,42 @@
     }
   }
 
-  // Convert X to slider value within a centered SCRUB_WIDTH window
   function getSliderValueFromClientX(clientX) {
     const rect = img.getBoundingClientRect();
     const scrubWidth = rect.width * SCRUB_WIDTH;
     const scrubStart = rect.left + (rect.width - scrubWidth) / 2;
     let ratio = (clientX - scrubStart) / scrubWidth;
     ratio = Math.min(Math.max(ratio, 0), 1);
-    // map 0..1 -> 1..TOTAL_FRAMES
     return Math.round(ratio * (TOTAL_FRAMES - 1)) + 1;
   }
 
-  // Mouse scrubbing (over image)
+  // Mouse scrub
   img.addEventListener('mousemove', e => {
+    stopAutoplay();
     const sliderValue = getSliderValueFromClientX(e.clientX);
-    // update visual-only slider and the shown image
     slider.value = sliderValue;
     setFrameFromSliderValue(sliderValue);
   });
 
-  // Touch scrubbing (single touch)
+  // Touch scrub
   img.addEventListener('touchstart', e => {
+    stopAutoplay();
     const sliderValue = getSliderValueFromClientX(e.touches[0].clientX);
     slider.value = sliderValue;
     setFrameFromSliderValue(sliderValue);
     e.preventDefault();
   }, { passive: false });
-
   img.addEventListener('touchmove', e => {
+    stopAutoplay();
     const sliderValue = getSliderValueFromClientX(e.touches[0].clientX);
     slider.value = sliderValue;
     setFrameFromSliderValue(sliderValue);
     e.preventDefault();
   }, { passive: false });
 
-  // Keep slider in sync if you later set frames programmatically
-  function setFrameProgrammatically(desiredSliderValue) {
-    slider.value = desiredSliderValue;
-    setFrameFromSliderValue(desiredSliderValue);
-  }
-
-  // Optional: keyboard left/right to scrub (useful since slider is non-interactive)
-  window.addEventListener('keydown', (e) => {
+  // Keyboard arrows
+  window.addEventListener('keydown', e => {
+    stopAutoplay();
     if (e.key === 'ArrowRight') {
       let v = Math.min(Number(slider.value) + 1, TOTAL_FRAMES);
       slider.value = v;
@@ -204,6 +179,38 @@
     }
   });
 
+  // --- AUTOPLAY ---
+  let autoplayInterval = null;
+
+  function startAutoplay() {
+    if (autoplayInterval) return;
+    autoplayInterval = setInterval(() => {
+      let v = Number(slider.value) + 1;
+      if (v > TOTAL_FRAMES) v = 1;
+      slider.value = v;
+      setFrameFromSliderValue(v);
+    }, 100); // speed: change frame every 100ms
+  }
+
+  function stopAutoplay() {
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+  }
+
+  // Start autoplay when mouse leaves the image
+  img.addEventListener('mouseleave', startAutoplay);
+  // Stop autoplay when mouse re-enters
+  img.addEventListener('mouseenter', stopAutoplay);
+
+  // On touch devices: start autoplay when no touches
+  img.addEventListener('touchend', () => {
+    if (!autoplayInterval) startAutoplay();
+  });
+
+  // Kick off autoplay initially (optional)
+  startAutoplay();
 </script>
 </body>
 </html>
