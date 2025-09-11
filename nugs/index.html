@@ -84,6 +84,16 @@ body {
   font-size: 1.5em;
   z-index: 999;
 }
+/* Remove the value bubble on some browsers */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+}
+input[type=range]::-moz-focus-outer {
+  border: 0;
+}
 </style>
 </head>
 <body>
