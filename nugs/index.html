@@ -2,187 +2,208 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>3D Nugs</title>
+<title>3D Nugs — Visual-only Slider</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-html, body { height: 100%; margin: 0; }
-body {
-  background: #000;
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
 
-/* Image container */
-#viewer {
-  flex: 1;
-  display: flex;
-  align-items: center;    /* vertically center */
-  justify-content: center; /* horizontally center */
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
+  /* Image container */
+  #viewer {
+    flex: 1;
+    display: flex;
+    align-items: center;    /* vertically center */
+    justify-content: center; /* horizontally center */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
 
-/* Main image */
-#image {
-  width: 100%;          /* maximize width */
-  height: auto;         /* maintain aspect ratio */
-  max-height: 100%;     /* don’t exceed viewport height */
-  object-fit: contain;  /* scale properly */
-  display: block;
-  cursor: pointer;
-}
+  /* Main image maximized width-wise */
+  #image {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    cursor: pointer;
+  }
 
-/* Slider styling */
-#slider {
-  position: relative;
-  z-index: 2; 
-  width: 30vw; 
-  margin: 20px 0;
-  -webkit-appearance: none;
-  appearance: none;
-  height: 8px;
-  background: #333;
-  border-radius: 4px;
-  outline: none;
-}
-#slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fff;
-  cursor: pointer;
-  box-shadow: 0 0 5px rgba(255,255,255,0.8);
-  transition: background 0.2s;
-}
-#slider::-webkit-slider-thumb:hover { background: #ff4444; }
-#slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fff;
-  cursor: pointer;
-  box-shadow: 0 0 5px rgba(255,255,255,0.8);
-  transition: background 0.2s;
-}
-#slider::-moz-range-thumb:hover { background: #ff4444; }
+  /* Slider styling (visual only) */
+  #slider {
+    position: relative;
+    z-index: 2;
+    width: 30vw;
+    margin: 20px 0;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    outline: none;
+    pointer-events: none; /* <-- makes it non-clickable (visual only) */
+    cursor: default;
+  }
 
-/* Loading overlay */
-#loadingOverlay {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.5em;
-  z-index: 999;
-}
-/* Remove the value bubble on some browsers */
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  -webkit-appearance: none;
-}
-input[type=range]::-moz-focus-outer {
-  border: 0;
-}
+  /* thumb styles still apply visually when value changes */
+  #slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(255,255,255,0.8);
+    transition: background 0.2s;
+  }
+  #slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(255,255,255,0.8);
+    transition: background 0.2s;
+  }
+
+  /* Loading overlay */
+  #loadingOverlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2em;
+    z-index: 999;
+  }
 </style>
 </head>
 <body>
 
-<div id="viewer">
-  <img id="image" src="3d scan jpg/frame-07.jpg" alt="3D object frame" />
-</div>
+  <div id="viewer">
+    <img id="image" src="3d scan jpg/frame-07.jpg" alt="3D object frame" />
+  </div>
 
-<input type="range" id="slider" min="1" max="36" step="1" value="7">
+  <!-- Visual-only slider: pointer-events disabled so it can't be clicked -->
+  <input type="range" id="slider" min="1" max="36" step="1" value="7" aria-hidden="true" tabindex="-1">
 
-<div id="loadingOverlay">Loading 3D Object...</div>
+  <div id="loadingOverlay">Loading 3D Object...</div>
 
 <script>
-const TOTAL_FRAMES = 36;
-const FOLDER = "3d scan jpg";
-const START_FRAME = 7;
-const SCRUB_WIDTH = 0.75; // 75% of image width
+  const TOTAL_FRAMES = 36;
+  const FOLDER = "3d scan jpg";
+  const START_FRAME = 7;
+  const SCRUB_WIDTH = 0.75; // 75% of image width (centered window)
 
-const img = document.getElementById('image');
-const slider = document.getElementById('slider');
-const loadingOverlay = document.getElementById('loadingOverlay');
-let currentFrame = START_FRAME;
+  const img = document.getElementById('image');
+  const slider = document.getElementById('slider');
+  const loadingOverlay = document.getElementById('loadingOverlay');
 
-// Preload all frames
-let frames = [];
-let loadedCount = 0;
-for(let i=1;i<=TOTAL_FRAMES;i++){
-  const frame = new Image();
-  frame.src = `${FOLDER}/frame-${String(i).padStart(2,'0')}.jpg`;
-  frame.onload = () => {
-    loadedCount++;
-    if (loadedCount === TOTAL_FRAMES) {
-      loadingOverlay.style.display = "none";
-    }
-  };
-  frames[i] = frame;
-}
+  // frames array and preload
+  let frames = [];
+  let loadedCount = 0;
 
-// Set initial frame
-function updateImage(frame){
-  img.src = frames[frame].src;
-}
-updateImage(START_FRAME);
-slider.value = START_FRAME;
-
-// --- Update frame helper ---
-function setFrame(frame){
-  frame = Math.min(Math.max(frame,1),TOTAL_FRAMES);
-
-  // reverse frame mapping
-  const reversedFrame = TOTAL_FRAMES - frame + 1;
-
-  if(reversedFrame !== currentFrame){
-    currentFrame = reversedFrame;
-    updateImage(currentFrame);
-    slider.value = frame; // slider goes normal 1 → TOTAL_FRAMES
+  for (let i = 1; i <= TOTAL_FRAMES; i++) {
+    const frame = new Image();
+    frame.src = `${FOLDER}/frame-${String(i).padStart(2,'0')}.jpg`;
+    frame.onload = () => {
+      loadedCount++;
+      // optional: show percentage
+      loadingOverlay.textContent = `Loading ${Math.round((loadedCount / TOTAL_FRAMES) * 100)}%`;
+      if (loadedCount === TOTAL_FRAMES) {
+        // hide overlay when done
+        loadingOverlay.style.display = 'none';
+      }
+    };
+    frames[i] = frame;
   }
-}
 
-// --- Convert X to frame within narrow window ---
-function getScrubFrame(clientX){
-  const rect = img.getBoundingClientRect();
-  const scrubWidth = rect.width * SCRUB_WIDTH;
-  const scrubStart = rect.left + (rect.width - scrubWidth)/2; // center
-  let ratio = (clientX - scrubStart) / scrubWidth;
-  ratio = Math.min(Math.max(ratio, 0), 1);
-  return Math.round(ratio * (TOTAL_FRAMES - 1)) + 1;
-}
+  // We'll display reversed frames (images were captured in opposite sequence)
+  // Map slider value (1..TOTAL_FRAMES) -> actual image index (reversed)
+  function sliderToImageIndex(sliderValue) {
+    return TOTAL_FRAMES - sliderValue + 1;
+  }
 
-// --- Mouse support ---
-img.addEventListener('mousemove', e => {
-  setFrame(getScrubFrame(e.clientX));
-});
+  // initial current image index (reversed mapping of START_FRAME)
+  let currentImageIndex = sliderToImageIndex(START_FRAME);
 
-// --- Touch support ---
-img.addEventListener('touchstart', e => { 
-  setFrame(getScrubFrame(e.touches[0].clientX)); 
-  e.preventDefault(); 
-});
-img.addEventListener('touchmove', e => { 
-  setFrame(getScrubFrame(e.touches[0].clientX)); 
-  e.preventDefault(); 
-});
+  // initial display
+  function showImageByIndex(idx) {
+    img.src = frames[idx].src;
+  }
+  showImageByIndex(currentImageIndex);
+  slider.value = START_FRAME; // visual slider shows START_FRAME
 
-// --- Slider support ---
-slider.addEventListener('input', e => {
-  setFrame(Number(e.target.value));
-});
+  // update helpers
+  function setFrameFromSliderValue(sliderValue) {
+    const imageIndex = sliderToImageIndex(sliderValue);
+    if (imageIndex !== currentImageIndex) {
+      currentImageIndex = imageIndex;
+      showImageByIndex(currentImageIndex);
+    }
+  }
+
+  // Convert X to slider value within a centered SCRUB_WIDTH window
+  function getSliderValueFromClientX(clientX) {
+    const rect = img.getBoundingClientRect();
+    const scrubWidth = rect.width * SCRUB_WIDTH;
+    const scrubStart = rect.left + (rect.width - scrubWidth) / 2;
+    let ratio = (clientX - scrubStart) / scrubWidth;
+    ratio = Math.min(Math.max(ratio, 0), 1);
+    // map 0..1 -> 1..TOTAL_FRAMES
+    return Math.round(ratio * (TOTAL_FRAMES - 1)) + 1;
+  }
+
+  // Mouse scrubbing (over image)
+  img.addEventListener('mousemove', e => {
+    const sliderValue = getSliderValueFromClientX(e.clientX);
+    // update visual-only slider and the shown image
+    slider.value = sliderValue;
+    setFrameFromSliderValue(sliderValue);
+  });
+
+  // Touch scrubbing (single touch)
+  img.addEventListener('touchstart', e => {
+    const sliderValue = getSliderValueFromClientX(e.touches[0].clientX);
+    slider.value = sliderValue;
+    setFrameFromSliderValue(sliderValue);
+    e.preventDefault();
+  }, { passive: false });
+
+  img.addEventListener('touchmove', e => {
+    const sliderValue = getSliderValueFromClientX(e.touches[0].clientX);
+    slider.value = sliderValue;
+    setFrameFromSliderValue(sliderValue);
+    e.preventDefault();
+  }, { passive: false });
+
+  // Keep slider in sync if you later set frames programmatically
+  function setFrameProgrammatically(desiredSliderValue) {
+    slider.value = desiredSliderValue;
+    setFrameFromSliderValue(desiredSliderValue);
+  }
+
+  // Optional: keyboard left/right to scrub (useful since slider is non-interactive)
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      let v = Math.min(Number(slider.value) + 1, TOTAL_FRAMES);
+      slider.value = v;
+      setFrameFromSliderValue(v);
+    } else if (e.key === 'ArrowLeft') {
+      let v = Math.max(Number(slider.value) - 1, 1);
+      slider.value = v;
+      setFrameFromSliderValue(v);
+    }
+  });
+
 </script>
-
 </body>
 </html>
