@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>3D Nugs — Autoplay When Idle</title>
+<title>3D Nugs — Hover Zoom</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
   html, body { height: 100%; margin: 0; }
@@ -32,9 +32,10 @@
     max-height: 100%;
     object-fit: contain;
     display: block;
-    cursor: pointer;
+    cursor: crosshair;
   }
 
+  /* Slider styling */
   #slider {
     position: relative;
     z-index: 2;
@@ -76,12 +77,31 @@
     font-size: 1.2em;
     z-index: 999;
   }
+
+  /* Zoom lens */
+  #zoomLens {
+    position: absolute;
+    border: 2px solid #000000;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    display: none;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  #zoomLens img {
+    position: absolute;
+    transform-origin: top left;
+    pointer-events: none;
+  }
 </style>
 </head>
 <body>
 
   <div id="viewer">
     <img id="image" src="3d scan jpg/frame-07.jpg" alt="3D object frame" />
+    <div id="zoomLens"><img src="" alt=""></div>
   </div>
 
   <input type="range" id="slider" min="1" max="36" step="1" value="7" aria-hidden="true" tabindex="-1">
@@ -97,6 +117,8 @@
   const img = document.getElementById('image');
   const slider = document.getElementById('slider');
   const loadingOverlay = document.getElementById('loadingOverlay');
+  const zoomLens = document.getElementById('zoomLens');
+  const zoomLensImg = zoomLens.querySelector('img');
 
   let frames = [];
   let loadedCount = 0;
@@ -120,6 +142,7 @@
 
   function showImageByIndex(idx) {
     img.src = frames[idx].src;
+    zoomLensImg.src = frames[idx].src; // update zoomed image too
   }
   showImageByIndex(currentImageIndex);
   slider.value = START_FRAME;
@@ -165,20 +188,6 @@
     e.preventDefault();
   }, { passive: false });
 
-  // Keyboard arrows
-  window.addEventListener('keydown', e => {
-    stopAutoplay();
-    if (e.key === 'ArrowRight') {
-      let v = Math.min(Number(slider.value) + 1, TOTAL_FRAMES);
-      slider.value = v;
-      setFrameFromSliderValue(v);
-    } else if (e.key === 'ArrowLeft') {
-      let v = Math.max(Number(slider.value) - 1, 1);
-      slider.value = v;
-      setFrameFromSliderValue(v);
-    }
-  });
-
   // --- AUTOPLAY ---
   let autoplayInterval = null;
 
@@ -189,7 +198,7 @@
       if (v > TOTAL_FRAMES) v = 1;
       slider.value = v;
       setFrameFromSliderValue(v);
-    }, 65); // speed: change frame every 100ms
+    }, 65);
   }
 
   function stopAutoplay() {
@@ -199,18 +208,38 @@
     }
   }
 
-  // Start autoplay when mouse leaves the image
   img.addEventListener('mouseleave', startAutoplay);
-  // Stop autoplay when mouse re-enters
   img.addEventListener('mouseenter', stopAutoplay);
 
-  // On touch devices: start autoplay when no touches
   img.addEventListener('touchend', () => {
     if (!autoplayInterval) startAutoplay();
   });
 
-  // Kick off autoplay initially (optional)
   startAutoplay();
+
+  // --- ZOOM LENS ---
+  const zoomFactor = 2;
+
+  img.addEventListener('mouseenter', () => {
+    zoomLens.style.display = 'block';
+  });
+  img.addEventListener('mouseleave', () => {
+    zoomLens.style.display = 'none';
+  });
+  img.addEventListener('mousemove', e => {
+    const rect = img.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const lensSize = zoomLens.offsetWidth;
+    zoomLens.style.left = `${e.clientX - lensSize/2}px`;
+    zoomLens.style.top = `${e.clientY - lensSize/2}px`;
+
+    zoomLensImg.style.width = `${rect.width * zoomFactor}px`;
+    zoomLensImg.style.height = `${rect.height * zoomFactor}px`;
+    zoomLensImg.style.left = `${-x * zoomFactor + lensSize/2}px`;
+    zoomLensImg.style.top = `${-y * zoomFactor + lensSize/2}px`;
+  });
 </script>
 </body>
 </html>
