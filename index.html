@@ -39,29 +39,40 @@
             overflow: hidden;
         }
 
+        /* DEFAULT BACKGROUND = DESIGN */
         .page-stage::before {
             content: "";
             position: absolute;
             inset: 0;
+
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.55) 55%,
+                    rgba(0,0,0,0.9) 100%
+                ),
+                url("./assets/Artboard 5.png");
+
             background-size: cover;
             background-position: center;
-            opacity: 0;
+            opacity: 1;
             transform: scale(1.03);
             transition: opacity 0.5s ease, transform 0.5s ease;
             z-index: 0;
         }
 
-        /* DESIGN HOVER BACKGROUND */
-        .page-stage:has(.entry-block.design:hover)::before {
-            background-image: url("./assets/Artboard 5.png");
-            opacity: 0.18;
-            transform: scale(1);
-        }
-
-        /* PHOTOGRAPHY HOVER BACKGROUND */
+        /* PHOTOGRAPHY HOVER OVERRIDE */
         .page-stage:has(.entry-block.photography:hover)::before {
-            background-image: url("./assets/Purple Haze.jpg");
-            opacity: 0.22;
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.55) 75%,
+                    rgba(0,0,0,0.9) 100%
+                ),
+                url("./assets/Purple Haze.jpg");
+
             transform: scale(1);
         }
 
@@ -88,44 +99,31 @@
             font-weight: 700;
             letter-spacing: -0.01em;
             margin-bottom: 10px;
-            color: #000000;
-            transition: color 0.25s ease;
+            color: #ffffff;
+            transition: opacity 0.25s ease;
         }
 
         .entry-block:hover .entry-title {
-            color: rgb(255, 255, 255);
+            opacity: 0.8;
         }
 
         .entry-description {
             font-size: 1rem;
             max-width: 520px;
             line-height: 1.4;
-            color: #000000;
-        }
-
-        .footer-note {
-            margin-top: 0px;
-            font-size: 0.85rem;
-            color: #000000;
-            padding: 0px 70px;
+            color: #ffffff;
         }
 
         /* =========================
            MOBILE
         ========================== */
         @media (max-width: 600px) {
-            .homepage-container {
-                padding: 100px 24px 60px;
-                gap: 60px;
+            .entry-block {
+                padding: 60px 24px;
             }
 
             .entry-title {
-                font-size: 2rem;
-            }
-
-            .entry-block {
-                margin-left: -12px;
-                padding: 18px 14px;
+                font-size: 1.8rem;
             }
         }
     </style>
