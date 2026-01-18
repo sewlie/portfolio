@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #ffffff;
@@ -9,7 +9,6 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-/* CONTACT PREVIEW (DEDUPED + CLEAN) */
 .contact-preview {
     width: 300px;
     height: 150px;
@@ -24,7 +23,6 @@ body::-webkit-scrollbar {
     color: black;
 }
 
-/* PREVIEW CONTROLS */
 .preview-controls {
     position: absolute;
     top: 50%;
@@ -43,7 +41,6 @@ body::-webkit-scrollbar {
     padding: 10px 30px;
 }
 
-/* INFO OVERLAY */
 .info-icon {
     position: absolute;
     color: #ffffff;
@@ -82,9 +79,6 @@ body::-webkit-scrollbar {
     width: 75%;
 }
 
-/* ===========================
-   DESKTOP BREAKPOINTS
-   =========================== */
 
 @media (min-width: 1024px) {
 
