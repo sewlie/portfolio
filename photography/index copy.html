@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sewlie</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+
+    <style>
+
+        /* ---------- MASONRY GRID ---------- */
+        .masonry {
+            padding: 40px;
+            column-count: 4;
+            column-gap: 20px;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 1200px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .masonry {
+                column-count: 2;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="menu">
+        <div class="menu-left">
+            <a href="/">sewlie</a>
+        </div>
+
+        <div class="menu-center">
+            <a href="#" onclick="event.preventDefault(); showContactPreview()">contact</a>
+        </div>
+    </nav>
+
+    <!-- MASONRY GRID -->
+    <section class="masonry" id="masonry" style=" margin: 69px auto 15px auto;">
+
+        <div class="masonry-item">
+            <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="">
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/1slice_strain_gretsky.jpg" alt="">
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/fugg_ras_can.png" alt="">
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/fyre_gchem.jpg" alt="">
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/major_jfk.jpg" alt="">
+        </div>
+
+    </section>
+
+    <!-- MINIMAL SCRIPT (IMAGE LOAD FIX) -->
+    <script>
+        function showContactPreview() {
+            alert("Contact coming soon");
+        }
+
+        // Force reflow after images load (prevents gaps)
+        const masonry = document.getElementById("masonry");
+        const images = masonry.querySelectorAll("img");
+
+        let loaded = 0;
+
+        images.forEach(img => {
+            if (img.complete) {
+                loaded++;
+            } else {
+                img.addEventListener("load", () => {
+                    loaded++;
+                    if (loaded === images.length) {
+                        masonry.style.columnGap = "21px";
+                        setTimeout(() => {
+                            masonry.style.columnGap = "20px";
+                        }, 50);
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
