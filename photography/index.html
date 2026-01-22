@@ -7,7 +7,100 @@
 
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/navbar.css">
-    
+
+    <style>
+        /* ---------- MASONRY GRID ---------- */
+        .masonry {
+            padding: 40px;
+            column-count: 3;
+            column-gap: 20px;
+        }
+
+        .masonry-item {
+            position: relative; /* needed for overlay */
+            break-inside: avoid;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            pointer-events: none; /* disables interaction with the image itself */
+            user-select: none; /* prevent selection */
+            -webkit-user-drag: none; /* prevent dragging in Chrome/Safari */
+        }
+
+        /* overlay layer on top of each image */
+        .masonry-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            pointer-events: all; /* overlay captures clicks */
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 1200px) {
+            .masonry {
+                column-count: 3;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .masonry {
+                column-count: 2;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+
+        /* ---------- LIGHTBOX ---------- */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        #lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 36px;
+            color: white;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
     <nav class="menu">
         <div class="menu-left">
             <a href="/">sewlie</a>
@@ -17,6 +110,172 @@
             <a href="#" onclick="event.preventDefault(); showContactPreview()">contact</a>
         </div>
     </nav>
-    
-    <script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-65bdc098-792d-4c29-92d9-4f2738bafdeb" data-elfsight-app-lazy></div>
+
+    <!-- MASONRY GRID -->
+    <section class="masonry" id="masonry" style="margin: 59px auto 15px auto;">
+
+        <div class="masonry-item">
+            <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="1">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/fyre_gchem.jpg" alt="2">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/fugg_ras_can.png" alt="3">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/1slice_strain_gretsky.jpg" alt="4">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/major_jfk_zoom.jpg" alt="5">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/major_jfk.jpg" alt="6">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/northfork_rambutan.jpg" alt="7">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/milkweed_pink_melonz.png" alt="8">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/northfork_rambutan_jar.jpg" alt="9">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/aplineagron_lituya.jpg" alt="11">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/galaxy_applecup_nug.jpg" alt="12">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/galaxy_applecup_zoom1.jpg" alt="13">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/galaxy_applecup_zoom2.jpg" alt="14">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/galaxy_applecup_zoom3.jpg" alt="15">
+            <div class="overlay"></div>
+        </div>
+
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox">
+        <span class="close">&times;</span>
+        <img src="" alt="">
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        function showContactPreview() {
+            alert("Contact coming soon");
+        }
+
+        const masonry = document.getElementById("masonry");
+        let images = masonry.querySelectorAll("img");
+        let overlays = masonry.querySelectorAll(".overlay");
+
+        // ---------- RANDOMIZE MASONRY ITEMS & SCROLL TO TOP ----------
+        document.addEventListener("DOMContentLoaded", function() {
+            // Bounce/scroll to top on refresh
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Shuffle masonry items
+            let itemsArray = Array.from(masonry.children);
+            itemsArray = shuffle(itemsArray);
+            itemsArray.forEach(item => masonry.appendChild(item));
+            
+            // refresh NodeLists after shuffle
+            images = masonry.querySelectorAll("img");
+            overlays = masonry.querySelectorAll(".overlay");
+
+            // Setup overlays for lightbox
+            setupOverlays();
+        });
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // ---------- IMAGE LOAD FIX ----------
+        let loaded = 0;
+        images.forEach(img => {
+            img.setAttribute("draggable", "false"); // prevent drag
+            if (img.complete) {
+                loaded++;
+            } else {
+                img.addEventListener("load", () => {
+                    loaded++;
+                    if (loaded === images.length) {
+                        masonry.style.columnGap = "21px";
+                        setTimeout(() => {
+                            masonry.style.columnGap = "20px";
+                        }, 50);
+                    }
+                });
+            }
+        });
+
+        // ---------- LIGHTBOX FUNCTIONALITY ----------
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = lightbox.querySelector("img");
+        const closeBtn = lightbox.querySelector(".close");
+
+        function setupOverlays() {
+            overlays.forEach((overlay, index) => {
+                overlay.addEventListener("click", () => {
+                    lightboxImg.src = images[index].src;
+                    lightbox.style.display = "flex";
+                });
+
+                overlay.addEventListener("contextmenu", (e) => {
+                    e.preventDefault(); // disable right-click
+                    alert("Right-click is disabled on these images");
+                });
+            });
+        }
+
+        closeBtn.addEventListener("click", () => {
+            lightbox.style.display = "none";
+        });
+
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>
