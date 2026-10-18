@@ -17,7 +17,7 @@
         }
 
         .masonry-item {
-            position: relative; /* needed for overlay */
+            position: relative;
             break-inside: avoid;
             margin-bottom: 20px;
             width: 100%;
@@ -27,12 +27,21 @@
             width: 100%;
             height: auto;
             display: block;
-            pointer-events: none; /* disables interaction with the image itself */
-            user-select: none; /* prevent selection */
-            -webkit-user-drag: none; /* prevent dragging in Chrome/Safari */
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
-        /* overlay layer on top of each image */
+        .masonry-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* ---------- OVERLAY ---------- */
         .masonry-item .overlay {
             position: absolute;
             top: 0;
@@ -40,7 +49,7 @@
             width: 100%;
             height: 100%;
             cursor: pointer;
-            pointer-events: all; /* overlay captures clicks */
+            pointer-events: all;
         }
 
         /* ---------- RESPONSIVE ---------- */
@@ -70,7 +79,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0, 0, 0, 0.9);
             display: none;
             justify-content: center;
             align-items: center;
@@ -84,6 +93,14 @@
             pointer-events: none;
             user-select: none;
             -webkit-user-drag: none;
+        }
+
+        #lightbox video {
+            max-width: 90%;
+            max-height: 90%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
         }
 
         #lightbox .close {
@@ -114,6 +131,8 @@
     <!-- MASONRY GRID -->
     <section class="masonry" id="masonry" style="margin: 59px auto 15px auto;">
 
+        <!-- ORIGINAL PHOTOS -->
+
         <div class="masonry-item">
             <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="1">
             <div class="overlay"></div>
@@ -131,11 +150,6 @@
 
         <div class="masonry-item">
             <img src="/assets/photos/1slice_strain_gretsky.jpg" alt="4">
-            <div class="overlay"></div>
-        </div>
-
-        <div class="masonry-item">
-            <img src="/assets/photos/major_jfk_zoom.jpg" alt="5">
             <div class="overlay"></div>
         </div>
 
@@ -180,7 +194,7 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_zoom2.jpg" alt="14">
+            <img src="/assets/photos/Diva Dabs Comp.jpg" alt="14">
             <div class="overlay"></div>
         </div>
 
@@ -190,47 +204,232 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/milkweek_blueberryfrost.jpg" alt="15">
+            <img src="/assets/photos/milkweek_blueberryfrost.jpg" alt="16">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_joker_zoom1.jpg" alt="13">
+            <img src="/assets/photos/fyre_joker_zoom1.jpg" alt="17">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_joker_zoom2.jpg" alt="14">
+            <img src="/assets/photos/fyre_joker_zoom2.jpg" alt="18">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purplehaze_cola.jpg" alt="15">
+            <img src="/assets/photos/fyre_purplehaze_cola.jpg" alt="19">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purpleruntx_zoom2.jpg" alt="15">
-            <div class="overlay"></div>
-        </div>
-        
-        <div class="masonry-item">
-            <img src="/assets/photos/fyre_purpleruntz_zoom1.jpeg" alt="15">
-            <div class="overlay"></div>
-        </div>
-        
-        <div class="masonry-item">
-            <img src="/assets/photos/hudson_colas.jpg" alt="15">
+            <img src="/assets/photos/fyre_purpleruntx_zoom2.jpg" alt="20">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/northfork_strawberrypush.jpg" alt="15">
+            <img src="/assets/photos/fyre_purpleruntz_zoom1.jpeg" alt="21">
             <div class="overlay"></div>
         </div>
-        
+
         <div class="masonry-item">
-            <img src="/assets/photos/highpriority_peanutbutter.jpg" alt="15">
+            <img src="/assets/photos/hudson_colas.jpg" alt="22">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/northfork_strawberrypush.jpg" alt="23">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Superboof Retouched.jpg" alt="25">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Sour Diesel Retouched.jpg" alt="26">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Black Ice Retouched.jpg" alt="27">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/blue cruffin nug.jpg" alt="28">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/blue cruffin zoom.jpg" alt="29">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/C12 - Higher Empire.jpg" alt="30">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Gas Face - Higher Empire.jpg" alt="31">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/ZZ Lemons - Higher Empire.jpg" alt="32">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Comet Candy - Higher Empire.jpg" alt="33">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Sour Dawg ZS DMap.jpg" alt="34">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <video autoplay muted loop playsinline preload="auto"
+                style="width:100%; display:block; pointer-events:none;">
+                <source src="/assets/photos/Lemon Tree Stack (1).mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/African haze.jpg" alt="35">
+            <div class="overlay"></div>
+        </div>
+
+
+        <!-- NEW VIDEO: MORGAN DAB SHOT -->
+
+        <div class="masonry-item">
+            <video autoplay muted loop playsinline preload="auto">
+                <source src="/assets/photos/morgandabshot.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+
+        <!-- NEW VIDEO: FOB NUG SPIN -->
+
+        <div class="masonry-item">
+            <video autoplay muted loop playsinline preload="auto">
+                <source src="/assets/photos/FOBnugSpin (1).mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+
+
+        <!-- NEW PHOTOS FROM LATEST SCREENSHOT -->
+
+        <div class="masonry-item">
+            <img src="/assets/photos/DOOR STEP INTO THE SKY NUG 9x16.jpg" alt="Door Step Into the Sky Nug">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/LA VIEJA HAZE NUG 3x4.jpg" alt="La Vieja Haze Nug">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Hurley Product shoot layout shot.jpg" alt="Hurley Product Shoot Layout">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Hurley Joint + Nug photo.jpg" alt="Hurley Joint and Nug">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Aloha Sugar Cola Full 9x16.jpg" alt="Aloha Sugar Cola Full">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/HG Lemon Cherry Sherbet 9x16.jpg" alt="HG Lemon Cherry Sherbet">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Aloha Sugar Zoom 2 3x4.jpg" alt="Aloha Sugar Zoom 2">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Mentation GMO Nug 3x4.jpg" alt="Mentation GMO Nug">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Ry Dogs Haze 3x4.jpg" alt="Ry Dogs Haze">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Aloha Sugar Zoom 1 FullRes.jpg" alt="Aloha Sugar Zoom 1 Full Resolution">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Dime Piece Glob 3x4.jpg" alt="Dime Piece Glob">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/E85 Rosin Jar 3x4.jpg" alt="E85 Rosin Jar">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Dime Piece Rosin Jar 3x4.jpg" alt="Dime Piece Rosin Jar">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Ice Cream Souffle Rosin Jar 3x4.jpg" alt="Ice Cream Souffle Rosin Jar">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/E85 Glob 3x4.jpg" alt="E85 Glob">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/Ice Cream Souffle Glob 3x4.jpg" alt="Ice Cream Souffle Glob">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/FOB Cola Closer Top 9x16.jpg" alt="FOB Cola Closer Top">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/FYRE GELONATTI NUG RETOUCHED.jpg" alt="Fyre Gelonatti Nug Retouched">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/CLIFFHANGER FYRE GELONATTI.jpg" alt="Cliffhanger Fyre Gelonatti">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/NYCE HEART (JPG).jpg" alt="Nyce Heart">
+            <div class="overlay"></div>
+        </div>
+
+        <div class="masonry-item">
+            <img src="/assets/photos/FYRE UPTOWN PIFF.jpg" alt="Fyre Uptown Piff">
             <div class="overlay"></div>
         </div>
 
@@ -249,21 +448,21 @@
         }
 
         const masonry = document.getElementById("masonry");
-        let images = masonry.querySelectorAll("img");
+        let images = masonry.querySelectorAll("img, video");
         let overlays = masonry.querySelectorAll(".overlay");
 
         // ---------- RANDOMIZE MASONRY ITEMS & SCROLL TO TOP ----------
         document.addEventListener("DOMContentLoaded", function() {
-            // Bounce/scroll to top on refresh
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Scroll to top on refresh
+            window.scrollTo({ top: 0, behavior: "smooth" });
 
             // Shuffle masonry items
             let itemsArray = Array.from(masonry.children);
             itemsArray = shuffle(itemsArray);
             itemsArray.forEach(item => masonry.appendChild(item));
-            
-            // refresh NodeLists after shuffle
-            images = masonry.querySelectorAll("img");
+
+            // Refresh NodeLists after shuffle
+            images = masonry.querySelectorAll("img, video");
             overlays = masonry.querySelectorAll(".overlay");
 
             // Setup overlays for lightbox
@@ -280,15 +479,19 @@
 
         // ---------- IMAGE LOAD FIX ----------
         let loaded = 0;
+
         images.forEach(img => {
-            img.setAttribute("draggable", "false"); // prevent drag
+            img.setAttribute("draggable", "false");
+
             if (img.complete) {
                 loaded++;
             } else {
                 img.addEventListener("load", () => {
                     loaded++;
+
                     if (loaded === images.length) {
                         masonry.style.columnGap = "21px";
+
                         setTimeout(() => {
                             masonry.style.columnGap = "20px";
                         }, 50);
@@ -305,24 +508,77 @@
         function setupOverlays() {
             overlays.forEach((overlay, index) => {
                 overlay.addEventListener("click", () => {
-                    lightboxImg.src = images[index].src;
-                    lightbox.style.display = "flex";
+                    const media = images[index];
+
+                    if (media.tagName === "VIDEO") {
+                        // Open video in a temporary image-compatible lightbox source.
+                        const videoSrc = media.querySelector("source")?.src || media.src;
+
+                        const video = document.createElement("video");
+                        video.src = videoSrc;
+                        video.controls = true;
+                        video.autoplay = true;
+                        video.muted = true;
+                        video.loop = true;
+                        video.playsInline = true;
+                        video.style.maxWidth = "90%";
+                        video.style.maxHeight = "90%";
+
+                        lightboxImg.style.display = "none";
+
+                        const existingVideo = lightbox.querySelector("video");
+                        if (existingVideo) {
+                            existingVideo.remove();
+                        }
+
+                        lightbox.appendChild(video);
+                        lightbox.style.display = "flex";
+                        video.play().catch(() => {});
+                    } else {
+                        const existingVideo = lightbox.querySelector("video");
+                        if (existingVideo) {
+                            existingVideo.pause();
+                            existingVideo.remove();
+                        }
+
+                        lightboxImg.style.display = "block";
+                        lightboxImg.src = media.src;
+                        lightboxImg.alt = media.alt;
+                        lightbox.style.display = "flex";
+                    }
                 });
 
-                overlay.addEventListener("contextmenu", (e) => {
-                    e.preventDefault(); // disable right-click
+                overlay.addEventListener("contextmenu", e => {
+                    e.preventDefault();
                     alert("Right-click is disabled on these images");
                 });
             });
         }
 
-        closeBtn.addEventListener("click", () => {
+        function closeLightbox() {
             lightbox.style.display = "none";
+
+            const video = lightbox.querySelector("video");
+            if (video) {
+                video.pause();
+                video.remove();
+            }
+
+            lightboxImg.src = "";
+            lightboxImg.style.display = "block";
+        }
+
+        closeBtn.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", e => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
         });
 
-        lightbox.addEventListener("click", (e) => {
-            if (e.target === lightbox) {
-                lightbox.style.display = "none";
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") {
+                closeLightbox();
             }
         });
     </script>
