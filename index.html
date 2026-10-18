@@ -23,15 +23,7 @@
             width: 100%;
         }
 
-        .masonry-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
+        .masonry-item img,
         .masonry-item video {
             width: 100%;
             height: auto;
@@ -69,6 +61,80 @@
         @media (max-width: 480px) {
             .masonry {
                 column-count: 1;
+            }
+        }
+
+        /* ---------- TRANSPARENT LOADING SCREEN ---------- */
+        #page-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+            opacity: 1;
+            visibility: visible;
+            transition:
+                opacity 0.6s ease,
+                visibility 0.6s ease;
+        }
+
+        #page-loader.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .loader-logo {
+            font-family: inherit;
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: -1px;
+            color: #222;
+        }
+
+        .loader-spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(0, 0, 0, 0.12);
+            border-top-color: #222;
+            border-radius: 50%;
+            animation: loader-spin 0.8s linear infinite;
+        }
+
+        .loader-text {
+            font-family: inherit;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: lowercase;
+            color: #555;
+        }
+
+        @keyframes loader-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .loader-spinner {
+                animation-duration: 2s;
+            }
+
+            #page-loader {
+                transition-duration: 0.1s;
             }
         }
 
@@ -117,6 +183,15 @@
 
 <body>
 
+    <!-- TRANSPARENT LOADING SCREEN -->
+    <div id="page-loader" role="status" aria-label="Loading portfolio">
+        <div class="loader-content">
+            <!-- <span class="loader-logo">sewlie</span>-->
+            <div class="loader-spinner"></div>
+            <span class="loader-text" style="text-transform: capitalize; font-family: inherit;">LOADING</span>
+        </div>
+    </div>
+
     <!-- NAV -->
     <nav class="menu">
         <div class="menu-left">
@@ -130,8 +205,6 @@
 
     <!-- MASONRY GRID -->
     <section class="masonry" id="masonry" style="margin: 59px auto 15px auto;">
-
-        <!-- ORIGINAL PHOTOS -->
 
         <div class="masonry-item">
             <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="1">
@@ -294,8 +367,7 @@
         </div>
 
         <div class="masonry-item">
-            <video autoplay muted loop playsinline preload="auto"
-                style="width:100%; display:block; pointer-events:none;">
+            <video autoplay muted loop playsinline preload="auto">
                 <source src="/assets/photos/Lemon Tree Stack (1).mp4" type="video/mp4">
             </video>
             <div class="overlay"></div>
@@ -306,9 +378,6 @@
             <div class="overlay"></div>
         </div>
 
-
-        <!-- NEW VIDEO: MORGAN DAB SHOT -->
-
         <div class="masonry-item">
             <video autoplay muted loop playsinline preload="auto">
                 <source src="/assets/photos/morgandabshot.mp4" type="video/mp4">
@@ -316,17 +385,12 @@
             <div class="overlay"></div>
         </div>
 
-        <!-- NEW VIDEO: FOB NUG SPIN -->
-
         <div class="masonry-item">
             <video autoplay muted loop playsinline preload="auto">
                 <source src="/assets/photos/FOBnugSpin.mp4" type="video/mp4">
             </video>
             <div class="overlay"></div>
         </div>
-
-
-        <!-- NEW PHOTOS FROM LATEST SCREENSHOT -->
 
         <div class="masonry-item">
             <img src="/assets/photos/DOOR STEP INTO THE SKY NUG 9x16.jpg" alt="Door Step Into the Sky Nug">
@@ -441,7 +505,7 @@
         <img src="" alt="">
     </div>
 
-    <!-- SCRIPT -->
+    <!-- MAIN SCRIPT -->
     <script>
         function showContactPreview() {
             alert("Email: sewlie.art@gmail.com");
@@ -451,24 +515,7 @@
         let images = masonry.querySelectorAll("img, video");
         let overlays = masonry.querySelectorAll(".overlay");
 
-        // ---------- RANDOMIZE MASONRY ITEMS & SCROLL TO TOP ----------
-        document.addEventListener("DOMContentLoaded", function() {
-            // Scroll to top on refresh
-            window.scrollTo({ top: 0, behavior: "smooth" });
-
-            // Shuffle masonry items
-            let itemsArray = Array.from(masonry.children);
-            itemsArray = shuffle(itemsArray);
-            itemsArray.forEach(item => masonry.appendChild(item));
-
-            // Refresh NodeLists after shuffle
-            images = masonry.querySelectorAll("img, video");
-            overlays = masonry.querySelectorAll(".overlay");
-
-            // Setup overlays for lightbox
-            setupOverlays();
-        });
-
+        // ---------- SHUFFLE MASONRY ITEMS ----------
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -477,42 +524,22 @@
             return array;
         }
 
-        // ---------- IMAGE LOAD FIX ----------
-        let loaded = 0;
-
-        images.forEach(img => {
-            img.setAttribute("draggable", "false");
-
-            if (img.complete) {
-                loaded++;
-            } else {
-                img.addEventListener("load", () => {
-                    loaded++;
-
-                    if (loaded === images.length) {
-                        masonry.style.columnGap = "21px";
-
-                        setTimeout(() => {
-                            masonry.style.columnGap = "20px";
-                        }, 50);
-                    }
-                });
-            }
-        });
-
-        // ---------- LIGHTBOX FUNCTIONALITY ----------
+        // ---------- LIGHTBOX ----------
         const lightbox = document.getElementById("lightbox");
         const lightboxImg = lightbox.querySelector("img");
         const closeBtn = lightbox.querySelector(".close");
 
         function setupOverlays() {
+            images = masonry.querySelectorAll("img, video");
+            overlays = masonry.querySelectorAll(".overlay");
+
             overlays.forEach((overlay, index) => {
                 overlay.addEventListener("click", () => {
                     const media = images[index];
 
                     if (media.tagName === "VIDEO") {
-                        // Open video in a temporary image-compatible lightbox source.
-                        const videoSrc = media.querySelector("source")?.src || media.src;
+                        const videoSrc =
+                            media.querySelector("source")?.src || media.src;
 
                         const video = document.createElement("video");
                         video.src = videoSrc;
@@ -528,6 +555,7 @@
 
                         const existingVideo = lightbox.querySelector("video");
                         if (existingVideo) {
+                            existingVideo.pause();
                             existingVideo.remove();
                         }
 
@@ -581,6 +609,100 @@
                 closeLightbox();
             }
         });
+
+        // ---------- IMAGE LOAD FIX ----------
+        images.forEach(media => {
+            media.setAttribute("draggable", "false");
+        });
+
+        // ---------- INITIALIZE ----------
+        document.addEventListener("DOMContentLoaded", () => {
+            window.scrollTo({ top: 0, behavior: "instant" });
+
+            const items = shuffle(Array.from(masonry.children));
+            items.forEach(item => masonry.appendChild(item));
+
+            setupOverlays();
+        });
+    </script>
+
+    <!-- LOADING DETECTION -->
+    <script>
+        (() => {
+            const loader = document.getElementById("page-loader");
+
+            const media = Array.from(
+                document.querySelectorAll("#masonry img, #masonry video")
+            );
+
+            let finished = false;
+
+            function hideLoader() {
+                if (finished) return;
+                finished = true;
+
+                loader.classList.add("is-hidden");
+
+                setTimeout(() => loader.remove(), 700);
+            }
+
+            function waitForMedia(element) {
+                return new Promise(resolve => {
+                    let settled = false;
+                    let timeout;
+
+                    function finish() {
+                        if (settled) return;
+                        settled = true;
+
+                        clearTimeout(timeout);
+                        element.removeEventListener("load", finish);
+                        element.removeEventListener("error", finish);
+                        element.removeEventListener("loadeddata", finish);
+                        element.removeEventListener("canplay", finish);
+
+                        resolve();
+                    }
+
+                    timeout = setTimeout(finish, 15000);
+
+                    if (element.tagName === "IMG") {
+                        if (element.complete) {
+                            finish();
+                        } else {
+                            element.addEventListener("load", finish, { once: true });
+                            element.addEventListener("error", finish, { once: true });
+                        }
+                    } else {
+                        if (element.readyState >= 2) {
+                            finish();
+                        } else {
+                            element.addEventListener("loadeddata", finish, { once: true });
+                            element.addEventListener("canplay", finish, { once: true });
+                            element.addEventListener("error", finish, { once: true });
+                        }
+
+                        element.load();
+                    }
+                });
+            }
+
+            const pageReady = document.readyState === "complete"
+                ? Promise.resolve()
+                : new Promise(resolve => {
+                    window.addEventListener("load", resolve, { once: true });
+                });
+
+            const safetyTimeout = setTimeout(hideLoader, 15000);
+
+            Promise.all([
+                pageReady,
+                ...media.map(waitForMedia)
+            ]).then(() => {
+                clearTimeout(safetyTimeout);
+                hideLoader();
+            });
+        })();
     </script>
 
 </body>

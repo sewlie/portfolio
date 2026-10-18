@@ -9,6 +9,81 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+/* ---------- TRANSPARENT LOADING SCREEN ---------- */
+#page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
+}
+
+#page-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.loader-logo {
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    color: #222;
+}
+
+.loader-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    border-top-color: #222;
+    border-radius: 50%;
+    animation: loader-spin 0.8s linear infinite;
+}
+
+.loader-text {
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: lowercase;
+    color: #555;
+}
+
+@keyframes loader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loader-spinner {
+        animation-duration: 2s;
+    }
+
+    #page-loader {
+        transition-duration: 0.1s;
+    }
+}
+
 .contact-preview {
     width: 300px;
     height: 150px;
