@@ -11,7 +11,7 @@
     <style>
         /* ---------- MASONRY GRID ---------- */
         .masonry {
-            padding: 40px;
+            padding: 40px 40px 0 40px;
             column-count: 4;
             column-gap: 20px;
         }
@@ -199,12 +199,31 @@
         </div>
 
         <div class="menu-center">
+            <!-- INSTAGRAM ICON -->
+            <a
+                class="social-link"
+                href="https://www.instagram.com/sew1ie/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Sewlie on Instagram"
+                title="Instagram"
+            >
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                    <rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.7" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+            </a>
+
+            <!-- CONTACT -->
             <a href="#" onclick="event.preventDefault(); showContactPreview()">contact</a>
         </div>
     </nav>
 
+
+
     <!-- MASONRY GRID -->
-    <section class="masonry" id="masonry" style="margin: 59px auto 15px auto;">
+    <section class="masonry" id="masonry" style="margin: 59px auto 0px auto;">
 
         <div class="masonry-item">
             <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="1">
@@ -221,10 +240,7 @@
             <div class="overlay"></div>
         </div>
 
-        <div class="masonry-item">
-            <img src="/assets/photos/1slice_strain_gretsky.jpg" alt="4">
-            <div class="overlay"></div>
-        </div>
+
 
         <div class="masonry-item">
             <img src="/assets/photos/major_jfk.jpg" alt="6">
@@ -303,11 +319,6 @@
 
         <div class="masonry-item">
             <img src="/assets/photos/fyre_purpleruntz_zoom1.jpeg" alt="21">
-            <div class="overlay"></div>
-        </div>
-
-        <div class="masonry-item">
-            <img src="/assets/photos/hudson_colas.jpg" alt="22">
             <div class="overlay"></div>
         </div>
 
@@ -499,11 +510,30 @@
 
     </section>
 
+            <div class="featured-image">
+            <img src="/assets/photos/hudson_colas.jpg" alt="Hudson Colas">
+        <div class="overlay"></div>
+        </div>
+
     <!-- LIGHTBOX -->
     <div id="lightbox">
         <span class="close">&times;</span>
         <img src="" alt="">
     </div>
+
+<footer class="trusted-footer">
+    <p class="trusted-heading">TRUSTED BY</p>
+
+    <div class="trusted-clients">
+        <img src="assets/jaunty-logo.png" alt="Jaunty">
+        <img src="assets/hurley-logo.png" alt="Hurley">
+        <img src="assets/fyre-logo.png" alt="Fyre">
+        <img src="assets/north-fork.png" alt="North Fork">
+        <img src="assets/nyce-logo.png" alt="NYCE">
+        <img src="assets/higher-empire.png" alt="Higher Empire">
+        <img src="assets/diva-dabs.png" alt="Diva Dabs">
+    </div>
+</footer>
 
     <!-- MAIN SCRIPT -->
     <script>
