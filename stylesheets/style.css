@@ -11,6 +11,7 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+
 /* ---------- TRANSPARENT LOADING SCREEN ---------- */
 #page-loader {
     position: fixed;
