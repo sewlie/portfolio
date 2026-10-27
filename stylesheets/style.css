@@ -1,9 +1,9 @@
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #000000;
-    
 }
 
 body::-webkit-scrollbar {
@@ -15,7 +15,6 @@ body::-webkit-scrollbar {
     position: fixed;
     inset: 0;
     z-index: 9999;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,9 +25,7 @@ body::-webkit-scrollbar {
 
     opacity: 1;
     visibility: visible;
-    transition:
-        opacity 0.6s ease,
-        visibility 0.6s ease;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 #page-loader.is-hidden {
@@ -85,6 +82,7 @@ body::-webkit-scrollbar {
     }
 }
 
+/* ---------- CONTACT PREVIEW ---------- */
 .contact-preview {
     width: 300px;
     height: 150px;
@@ -155,10 +153,9 @@ body::-webkit-scrollbar {
     width: 75%;
 }
 
-
 /* ---------- TRUSTED BY FOOTER ---------- */
 .trusted-footer {
-    padding: 20px 40px 50px;
+    padding: 10px 40px 20px;
     margin-top: 0;
     text-align: center;
 }
@@ -176,7 +173,7 @@ body::-webkit-scrollbar {
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 30px 0px;
+    gap: 30px 0;
 }
 
 .trusted-clients img {
@@ -208,11 +205,13 @@ body::-webkit-scrollbar {
     }
 }
 
-/* ---------- FULL-WIDTH FEATURE IMAGE ---------- */
+/* ---------- FULL-WIDTH FEATURED IMAGE ---------- */
 .featured-image {
     position: relative;
     width: 100%;
-    margin: 0px 0 10px;
+    margin: 80px 0 10px;
+    overflow: hidden;
+    isolation: isolate;
 }
 
 .featured-image img {
@@ -221,21 +220,59 @@ body::-webkit-scrollbar {
     height: auto;
 }
 
+/* ---------- FEATURED IMAGE TITLE ---------- */
+.featured-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+
+    width: 94%;
+    margin: 0;
+
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(36px, 5vw, 86px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
+    text-align: center;
+
+    color: #ffffff;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+
+    pointer-events: none;
+}
+
+/* ---------- MOBILE TITLE ---------- */
+@media (max-width: 600px) {
+    .featured-title {
+        width: 94%;
+        font-size: clamp(30px, 7vw, 44px);
+        letter-spacing: 0;
+        line-height: 1.2;
+    }
+}
+
+/* ---------- FEATURED IMAGE OVERLAY ---------- */
 .featured-image .overlay {
     position: absolute;
     inset: 0;
+    z-index: 2;
     cursor: pointer;
+
+    /* Subtle darkening helps the white title stand out. */
+    background: rgba(0, 0, 0, 0.10);
 }
 
-
+/* ---------- DESKTOP GRID ---------- */
 @media (min-width: 1024px) {
-
     .grid-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 1.5vw;
         padding: 10px;
-        margin: 75px auto 15px auto;
+        margin: 75px auto 15px;
         width: 96%;
     }
 
@@ -245,7 +282,7 @@ body::-webkit-scrollbar {
         justify-content: center;
         width: 60%;
         flex-wrap: wrap;
-        margin: 40px 0 0 0;
+        margin: 40px 0 0;
         align-items: center;
     }
 
@@ -296,18 +333,14 @@ body::-webkit-scrollbar {
     }
 }
 
-/* ===========================
-   TABLET + MOBILE
-   =========================== */
-
+/* ---------- TABLET + MOBILE ---------- */
 @media (max-width: 1023px) {
-
     .grid-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
         gap: 2vw;
         padding: 10px;
-        margin: 69px auto 15px auto;
+        margin: 69px auto 15px;
         width: 96%;
     }
 
@@ -336,6 +369,12 @@ body::-webkit-scrollbar {
     .overlay,
     .year-label {
         display: none;
+    }
+
+    /* Keep the featured image overlay visible on mobile
+       so the title remains readable. */
+    .featured-image .overlay {
+        display: block;
     }
 
     .info-icon {
@@ -374,6 +413,13 @@ body::-webkit-scrollbar {
 @media (max-width: 600px) {
     .grid-container {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .featured-title {
+        width: 92%;
+        font-size: clamp(28px, 7vw, 42px);
+        letter-spacing: -0.8px;
+        line-height: 1.2;
     }
 
     .info-overlay p {
