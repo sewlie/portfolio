@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +10,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
 
     <style>
         /* ---------- MASONRY GRID ---------- */
         .masonry {
-            padding: 40px 40px 0;
+            padding: 40px 40px 0 40px;
             column-count: 4;
             column-gap: 40px;
         }
@@ -38,13 +37,18 @@
             -webkit-user-drag: none;
         }
 
+        /* ---------- OVERLAY ---------- */
         .masonry-item .overlay {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             cursor: pointer;
             pointer-events: all;
         }
 
+        /* ---------- RESPONSIVE GRID ---------- */
         @media (max-width: 1200px) {
             .masonry {
                 column-count: 4;
@@ -64,7 +68,7 @@
             }
         }
 
-        /* ---------- LOADING SCREEN ---------- */
+        /* ---------- TRANSPARENT LOADING SCREEN ---------- */
         #page-loader {
             position: fixed;
             inset: 0;
@@ -80,6 +84,32 @@
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
 
+        /* Random-photo slideshow behind the loading overlay */
+        #loader-slideshow {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .loader-photo {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            transition: opacity 0.12s linear;
+        }
+
+        .loader-photo.active {
+            opacity: 0.38;
+        }
+
         #page-loader.is-hidden {
             opacity: 0;
             visibility: hidden;
@@ -87,6 +117,8 @@
         }
 
         .loader-content {
+            position: relative;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -132,12 +164,17 @@
             #page-loader {
                 transition-duration: 0.1s;
             }
+
+            .loader-photo {
+                transition-duration: 0.3s;
+            }
         }
 
         /* ---------- LIGHTBOX ---------- */
         #lightbox {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
             width: 100vw;
             height: 100vh;
             background: rgba(0, 0, 0, 0.9);
@@ -174,7 +211,7 @@
             font-family: sans-serif;
         }
 
-        /* ---------- STATIC FEATURED HERO IMAGE ---------- */
+        /* ---------- STATIC HERO IMAGE + ARIZONIA TITLE ---------- */
         .featured-image {
             position: relative;
             width: 100%;
@@ -216,6 +253,14 @@
             object-position: center;
         }
 
+        .featured-image > .overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.10);
+            pointer-events: none;
+        }
+
         .featured-title {
             position: absolute;
             top: 50%;
@@ -225,21 +270,13 @@
             width: 90%;
             margin: 0;
             text-align: center;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(30px, 5vw, 68px);
+            font-family: 'Arizonia', cursive;
+            font-size: clamp(48px, 8vw, 110px);
             font-weight: 400;
-            line-height: 1.15;
-            letter-spacing: -1.5px;
+            line-height: 1.1;
+            letter-spacing: 0;
             color: #ffffff;
             text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
-            pointer-events: none;
-        }
-
-        .featured-image > .overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            background: rgba(0, 0, 0, 0.10);
             pointer-events: none;
         }
 
@@ -253,9 +290,8 @@
         @media (max-width: 600px) {
             .featured-title {
                 width: 92%;
-                font-size: clamp(28px, 7vw, 42px);
-                letter-spacing: -0.8px;
-                line-height: 1.2;
+                font-size: clamp(42px, 12vw, 68px);
+                line-height: 1.1;
             }
         }
     </style>
@@ -263,8 +299,13 @@
 
 <body>
 
-    <!-- TRANSPARENT LOADING SCREEN -->
+    <!-- TRANSPARENT LOADING SCREEN WITH RANDOM PHOTO SLIDESHOW -->
     <div id="page-loader" role="status" aria-label="Loading portfolio">
+        <div id="loader-slideshow" aria-hidden="true">
+            <img id="loader-photo-a" class="loader-photo active" src="" alt="">
+            <img id="loader-photo-b" class="loader-photo" src="" alt="">
+        </div>
+
         <div class="loader-content">
             <div class="loader-spinner"></div>
             <span class="loader-text" style="text-transform: capitalize; font-family: inherit;">LOADING</span>
@@ -278,6 +319,7 @@
         </div>
 
         <div class="menu-center">
+            <!-- INSTAGRAM -->
             <a
                 class="social-link"
                 href="https://www.instagram.com/sew1ie/"
@@ -293,6 +335,7 @@
                 </svg>
             </a>
 
+            <!-- CONTACT -->
             <a href="#" onclick="event.preventDefault(); showContactPreview()">contact</a>
         </div>
     </nav>
@@ -301,10 +344,7 @@
     <div class="featured-image">
         <div class="featured-track">
             <div class="featured-slide">
-                <img
-                    src="/assets/photos/hudson_colas.jpg"
-                    alt="Hudson Colas"
-                >
+                <img src="/assets/photos/hudson_colas.jpg" alt="Hudson Colas">
             </div>
         </div>
 
@@ -328,7 +368,7 @@
     </div>
 
     <!-- MASONRY GALLERY -->
-    <section class="masonry" id="masonry" style="margin: 59px auto 0;">
+    <section class="masonry" id="masonry" style="margin: 59px auto 0px auto;">
 
         <div class="masonry-item">
             <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="Fyre Purple Haze">
@@ -341,7 +381,7 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fugg_ras_can.png" alt="Fugg Ras packaging">
+            <img src="/assets/photos/fugg_ras_can.png" alt="Fugg Ras Can">
             <div class="overlay"></div>
         </div>
 
@@ -361,37 +401,37 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/northfork_rambutan_jar.jpg" alt="North Fork Rambutan jar">
+            <img src="/assets/photos/northfork_rambutan_jar.jpg" alt="North Fork Rambutan Jar">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/rosin_joint.jpg" alt="Rosin joint">
+            <img src="/assets/photos/rosin_joint.jpg" alt="Rosin Joint">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/aplineagron_lituya.jpg" alt="Alpine Agron Lituya">
+            <img src="/assets/photos/aplineagron_lituya.jpg" alt="Aplineagron Lituya">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_nug.jpg" alt="Galaxy Applecup nug">
+            <img src="/assets/photos/galaxy_applecup_nug.jpg" alt="Galaxy Applecup Nug">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_zoom1.jpg" alt="Galaxy Applecup macro">
+            <img src="/assets/photos/galaxy_applecup_zoom1.jpg" alt="Galaxy Applecup Macro">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Diva Dabs Comp.jpg" alt="Diva Dabs product">
+            <img src="/assets/photos/Diva Dabs Comp.jpg" alt="Diva Dabs">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_zoom3.jpg" alt="Galaxy Applecup macro detail">
+            <img src="/assets/photos/galaxy_applecup_zoom3.jpg" alt="Galaxy Applecup Detail">
             <div class="overlay"></div>
         </div>
 
@@ -401,27 +441,27 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_joker_zoom1.jpg" alt="Fyre Joker macro">
+            <img src="/assets/photos/fyre_joker_zoom1.jpg" alt="Fyre Joker Macro 1">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_joker_zoom2.jpg" alt="Fyre Joker macro detail">
+            <img src="/assets/photos/fyre_joker_zoom2.jpg" alt="Fyre Joker Macro 2">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purplehaze_cola.jpg" alt="Fyre Purple Haze cola">
+            <img src="/assets/photos/fyre_purplehaze_cola.jpg" alt="Fyre Purple Haze Cola">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purpleruntx_zoom2.jpg" alt="Fyre Purple Runtz macro">
+            <img src="/assets/photos/fyre_purpleruntx_zoom2.jpg" alt="Fyre Purple Runtz Macro">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purpleruntz_zoom1.jpeg" alt="Fyre Purple Runtz detail">
+            <img src="/assets/photos/fyre_purpleruntz_zoom1.jpeg" alt="Fyre Purple Runtz Detail">
             <div class="overlay"></div>
         </div>
 
@@ -446,32 +486,32 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/blue cruffin nug.jpg" alt="Blue Cruffin nug">
+            <img src="/assets/photos/blue cruffin nug.jpg" alt="Blue Cruffin Nug">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/blue cruffin zoom.jpg" alt="Blue Cruffin macro">
+            <img src="/assets/photos/blue cruffin zoom.jpg" alt="Blue Cruffin Macro">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/C12 - Higher Empire.jpg" alt="C12 by Higher Empire">
+            <img src="/assets/photos/C12 - Higher Empire.jpg" alt="C12 - Higher Empire">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Gas Face - Higher Empire.jpg" alt="Gas Face by Higher Empire">
+            <img src="/assets/photos/Gas Face - Higher Empire.jpg" alt="Gas Face - Higher Empire">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/ZZ Lemons - Higher Empire.jpg" alt="ZZ Lemons by Higher Empire">
+            <img src="/assets/photos/ZZ Lemons - Higher Empire.jpg" alt="ZZ Lemons - Higher Empire">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Comet Candy - Higher Empire.jpg" alt="Comet Candy by Higher Empire">
+            <img src="/assets/photos/Comet Candy - Higher Empire.jpg" alt="Comet Candy - Higher Empire">
             <div class="overlay"></div>
         </div>
 
@@ -517,7 +557,7 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Hurley Joint + Nug photo.jpg" alt="Hurley joint and nug">
+            <img src="/assets/photos/Hurley Joint + Nug photo.jpg" alt="Hurley Joint and Nug">
             <div class="overlay"></div>
         </div>
 
@@ -532,12 +572,12 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Aloha Sugar Zoom 2 3x4.jpg" alt="Aloha Sugar macro">
+            <img src="/assets/photos/Aloha Sugar Zoom 2 3x4.jpg" alt="Aloha Sugar Zoom 2">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Mentation GMO Nug 3x4.jpg" alt="Mentation GMO nug">
+            <img src="/assets/photos/Mentation GMO Nug 3x4.jpg" alt="Mentation GMO Nug">
             <div class="overlay"></div>
         </div>
 
@@ -547,47 +587,47 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Aloha Sugar Zoom 1 FullRes.jpg" alt="Aloha Sugar macro detail">
+            <img src="/assets/photos/Aloha Sugar Zoom 1 FullRes.jpg" alt="Aloha Sugar Zoom 1">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Dime Piece Glob 3x4.jpg" alt="Dime Piece glob">
+            <img src="/assets/photos/Dime Piece Glob 3x4.jpg" alt="Dime Piece Glob">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/E85 Rosin Jar 3x4.jpg" alt="E85 rosin jar">
+            <img src="/assets/photos/E85 Rosin Jar 3x4.jpg" alt="E85 Rosin Jar">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Dime Piece Rosin Jar 3x4.jpg" alt="Dime Piece rosin jar">
+            <img src="/assets/photos/Dime Piece Rosin Jar 3x4.jpg" alt="Dime Piece Rosin Jar">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Ice Cream Souffle Rosin Jar 3x4.jpg" alt="Ice Cream Souffle rosin jar">
+            <img src="/assets/photos/Ice Cream Souffle Rosin Jar 3x4.jpg" alt="Ice Cream Souffle Rosin Jar">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/E85 Glob 3x4.jpg" alt="E85 glob">
+            <img src="/assets/photos/E85 Glob 3x4.jpg" alt="E85 Glob">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Ice Cream Souffle Glob 3x4.jpg" alt="Ice Cream Souffle glob">
+            <img src="/assets/photos/Ice Cream Souffle Glob 3x4.jpg" alt="Ice Cream Souffle Glob">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/FOB Cola Closer Top  9x16.jpg" alt="FOB cola close-up">
+            <img src="/assets/photos/FOB Cola Closer Top  9x16.jpg" alt="FOB Cola Closer Top">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/FYRE GELONATTI NUG RETOUCHED.jpg" alt="Fyre Gelonatti nug">
+            <img src="/assets/photos/FYRE GELONATTI NUG RETOUCHED.jpg" alt="Fyre Gelonatti Nug">
             <div class="overlay"></div>
         </div>
 
@@ -630,6 +670,7 @@
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
+
             return array;
         }
 
@@ -663,6 +704,7 @@
                         lightboxImg.style.display = "none";
 
                         const existingVideo = lightbox.querySelector("video");
+
                         if (existingVideo) {
                             existingVideo.pause();
                             existingVideo.remove();
@@ -670,9 +712,11 @@
 
                         lightbox.appendChild(video);
                         lightbox.style.display = "flex";
+
                         video.play().catch(() => {});
                     } else {
                         const existingVideo = lightbox.querySelector("video");
+
                         if (existingVideo) {
                             existingVideo.pause();
                             existingVideo.remove();
@@ -685,8 +729,8 @@
                     }
                 });
 
-                overlay.addEventListener("contextmenu", e => {
-                    e.preventDefault();
+                overlay.addEventListener("contextmenu", event => {
+                    event.preventDefault();
                     alert("Right-click is disabled on these images");
                 });
             });
@@ -696,6 +740,7 @@
             lightbox.style.display = "none";
 
             const video = lightbox.querySelector("video");
+
             if (video) {
                 video.pause();
                 video.remove();
@@ -707,19 +752,19 @@
 
         closeBtn.addEventListener("click", closeLightbox);
 
-        lightbox.addEventListener("click", e => {
-            if (e.target === lightbox) {
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) {
                 closeLightbox();
             }
         });
 
-        document.addEventListener("keydown", e => {
-            if (e.key === "Escape") {
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
                 closeLightbox();
             }
         });
 
-        // ---------- DISABLE DRAGGING ----------
+        // ---------- PREVENT DRAGGING ----------
         images.forEach(media => {
             media.setAttribute("draggable", "false");
         });
@@ -729,17 +774,102 @@
             window.scrollTo({ top: 0, behavior: "instant" });
 
             const items = shuffle(Array.from(masonry.children));
+
             items.forEach(item => masonry.appendChild(item));
 
             setupOverlays();
         });
     </script>
 
-    <!-- LOADING DETECTION -->
+    <!-- LOADING DETECTION + RANDOM PHOTO SLIDESHOW -->
     <script>
         (() => {
             const loader = document.getElementById("page-loader");
 
+            // ---------- RANDOM PHOTO SLIDESHOW ----------
+            const photoA = document.getElementById("loader-photo-a");
+            const photoB = document.getElementById("loader-photo-b");
+
+            const galleryPhotos = Array.from(
+                document.querySelectorAll("#masonry img")
+            )
+                .map(img => img.getAttribute("src"))
+                .filter(Boolean);
+
+            const uniquePhotos = [...new Set(galleryPhotos)];
+
+            let currentPhoto = -1;
+            let activePhoto = photoA;
+            let inactivePhoto = photoB;
+            let slideshowInterval = null;
+
+            function getRandomPhoto() {
+                if (uniquePhotos.length === 0) {
+                    return null;
+                }
+
+                if (uniquePhotos.length === 1) {
+                    return uniquePhotos[0];
+                }
+
+                let nextPhoto;
+
+                do {
+                    nextPhoto = Math.floor(
+                        Math.random() * uniquePhotos.length
+                    );
+                } while (nextPhoto === currentPhoto);
+
+                currentPhoto = nextPhoto;
+
+                return uniquePhotos[currentPhoto];
+            }
+
+            function showNextLoaderPhoto() {
+                const nextSrc = getRandomPhoto();
+
+                if (!nextSrc || !inactivePhoto) {
+                    return;
+                }
+
+                inactivePhoto.onload = () => {
+                    inactivePhoto.classList.add("active");
+                    activePhoto.classList.remove("active");
+
+                    const previousPhoto = activePhoto;
+
+                    activePhoto = inactivePhoto;
+                    inactivePhoto = previousPhoto;
+
+                    inactivePhoto.onload = null;
+                    inactivePhoto.onerror = null;
+                };
+
+                inactivePhoto.onerror = () => {
+                    inactivePhoto.onload = null;
+                    inactivePhoto.onerror = null;
+                };
+
+                inactivePhoto.src = nextSrc;
+            }
+
+            // Show the first random photo immediately.
+            if (uniquePhotos.length > 0) {
+                currentPhoto = Math.floor(
+                    Math.random() * uniquePhotos.length
+                );
+
+                photoA.src = uniquePhotos[currentPhoto];
+                photoA.classList.add("active");
+
+                // Change to a different random photo every 180 milliseconds.
+                slideshowInterval = setInterval(
+                    showNextLoaderPhoto,
+                    180
+                );
+            }
+
+            // ---------- WAIT FOR PAGE MEDIA ----------
             const media = Array.from(
                 document.querySelectorAll("#masonry img, #masonry video")
             );
@@ -747,12 +877,19 @@
             let finished = false;
 
             function hideLoader() {
-                if (finished) return;
+                if (finished) {
+                    return;
+                }
+
                 finished = true;
+
+                clearInterval(slideshowInterval);
 
                 loader.classList.add("is-hidden");
 
-                setTimeout(() => loader.remove(), 700);
+                setTimeout(() => {
+                    loader.remove();
+                }, 700);
             }
 
             function waitForMedia(element) {
@@ -761,10 +898,14 @@
                     let timeout;
 
                     function finish() {
-                        if (settled) return;
+                        if (settled) {
+                            return;
+                        }
+
                         settled = true;
 
                         clearTimeout(timeout);
+
                         element.removeEventListener("load", finish);
                         element.removeEventListener("error", finish);
                         element.removeEventListener("loadeddata", finish);
@@ -773,22 +914,46 @@
                         resolve();
                     }
 
+                    // Don't let a missing file keep the loader on forever.
                     timeout = setTimeout(finish, 15000);
 
                     if (element.tagName === "IMG") {
                         if (element.complete) {
                             finish();
                         } else {
-                            element.addEventListener("load", finish, { once: true });
-                            element.addEventListener("error", finish, { once: true });
+                            element.addEventListener(
+                                "load",
+                                finish,
+                                { once: true }
+                            );
+
+                            element.addEventListener(
+                                "error",
+                                finish,
+                                { once: true }
+                            );
                         }
                     } else {
                         if (element.readyState >= 2) {
                             finish();
                         } else {
-                            element.addEventListener("loadeddata", finish, { once: true });
-                            element.addEventListener("canplay", finish, { once: true });
-                            element.addEventListener("error", finish, { once: true });
+                            element.addEventListener(
+                                "loadeddata",
+                                finish,
+                                { once: true }
+                            );
+
+                            element.addEventListener(
+                                "canplay",
+                                finish,
+                                { once: true }
+                            );
+
+                            element.addEventListener(
+                                "error",
+                                finish,
+                                { once: true }
+                            );
                         }
 
                         element.load();
@@ -799,9 +964,14 @@
             const pageReady = document.readyState === "complete"
                 ? Promise.resolve()
                 : new Promise(resolve => {
-                    window.addEventListener("load", resolve, { once: true });
+                    window.addEventListener(
+                        "load",
+                        resolve,
+                        { once: true }
+                    );
                 });
 
+            // Safety fallback if something takes too long to load.
             const safetyTimeout = setTimeout(hideLoader, 15000);
 
             Promise.all([
