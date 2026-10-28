@@ -48,7 +48,7 @@
             pointer-events: all;
         }
 
-        /* ---------- RESPONSIVE GRID ---------- */
+        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 1200px) {
             .masonry {
                 column-count: 4;
@@ -76,38 +76,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
             background: rgba(255, 255, 255, 0.47);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
+
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-
-        /* Random-photo slideshow behind the loading overlay */
-        #loader-slideshow {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .loader-photo {
-            position: absolute;
-            inset: 0;
-            display: block;
-            width: 100%;
-            height: 100%;
-            max-width: none;
-            object-fit: cover;
-            object-position: center;
-            opacity: 0;
-            transition: opacity 0.12s linear;
-        }
-
-        .loader-photo.active {
-            opacity: 0.38;
+            transition:
+                opacity 0.6s ease,
+                visibility 0.6s ease;
         }
 
         #page-loader.is-hidden {
@@ -164,10 +142,6 @@
             #page-loader {
                 transition-duration: 0.1s;
             }
-
-            .loader-photo {
-                transition-duration: 0.3s;
-            }
         }
 
         /* ---------- LIGHTBOX ---------- */
@@ -211,7 +185,7 @@
             font-family: sans-serif;
         }
 
-        /* ---------- STATIC HERO IMAGE + ARIZONIA TITLE ---------- */
+        /* ---------- STATIC FEATURED IMAGE + ARIZONIA TITLE ---------- */
         .featured-image {
             position: relative;
             width: 100%;
@@ -299,27 +273,22 @@
 
 <body>
 
-    <!-- TRANSPARENT LOADING SCREEN WITH RANDOM PHOTO SLIDESHOW -->
+    <!-- TRANSPARENT LOADING SCREEN -->
     <div id="page-loader" role="status" aria-label="Loading portfolio">
-        <div id="loader-slideshow" aria-hidden="true">
-            <img id="loader-photo-a" class="loader-photo active" src="" alt="">
-            <img id="loader-photo-b" class="loader-photo" src="" alt="">
-        </div>
-
         <div class="loader-content">
             <div class="loader-spinner"></div>
             <span class="loader-text" style="text-transform: capitalize; font-family: inherit;">LOADING</span>
         </div>
     </div>
 
-    <!-- NAVIGATION -->
+    <!-- NAV -->
     <nav class="menu">
         <div class="menu-left">
             <a href="/">sewlie</a>
         </div>
 
         <div class="menu-center">
-            <!-- INSTAGRAM -->
+            <!-- INSTAGRAM ICON -->
             <a
                 class="social-link"
                 href="https://www.instagram.com/sew1ie/"
@@ -340,7 +309,7 @@
         </div>
     </nav>
 
-    <!-- STATIC HERO IMAGE -->
+    <!-- STATIC FEATURED HERO IMAGE -->
     <div class="featured-image">
         <div class="featured-track">
             <div class="featured-slide">
@@ -367,156 +336,156 @@
         </div>
     </div>
 
-    <!-- MASONRY GALLERY -->
+    <!-- MASONRY GRID -->
     <section class="masonry" id="masonry" style="margin: 59px auto 0px auto;">
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="Fyre Purple Haze">
+            <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="1">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_gchem.jpg" alt="Fyre G Chem">
+            <img src="/assets/photos/fyre_gchem.jpg" alt="2">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fugg_ras_can.png" alt="Fugg Ras Can">
+            <img src="/assets/photos/fugg_ras_can.png" alt="3">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/major_jfk.jpg" alt="Major JFK">
+            <img src="/assets/photos/major_jfk.jpg" alt="6">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/northfork_rambutan.jpg" alt="North Fork Rambutan">
+            <img src="/assets/photos/northfork_rambutan.jpg" alt="7">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/milkweed_pink_melonz.png" alt="Milkweed Pink Melonz">
+            <img src="/assets/photos/milkweed_pink_melonz.png" alt="8">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/northfork_rambutan_jar.jpg" alt="North Fork Rambutan Jar">
+            <img src="/assets/photos/northfork_rambutan_jar.jpg" alt="9">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/rosin_joint.jpg" alt="Rosin Joint">
+            <img src="/assets/photos/rosin_joint.jpg" alt="10">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/aplineagron_lituya.jpg" alt="Aplineagron Lituya">
+            <img src="/assets/photos/aplineagron_lituya.jpg" alt="11">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_nug.jpg" alt="Galaxy Applecup Nug">
+            <img src="/assets/photos/galaxy_applecup_nug.jpg" alt="12">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_zoom1.jpg" alt="Galaxy Applecup Macro">
+            <img src="/assets/photos/galaxy_applecup_zoom1.jpg" alt="13">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Diva Dabs Comp.jpg" alt="Diva Dabs">
+            <img src="/assets/photos/Diva Dabs Comp.jpg" alt="14">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_zoom3.jpg" alt="Galaxy Applecup Detail">
+            <img src="/assets/photos/galaxy_applecup_zoom3.jpg" alt="15">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/milkweek_blueberryfrost.jpg" alt="Milkweed Blueberry Frost">
+            <img src="/assets/photos/milkweek_blueberryfrost.jpg" alt="16">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_joker_zoom1.jpg" alt="Fyre Joker Macro 1">
+            <img src="/assets/photos/fyre_joker_zoom1.jpg" alt="17">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_joker_zoom2.jpg" alt="Fyre Joker Macro 2">
+            <img src="/assets/photos/fyre_joker_zoom2.jpg" alt="18">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purplehaze_cola.jpg" alt="Fyre Purple Haze Cola">
+            <img src="/assets/photos/fyre_purplehaze_cola.jpg" alt="19">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purpleruntx_zoom2.jpg" alt="Fyre Purple Runtz Macro">
+            <img src="/assets/photos/fyre_purpleruntx_zoom2.jpg" alt="20">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purpleruntz_zoom1.jpeg" alt="Fyre Purple Runtz Detail">
+            <img src="/assets/photos/fyre_purpleruntz_zoom1.jpeg" alt="21">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/northfork_strawberrypush.jpg" alt="North Fork Strawberry Push">
+            <img src="/assets/photos/northfork_strawberrypush.jpg" alt="23">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Superboof Retouched.jpg" alt="Superboof">
+            <img src="/assets/photos/Superboof Retouched.jpg" alt="25">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Sour Diesel Retouched.jpg" alt="Sour Diesel">
+            <img src="/assets/photos/Sour Diesel Retouched.jpg" alt="26">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Black Ice Retouched.jpg" alt="Black Ice">
+            <img src="/assets/photos/Black Ice Retouched.jpg" alt="27">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/blue cruffin nug.jpg" alt="Blue Cruffin Nug">
+            <img src="/assets/photos/blue cruffin nug.jpg" alt="28">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/blue cruffin zoom.jpg" alt="Blue Cruffin Macro">
+            <img src="/assets/photos/blue cruffin zoom.jpg" alt="29">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/C12 - Higher Empire.jpg" alt="C12 - Higher Empire">
+            <img src="/assets/photos/C12 - Higher Empire.jpg" alt="30">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Gas Face - Higher Empire.jpg" alt="Gas Face - Higher Empire">
+            <img src="/assets/photos/Gas Face - Higher Empire.jpg" alt="31">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/ZZ Lemons - Higher Empire.jpg" alt="ZZ Lemons - Higher Empire">
+            <img src="/assets/photos/ZZ Lemons - Higher Empire.jpg" alt="32">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Comet Candy - Higher Empire.jpg" alt="Comet Candy - Higher Empire">
+            <img src="/assets/photos/Comet Candy - Higher Empire.jpg" alt="33">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Sour Dawg ZS DMap.jpg" alt="Sour Dawg">
+            <img src="/assets/photos/Sour Dawg ZS DMap.jpg" alt="34">
             <div class="overlay"></div>
         </div>
 
@@ -528,7 +497,7 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/African haze.jpg" alt="African Haze">
+            <img src="/assets/photos/African haze.jpg" alt="35">
             <div class="overlay"></div>
         </div>
 
@@ -562,12 +531,12 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Aloha Sugar Cola Full 9x16.jpg" alt="Aloha Sugar Cola">
+            <img src="/assets/photos/Aloha Sugar Cola Full 9x16.jpg" alt="Aloha Sugar Cola Full">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/HG Lemon Cherry Sherbet 9x16.jpg" alt="Lemon Cherry Sherbet">
+            <img src="/assets/photos/HG Lemon Cherry Sherbet 9x16.jpg" alt="HG Lemon Cherry Sherbet">
             <div class="overlay"></div>
         </div>
 
@@ -627,7 +596,7 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/FYRE GELONATTI NUG RETOUCHED.jpg" alt="Fyre Gelonatti Nug">
+            <img src="/assets/photos/FYRE GELONATTI NUG RETOUCHED.jpg" alt="Fyre Gelonatti Nug Retouched">
             <div class="overlay"></div>
         </div>
 
@@ -637,7 +606,7 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/NYCE HEART (JPG).jpg" alt="NYCE Heart">
+            <img src="/assets/photos/NYCE HEART (JPG).jpg" alt="Nyce Heart">
             <div class="overlay"></div>
         </div>
 
@@ -670,7 +639,6 @@
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
-
             return array;
         }
 
@@ -704,7 +672,6 @@
                         lightboxImg.style.display = "none";
 
                         const existingVideo = lightbox.querySelector("video");
-
                         if (existingVideo) {
                             existingVideo.pause();
                             existingVideo.remove();
@@ -712,11 +679,9 @@
 
                         lightbox.appendChild(video);
                         lightbox.style.display = "flex";
-
                         video.play().catch(() => {});
                     } else {
                         const existingVideo = lightbox.querySelector("video");
-
                         if (existingVideo) {
                             existingVideo.pause();
                             existingVideo.remove();
@@ -729,8 +694,8 @@
                     }
                 });
 
-                overlay.addEventListener("contextmenu", event => {
-                    event.preventDefault();
+                overlay.addEventListener("contextmenu", e => {
+                    e.preventDefault();
                     alert("Right-click is disabled on these images");
                 });
             });
@@ -740,7 +705,6 @@
             lightbox.style.display = "none";
 
             const video = lightbox.querySelector("video");
-
             if (video) {
                 video.pause();
                 video.remove();
@@ -752,19 +716,19 @@
 
         closeBtn.addEventListener("click", closeLightbox);
 
-        lightbox.addEventListener("click", event => {
-            if (event.target === lightbox) {
+        lightbox.addEventListener("click", e => {
+            if (e.target === lightbox) {
                 closeLightbox();
             }
         });
 
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape") {
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") {
                 closeLightbox();
             }
         });
 
-        // ---------- PREVENT DRAGGING ----------
+        // ---------- IMAGE LOAD FIX ----------
         images.forEach(media => {
             media.setAttribute("draggable", "false");
         });
@@ -774,102 +738,17 @@
             window.scrollTo({ top: 0, behavior: "instant" });
 
             const items = shuffle(Array.from(masonry.children));
-
             items.forEach(item => masonry.appendChild(item));
 
             setupOverlays();
         });
     </script>
 
-    <!-- LOADING DETECTION + RANDOM PHOTO SLIDESHOW -->
+    <!-- LOADING DETECTION -->
     <script>
         (() => {
             const loader = document.getElementById("page-loader");
 
-            // ---------- RANDOM PHOTO SLIDESHOW ----------
-            const photoA = document.getElementById("loader-photo-a");
-            const photoB = document.getElementById("loader-photo-b");
-
-            const galleryPhotos = Array.from(
-                document.querySelectorAll("#masonry img")
-            )
-                .map(img => img.getAttribute("src"))
-                .filter(Boolean);
-
-            const uniquePhotos = [...new Set(galleryPhotos)];
-
-            let currentPhoto = -1;
-            let activePhoto = photoA;
-            let inactivePhoto = photoB;
-            let slideshowInterval = null;
-
-            function getRandomPhoto() {
-                if (uniquePhotos.length === 0) {
-                    return null;
-                }
-
-                if (uniquePhotos.length === 1) {
-                    return uniquePhotos[0];
-                }
-
-                let nextPhoto;
-
-                do {
-                    nextPhoto = Math.floor(
-                        Math.random() * uniquePhotos.length
-                    );
-                } while (nextPhoto === currentPhoto);
-
-                currentPhoto = nextPhoto;
-
-                return uniquePhotos[currentPhoto];
-            }
-
-            function showNextLoaderPhoto() {
-                const nextSrc = getRandomPhoto();
-
-                if (!nextSrc || !inactivePhoto) {
-                    return;
-                }
-
-                inactivePhoto.onload = () => {
-                    inactivePhoto.classList.add("active");
-                    activePhoto.classList.remove("active");
-
-                    const previousPhoto = activePhoto;
-
-                    activePhoto = inactivePhoto;
-                    inactivePhoto = previousPhoto;
-
-                    inactivePhoto.onload = null;
-                    inactivePhoto.onerror = null;
-                };
-
-                inactivePhoto.onerror = () => {
-                    inactivePhoto.onload = null;
-                    inactivePhoto.onerror = null;
-                };
-
-                inactivePhoto.src = nextSrc;
-            }
-
-            // Show the first random photo immediately.
-            if (uniquePhotos.length > 0) {
-                currentPhoto = Math.floor(
-                    Math.random() * uniquePhotos.length
-                );
-
-                photoA.src = uniquePhotos[currentPhoto];
-                photoA.classList.add("active");
-
-                // Change to a different random photo every 180 milliseconds.
-                slideshowInterval = setInterval(
-                    showNextLoaderPhoto,
-                    180
-                );
-            }
-
-            // ---------- WAIT FOR PAGE MEDIA ----------
             const media = Array.from(
                 document.querySelectorAll("#masonry img, #masonry video")
             );
@@ -877,19 +756,12 @@
             let finished = false;
 
             function hideLoader() {
-                if (finished) {
-                    return;
-                }
-
+                if (finished) return;
                 finished = true;
-
-                clearInterval(slideshowInterval);
 
                 loader.classList.add("is-hidden");
 
-                setTimeout(() => {
-                    loader.remove();
-                }, 700);
+                setTimeout(() => loader.remove(), 700);
             }
 
             function waitForMedia(element) {
@@ -898,14 +770,10 @@
                     let timeout;
 
                     function finish() {
-                        if (settled) {
-                            return;
-                        }
-
+                        if (settled) return;
                         settled = true;
 
                         clearTimeout(timeout);
-
                         element.removeEventListener("load", finish);
                         element.removeEventListener("error", finish);
                         element.removeEventListener("loadeddata", finish);
@@ -914,46 +782,22 @@
                         resolve();
                     }
 
-                    // Don't let a missing file keep the loader on forever.
                     timeout = setTimeout(finish, 15000);
 
                     if (element.tagName === "IMG") {
                         if (element.complete) {
                             finish();
                         } else {
-                            element.addEventListener(
-                                "load",
-                                finish,
-                                { once: true }
-                            );
-
-                            element.addEventListener(
-                                "error",
-                                finish,
-                                { once: true }
-                            );
+                            element.addEventListener("load", finish, { once: true });
+                            element.addEventListener("error", finish, { once: true });
                         }
                     } else {
                         if (element.readyState >= 2) {
                             finish();
                         } else {
-                            element.addEventListener(
-                                "loadeddata",
-                                finish,
-                                { once: true }
-                            );
-
-                            element.addEventListener(
-                                "canplay",
-                                finish,
-                                { once: true }
-                            );
-
-                            element.addEventListener(
-                                "error",
-                                finish,
-                                { once: true }
-                            );
+                            element.addEventListener("loadeddata", finish, { once: true });
+                            element.addEventListener("canplay", finish, { once: true });
+                            element.addEventListener("error", finish, { once: true });
                         }
 
                         element.load();
@@ -964,14 +808,9 @@
             const pageReady = document.readyState === "complete"
                 ? Promise.resolve()
                 : new Promise(resolve => {
-                    window.addEventListener(
-                        "load",
-                        resolve,
-                        { once: true }
-                    );
+                    window.addEventListener("load", resolve, { once: true });
                 });
 
-            // Safety fallback if something takes too long to load.
             const safetyTimeout = setTimeout(hideLoader, 15000);
 
             Promise.all([
