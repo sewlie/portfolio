@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,16 +9,14 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/navbar.css">
 
-    <!-- SERIF FONT FOR FEATURED IMAGE TITLE -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
-  <style>   
-  /* ---------- MASONRY GRID ---------- */
+    <style>
+        /* ---------- MASONRY GRID ---------- */
         .masonry {
-            padding: 40px;
+            padding: 40px 40px 0;
             column-count: 4;
             column-gap: 40px;
         }
@@ -39,18 +38,13 @@
             -webkit-user-drag: none;
         }
 
-        /* ---------- OVERLAY ---------- */
         .masonry-item .overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             cursor: pointer;
             pointer-events: all;
         }
 
-        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 1200px) {
             .masonry {
                 column-count: 4;
@@ -70,7 +64,7 @@
             }
         }
 
-        /* ---------- TRANSPARENT LOADING SCREEN ---------- */
+        /* ---------- LOADING SCREEN ---------- */
         #page-loader {
             position: fixed;
             inset: 0;
@@ -78,16 +72,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
             background: rgba(255, 255, 255, 0.47);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-
             opacity: 1;
             visibility: visible;
-            transition:
-                opacity 0.6s ease,
-                visibility 0.6s ease;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
 
         #page-loader.is-hidden {
@@ -147,8 +137,7 @@
         /* ---------- LIGHTBOX ---------- */
         #lightbox {
             position: fixed;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100vw;
             height: 100vh;
             background: rgba(0, 0, 0, 0.9);
@@ -185,15 +174,89 @@
             font-family: sans-serif;
         }
 
-        /* ---------- FEATURED IMAGE TITLE ---------- */
+        /* ---------- STATIC FEATURED HERO IMAGE ---------- */
         .featured-image {
             position: relative;
+            width: 100%;
+            height: 65vh;
+            min-height: 350px;
+            margin: 80px 0 10px;
+            overflow: hidden;
+            isolation: isolate;
+            background: #000;
         }
 
-        .featured-image .overlay {
+        .featured-track {
+            display: block;
+            width: 100%;
+            height: 100%;
+            animation: none;
+            transform: none;
+        }
+
+        .featured-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .featured-slide:first-child {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .featured-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .featured-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: 90%;
+            margin: 0;
+            text-align: center;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(30px, 5vw, 68px);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+            text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+            pointer-events: none;
+        }
+
+        .featured-image > .overlay {
             position: absolute;
             inset: 0;
-            z-index: 1;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.10);
+            pointer-events: none;
+        }
+
+        @media (max-width: 1023px) {
+            .featured-image {
+                height: 45vh;
+                min-height: 280px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .featured-title {
+                width: 92%;
+                font-size: clamp(28px, 7vw, 42px);
+                letter-spacing: -0.8px;
+                line-height: 1.2;
+            }
         }
     </style>
 </head>
@@ -203,20 +266,18 @@
     <!-- TRANSPARENT LOADING SCREEN -->
     <div id="page-loader" role="status" aria-label="Loading portfolio">
         <div class="loader-content">
-            <!-- <span class="loader-logo">sewlie</span>-->
             <div class="loader-spinner"></div>
             <span class="loader-text" style="text-transform: capitalize; font-family: inherit;">LOADING</span>
         </div>
     </div>
 
-    <!-- NAV -->
+    <!-- NAVIGATION -->
     <nav class="menu">
         <div class="menu-left">
             <a href="/">sewlie</a>
         </div>
 
         <div class="menu-center">
-            <!-- INSTAGRAM ICON -->
             <a
                 class="social-link"
                 href="https://www.instagram.com/sew1ie/"
@@ -232,29 +293,29 @@
                 </svg>
             </a>
 
-            <!-- CONTACT -->
             <a href="#" onclick="event.preventDefault(); showContactPreview()">contact</a>
         </div>
     </nav>
 
-    <!-- FEATURED IMAGE WITH TITLE -->
-   <div class="featured-image">
-    <div class="featured-track">
-        <div class="featured-slide">
-            <img src="/assets/photos/hudson_colas.jpg" alt="Hudson Colas">
+    <!-- STATIC HERO IMAGE -->
+    <div class="featured-image">
+        <div class="featured-track">
+            <div class="featured-slide">
+                <img
+                    src="/assets/photos/hudson_colas.jpg"
+                    alt="Hudson Colas"
+                >
+            </div>
         </div>
 
-        <div class="featured-slide" aria-hidden="true">
-            <img src="/assets/photos/hudson_colas.jpg" alt="">
-        </div>
+        <div class="featured-title">Macro Cannabis Photography</div>
+        <div class="overlay"></div>
     </div>
-    <div class="featured-title">Macro Cannabis Photography</div>
-    <div class="overlay"></div>
-</div>
 
-    <!-- TRUSTED CLIENTS -->
+    <!-- TRUSTED BY -->
     <div class="trusted-footer">
         <p class="trusted-heading">TRUSTED BY</p>
+
         <div class="trusted-clients">
             <img src="assets/jaunty-logo.png" alt="Jaunty">
             <img src="assets/hurley-logo.png" alt="Hurley">
@@ -266,156 +327,156 @@
         </div>
     </div>
 
-    <!-- MASONRY GRID -->
-    <section class="masonry" id="masonry" style="margin: 0px auto 0px auto;">
+    <!-- MASONRY GALLERY -->
+    <section class="masonry" id="masonry" style="margin: 59px auto 0;">
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="1">
+            <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="Fyre Purple Haze">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_gchem.jpg" alt="2">
+            <img src="/assets/photos/fyre_gchem.jpg" alt="Fyre G Chem">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fugg_ras_can.png" alt="3">
+            <img src="/assets/photos/fugg_ras_can.png" alt="Fugg Ras packaging">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/major_jfk.jpg" alt="6">
+            <img src="/assets/photos/major_jfk.jpg" alt="Major JFK">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/northfork_rambutan.jpg" alt="7">
+            <img src="/assets/photos/northfork_rambutan.jpg" alt="North Fork Rambutan">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/milkweed_pink_melonz.png" alt="8">
+            <img src="/assets/photos/milkweed_pink_melonz.png" alt="Milkweed Pink Melonz">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/northfork_rambutan_jar.jpg" alt="9">
+            <img src="/assets/photos/northfork_rambutan_jar.jpg" alt="North Fork Rambutan jar">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/rosin_joint.jpg" alt="10">
+            <img src="/assets/photos/rosin_joint.jpg" alt="Rosin joint">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/aplineagron_lituya.jpg" alt="11">
+            <img src="/assets/photos/aplineagron_lituya.jpg" alt="Alpine Agron Lituya">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_nug.jpg" alt="12">
+            <img src="/assets/photos/galaxy_applecup_nug.jpg" alt="Galaxy Applecup nug">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_zoom1.jpg" alt="13">
+            <img src="/assets/photos/galaxy_applecup_zoom1.jpg" alt="Galaxy Applecup macro">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Diva Dabs Comp.jpg" alt="14">
+            <img src="/assets/photos/Diva Dabs Comp.jpg" alt="Diva Dabs product">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/galaxy_applecup_zoom3.jpg" alt="15">
+            <img src="/assets/photos/galaxy_applecup_zoom3.jpg" alt="Galaxy Applecup macro detail">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/milkweek_blueberryfrost.jpg" alt="16">
+            <img src="/assets/photos/milkweek_blueberryfrost.jpg" alt="Milkweed Blueberry Frost">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_joker_zoom1.jpg" alt="17">
+            <img src="/assets/photos/fyre_joker_zoom1.jpg" alt="Fyre Joker macro">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_joker_zoom2.jpg" alt="18">
+            <img src="/assets/photos/fyre_joker_zoom2.jpg" alt="Fyre Joker macro detail">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purplehaze_cola.jpg" alt="19">
+            <img src="/assets/photos/fyre_purplehaze_cola.jpg" alt="Fyre Purple Haze cola">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purpleruntx_zoom2.jpg" alt="20">
+            <img src="/assets/photos/fyre_purpleruntx_zoom2.jpg" alt="Fyre Purple Runtz macro">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/fyre_purpleruntz_zoom1.jpeg" alt="21">
+            <img src="/assets/photos/fyre_purpleruntz_zoom1.jpeg" alt="Fyre Purple Runtz detail">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/northfork_strawberrypush.jpg" alt="23">
+            <img src="/assets/photos/northfork_strawberrypush.jpg" alt="North Fork Strawberry Push">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Superboof Retouched.jpg" alt="25">
+            <img src="/assets/photos/Superboof Retouched.jpg" alt="Superboof">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Sour Diesel Retouched.jpg" alt="26">
+            <img src="/assets/photos/Sour Diesel Retouched.jpg" alt="Sour Diesel">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Black Ice Retouched.jpg" alt="27">
+            <img src="/assets/photos/Black Ice Retouched.jpg" alt="Black Ice">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/blue cruffin nug.jpg" alt="28">
+            <img src="/assets/photos/blue cruffin nug.jpg" alt="Blue Cruffin nug">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/blue cruffin zoom.jpg" alt="29">
+            <img src="/assets/photos/blue cruffin zoom.jpg" alt="Blue Cruffin macro">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/C12 - Higher Empire.jpg" alt="30">
+            <img src="/assets/photos/C12 - Higher Empire.jpg" alt="C12 by Higher Empire">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Gas Face - Higher Empire.jpg" alt="31">
+            <img src="/assets/photos/Gas Face - Higher Empire.jpg" alt="Gas Face by Higher Empire">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/ZZ Lemons - Higher Empire.jpg" alt="32">
+            <img src="/assets/photos/ZZ Lemons - Higher Empire.jpg" alt="ZZ Lemons by Higher Empire">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Comet Candy - Higher Empire.jpg" alt="33">
+            <img src="/assets/photos/Comet Candy - Higher Empire.jpg" alt="Comet Candy by Higher Empire">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Sour Dawg ZS DMap.jpg" alt="34">
+            <img src="/assets/photos/Sour Dawg ZS DMap.jpg" alt="Sour Dawg">
             <div class="overlay"></div>
         </div>
 
@@ -427,7 +488,7 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/African haze.jpg" alt="35">
+            <img src="/assets/photos/African haze.jpg" alt="African Haze">
             <div class="overlay"></div>
         </div>
 
@@ -456,27 +517,27 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Hurley Joint + Nug photo.jpg" alt="Hurley Joint and Nug">
+            <img src="/assets/photos/Hurley Joint + Nug photo.jpg" alt="Hurley joint and nug">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Aloha Sugar Cola Full 9x16.jpg" alt="Aloha Sugar Cola Full">
+            <img src="/assets/photos/Aloha Sugar Cola Full 9x16.jpg" alt="Aloha Sugar Cola">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/HG Lemon Cherry Sherbet 9x16.jpg" alt="HG Lemon Cherry Sherbet">
+            <img src="/assets/photos/HG Lemon Cherry Sherbet 9x16.jpg" alt="Lemon Cherry Sherbet">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Aloha Sugar Zoom 2 3x4.jpg" alt="Aloha Sugar Zoom 2">
+            <img src="/assets/photos/Aloha Sugar Zoom 2 3x4.jpg" alt="Aloha Sugar macro">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Mentation GMO Nug 3x4.jpg" alt="Mentation GMO Nug">
+            <img src="/assets/photos/Mentation GMO Nug 3x4.jpg" alt="Mentation GMO nug">
             <div class="overlay"></div>
         </div>
 
@@ -486,47 +547,47 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Aloha Sugar Zoom 1 FullRes.jpg" alt="Aloha Sugar Zoom 1 Full Resolution">
+            <img src="/assets/photos/Aloha Sugar Zoom 1 FullRes.jpg" alt="Aloha Sugar macro detail">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Dime Piece Glob 3x4.jpg" alt="Dime Piece Glob">
+            <img src="/assets/photos/Dime Piece Glob 3x4.jpg" alt="Dime Piece glob">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/E85 Rosin Jar 3x4.jpg" alt="E85 Rosin Jar">
+            <img src="/assets/photos/E85 Rosin Jar 3x4.jpg" alt="E85 rosin jar">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Dime Piece Rosin Jar 3x4.jpg" alt="Dime Piece Rosin Jar">
+            <img src="/assets/photos/Dime Piece Rosin Jar 3x4.jpg" alt="Dime Piece rosin jar">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Ice Cream Souffle Rosin Jar 3x4.jpg" alt="Ice Cream Souffle Rosin Jar">
+            <img src="/assets/photos/Ice Cream Souffle Rosin Jar 3x4.jpg" alt="Ice Cream Souffle rosin jar">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/E85 Glob 3x4.jpg" alt="E85 Glob">
+            <img src="/assets/photos/E85 Glob 3x4.jpg" alt="E85 glob">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/Ice Cream Souffle Glob 3x4.jpg" alt="Ice Cream Souffle Glob">
+            <img src="/assets/photos/Ice Cream Souffle Glob 3x4.jpg" alt="Ice Cream Souffle glob">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/FOB Cola Closer Top  9x16.jpg" alt="FOB Cola Closer Top">
+            <img src="/assets/photos/FOB Cola Closer Top  9x16.jpg" alt="FOB cola close-up">
             <div class="overlay"></div>
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/FYRE GELONATTI NUG RETOUCHED.jpg" alt="Fyre Gelonatti Nug Retouched">
+            <img src="/assets/photos/FYRE GELONATTI NUG RETOUCHED.jpg" alt="Fyre Gelonatti nug">
             <div class="overlay"></div>
         </div>
 
@@ -536,7 +597,7 @@
         </div>
 
         <div class="masonry-item">
-            <img src="/assets/photos/NYCE HEART (JPG).jpg" alt="Nyce Heart">
+            <img src="/assets/photos/NYCE HEART (JPG).jpg" alt="NYCE Heart">
             <div class="overlay"></div>
         </div>
 
@@ -547,36 +608,11 @@
 
     </section>
 
-    <!-- PREVIOUS FEATURED IMAGE MARKUP (KEPT COMMENTED OUT) -->
-    <!--
-    <div class="featured-image">
-        <img src="/assets/photos/hudson_colas.jpg" alt="Hudson Colas">
-        <div class="overlay"></div>
-    </div>
-    -->
-
     <!-- LIGHTBOX -->
     <div id="lightbox">
         <span class="close">&times;</span>
         <img src="" alt="">
     </div>
-
-    <!-- PREVIOUS FOOTER MARKUP (KEPT COMMENTED OUT) -->
-    <!--
-    <footer class="trusted-footer">
-        <p class="trusted-heading">TRUSTED BY</p>
-
-        <div class="trusted-clients">
-            <img src="assets/jaunty-logo.png" alt="Jaunty">
-            <img src="assets/hurley-logo.png" alt="Hurley">
-            <img src="assets/fyre-logo.png" alt="Fyre">
-            <img src="assets/north-fork.png" alt="North Fork">
-            <img src="assets/nyce-logo.png" alt="NYCE">
-            <img src="assets/higher-empire.png" alt="Higher Empire">
-            <img src="assets/diva-dabs.png" alt="Diva Dabs">
-        </div>
-    </footer>
-    -->
 
     <!-- MAIN SCRIPT -->
     <script>
@@ -683,7 +719,7 @@
             }
         });
 
-        // ---------- IMAGE LOAD FIX ----------
+        // ---------- DISABLE DRAGGING ----------
         images.forEach(media => {
             media.setAttribute("draggable", "false");
         });
