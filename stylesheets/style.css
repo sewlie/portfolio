@@ -86,7 +86,7 @@ body::-webkit-scrollbar {
 }
 
 
-/* ---------- DESKTOP-ONLY OVERLAPPING SCROLLING HERO ---------- */
+/* ---------- STATIC FEATURED HERO IMAGE ---------- */
 
 .featured-image {
     position: relative;
@@ -98,57 +98,38 @@ body::-webkit-scrollbar {
     isolation: isolate;
 }
 
-/*
-   The track contains two images.
-   Each slide is wider than half the track's visible width
-   so the images overlap instead of touching edge-to-edge.
-*/
+/* Disable scrolling and display only one image */
 
 .featured-track {
-    --overlap: 150px;
-
-    display: flex;
-    width: 200%;
+    display: block;
+    width: 100%;
     height: 100%;
-    gap: 0;
-    animation: hero-scroll 35s linear infinite;
-    will-change: transform;
+    animation: none;
+    transform: none;
 }
-
-/* Individual slides */
 
 .featured-slide {
-    position: relative;
-    flex: 0 0 calc(50% + 75px);
-    width: calc(50% + 75px);
+    display: none;
+    width: 100%;
     height: 100%;
-    min-width: 0;
-    margin-right: -150px;
-    padding: 0;
     overflow: hidden;
-    box-sizing: border-box;
 }
+
+.featured-slide:first-child {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Preserve the entire image without cropping */
 
 .featured-slide img {
     display: block;
     width: 100%;
     height: 100%;
     max-width: none;
-    margin: 0;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
-}
-
-/* Move the track left continuously */
-
-@keyframes hero-scroll {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
 }
 
 
@@ -182,36 +163,6 @@ body::-webkit-scrollbar {
     z-index: 2;
     background: rgba(0, 0, 0, 0.10);
     pointer-events: none;
-}
-
-
-/* ---------- TABLET: ONE STATIONARY IMAGE ---------- */
-
-@media (min-width: 601px) and (max-width: 1023px) {
-    .featured-track {
-        animation: none;
-        transform: none;
-        width: 100%;
-    }
-
-    .featured-slide {
-        display: none;
-        margin-right: 0;
-    }
-
-    .featured-slide:first-child {
-        display: block;
-        flex: 0 0 100%;
-        width: 100%;
-        height: 100%;
-    }
-
-    .featured-slide img {
-        width: 100%;
-        height: 100%;
-        max-width: none;
-        object-fit: cover;
-    }
 }
 
 
@@ -533,13 +484,6 @@ body::-webkit-scrollbar {
         display: block;
     }
 
-    .featured-title {
-        width: 92%;
-        font-size: clamp(28px, 7vw, 42px);
-        letter-spacing: -0.8px;
-        line-height: 1.2;
-    }
-
     .featured-image {
         width: 100%;
         height: 45vh;
@@ -547,29 +491,11 @@ body::-webkit-scrollbar {
         margin-top: 80px;
     }
 
-    /* Keep the first image stationary on mobile */
-    .featured-track {
-        width: 100%;
-        animation: none;
-        transform: none;
-    }
-
-    .featured-slide {
-        display: none;
-        margin-right: 0;
-    }
-
-    .featured-slide:first-child {
-        display: block;
-        flex: 0 0 100%;
-        width: 100%;
-        height: 100%;
-    }
-
-    .featured-slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .featured-title {
+        width: 92%;
+        font-size: clamp(28px, 7vw, 42px);
+        letter-spacing: -0.8px;
+        line-height: 1.2;
     }
 
     .info-icon {
@@ -601,6 +527,5 @@ body::-webkit-scrollbar {
 @media (prefers-reduced-motion: reduce) {
     .featured-track {
         animation: none;
-        transform: none;
     }
 }
