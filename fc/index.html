@@ -1,173 +1,502 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111311">
-  <meta name="description" content="A proposed NYC 7v7 indoor football league. Player and partner interest is open for the founding season.">
-  <title>FOUNDING XI — NYC Football</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NYCL — New York Cannabis League</title>
+
+    <meta name="description" content="NYCL brings New York's cannabis community together through soccer, competition, and connection.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="announcement"><span class="pulse-dot" aria-hidden="true"></span> FOUNDING SEASON IN DEVELOPMENT <span>/</span> NYC · 7v7 · INDOOR TURF</div>
 
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="FOUNDING XI home">
-      <span class="brand-mark" aria-hidden="true">FXI</span>
-      <span class="brand-text"><strong>FOUNDING XI</strong><small>NEW YORK FOOTBALL</small></span>
-    </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="sr-only">Toggle navigation</span><span class="menu-lines" aria-hidden="true"></span>
-    </button>
-    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-      <a href="#league">THE LEAGUE</a><a href="#teams">TEAMS</a><a href="#format">FORMAT</a><a href="#partners">PARTNERS</a>
-      <a class="nav-button" href="#interest">GET INVOLVED <span aria-hidden="true">↗</span></a>
-    </nav>
-  </header>
+    <!-- NAVIGATION -->
 
-  <main id="main">
-    <section class="hero wrap" id="home">
-      <div class="hero-copy">
-        <p class="eyebrow"><span></span>A NEW GAME FOR THE CITY</p>
-        <h1>THIS CITY<br>PLAYS FOR<br><em>SOMETHING.</em></h1>
-        <p class="hero-lede">Seven a side. Indoor turf. New York energy. A new football league built one local team at a time.</p>
-        <div class="hero-actions">
-          <a class="button button-lime" href="#interest">JOIN THE FOUNDING SEASON <span aria-hidden="true">↗</span></a>
-          <a class="under-link" href="#league">GET TO KNOW THE LEAGUE <span aria-hidden="true">↓</span></a>
+    <header class="navbar">
+
+        <a href="#home" class="logo">
+            <span class="logo-mark">NYCL</span>
+            <span class="logo-name">NEW YORK<br>CANNABIS LEAGUE</span>
+        </a>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links" id="nav-links">
+            <a href="#about">ABOUT</a>
+            <a href="#involved">GET INVOLVED</a>
+            <a href="#vision">THE VISION</a>
+            <a href="#contact">CONTACT</a>
+            <a href="#involved" class="nav-button">JOIN THE MOVEMENT ↗</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-background"></div>
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    NEW YORK CITY · FOUNDING INITIATIVE
+                </div>
+
+                <h1>
+                    THE INDUSTRY<br>
+                    <span>PLAYS TOGETHER.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Bringing New York's cannabis community together
+                    through soccer, competition, and connection.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#involved" class="button button-primary">
+                        GET INVOLVED <span>↗</span>
+                    </a>
+
+                    <a href="#about" class="button button-outline">
+                        DISCOVER NYCL
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="hero-bottom">
+                <span>BUILT IN NEW YORK</span>
+                <span>SOCCER · COMMUNITY · CULTURE</span>
+                <span>01 — THE BEGINNING</span>
+            </div>
+
+            <div class="hero-number">NYCL / 001</div>
+
+        </section>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="intro section-padding" id="about">
+
+            <div class="section-label">
+                <span>01 / WHO WE ARE</span>
+                <span>NEW YORK CANNABIS LEAGUE</span>
+            </div>
+
+            <div class="intro-grid">
+
+                <div class="intro-heading">
+                    <h2>
+                        MORE THAN<br>
+                        <span>A GAME.</span>
+                    </h2>
+                </div>
+
+                <div class="intro-copy">
+
+                    <p class="large-copy">
+                        A new way to bring the New York cannabis
+                        community together.
+                    </p>
+
+                    <p>
+                        NYCL is an initiative built around the idea
+                        that the people behind the industry deserve
+                        a space to connect outside of work.
+                    </p>
+
+                    <p>
+                        Through soccer, friendly competition, and
+                        shared experiences, we're working to create
+                        something that brings dispensaries, industry
+                        professionals, and brands together.
+                    </p>
+
+                    <p class="highlight-copy">
+                        We're starting with an inaugural tournament
+                        and seeing where it takes us.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GET INVOLVED -->
+
+        <section class="involved section-padding" id="involved">
+
+            <div class="section-label">
+                <span>02 / GET INVOLVED</span>
+                <span>BE PART OF THE BEGINNING</span>
+            </div>
+
+            <div class="involved-heading">
+
+                <h2>
+                    THIS STARTS<br>
+                    <span>WITH YOU.</span>
+                </h2>
+
+                <p>
+                    We're currently gauging interest and connecting
+                    with people across New York's cannabis industry.
+                    Whether you want to play, represent a dispensary,
+                    or support the event, we'd love to hear from you.
+                </p>
+
+            </div>
+
+
+            <div class="interest-grid">
+
+                <button class="interest-card" data-interest="Player" type="button">
+
+                    <div class="card-top">
+                        <span>01 / PLAY</span>
+                        <span class="card-arrow">↗</span>
+                    </div>
+
+                    <div class="card-icon">⚽</div>
+
+                    <h3>PLAYERS</h3>
+
+                    <p>
+                        Work in the cannabis industry?
+                        Get involved and let us know you're interested
+                        in hitting the pitch.
+                    </p>
+
+                    <span class="card-link">I'M INTERESTED <span>→</span></span>
+
+                </button>
+
+
+                <button class="interest-card" data-interest="Dispensary" type="button">
+
+                    <div class="card-top">
+                        <span>02 / REPRESENT</span>
+                        <span class="card-arrow">↗</span>
+                    </div>
+
+                    <div class="card-icon">🏪</div>
+
+                    <h3>DISPENSARIES</h3>
+
+                    <p>
+                        Interested in representing your dispensary?
+                        Let's explore getting your team involved.
+                    </p>
+
+                    <span class="card-link">ENTER YOUR INTEREST <span>→</span></span>
+
+                </button>
+
+
+                <button class="interest-card" data-interest="Partner" type="button">
+
+                    <div class="card-top">
+                        <span>03 / SUPPORT</span>
+                        <span class="card-arrow">↗</span>
+                    </div>
+
+                    <div class="card-icon">✳</div>
+
+                    <h3>PARTNERS</h3>
+
+                    <p>
+                        Brands and businesses interested in supporting
+                        the event or collaborating with NYCL.
+                    </p>
+
+                    <span class="card-link">LET'S CONNECT <span>→</span></span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTEREST FORM -->
+
+        <section class="signup section-padding" id="signup">
+
+            <div class="section-label">
+                <span>03 / INTEREST FORM</span>
+                <span>TAKE THE FIRST STEP</span>
+            </div>
+
+            <div class="signup-grid">
+
+                <div class="signup-intro">
+
+                    <h2>
+                        COUNT<br>
+                        <span>ME IN.</span>
+                    </h2>
+
+                    <p>
+                        We're putting the pieces together for the
+                        first NYCL event. Leave your information
+                        and we'll be in touch as things develop.
+                    </p>
+
+                    <div class="signup-note">
+                        <span class="status-dot"></span>
+                        NOW GAUGING INTEREST
+                    </div>
+
+                </div>
+
+
+                <form id="interest-form">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="name">YOUR NAME *</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Full name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">EMAIL ADDRESS *</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="interest">I'M INTERESTED IN *</label>
+
+                            <select id="interest" name="interest" required>
+                                <option value="">Select one</option>
+                                <option value="Player">Playing</option>
+                                <option value="Dispensary">Representing a dispensary</option>
+                                <option value="Partner">Partnering / Sponsoring</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="organization">ORGANIZATION</label>
+
+                            <input
+                                type="text"
+                                id="organization"
+                                name="organization"
+                                placeholder="Dispensary, brand, or business"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="borough">BOROUGH</label>
+
+                        <select id="borough" name="borough">
+                            <option value="">Select borough</option>
+                            <option value="Manhattan">Manhattan</option>
+                            <option value="Brooklyn">Brooklyn</option>
+                            <option value="Queens">Queens</option>
+                            <option value="Bronx">Bronx</option>
+                            <option value="Staten Island">Staten Island</option>
+                            <option value="Outside NYC">Outside NYC</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="message">ANYTHING ELSE? (OPTIONAL)</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            placeholder="Tell us a little more..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <label class="consent">
+                        <input type="checkbox" id="consent" required>
+
+                        <span>
+                            I agree to be contacted about NYCL updates
+                            and potential events.
+                        </span>
+                    </label>
+
+
+                    <button type="submit" class="button button-primary submit-button">
+                        SUBMIT INTEREST <span>↗</span>
+                    </button>
+
+                    <p class="form-message" id="form-message" aria-live="polite"></p>
+
+                    <p class="form-disclaimer">
+                        This is an interest form, not an official team
+                        registration or event booking.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- FUTURE VISION -->
+
+        <section class="vision section-padding" id="vision">
+
+            <div class="section-label">
+                <span>04 / THE VISION</span>
+                <span>START SMALL. BUILD SOMETHING BIG.</span>
+            </div>
+
+            <h2>
+                ONE EVENT.<br>
+                <span>ENDLESS POSSIBILITIES.</span>
+            </h2>
+
+            <p class="vision-description">
+                The goal is simple: bring people together and see
+                what we can build from there.
+            </p>
+
+
+            <div class="vision-grid">
+
+                <div class="vision-item">
+                    <span>01</span>
+                    <h3>THE TOURNAMENT</h3>
+                    <p>
+                        Start with an inaugural soccer tournament
+                        that brings dispensaries and industry
+                        professionals together.
+                    </p>
+                </div>
+
+
+                <div class="vision-item">
+                    <span>02</span>
+                    <h3>THE COMMUNITY</h3>
+                    <p>
+                        Create opportunities for networking,
+                        collaboration, and relationships across
+                        the industry.
+                    </p>
+                </div>
+
+
+                <div class="vision-item">
+                    <span>03</span>
+                    <h3>WHAT'S NEXT</h3>
+                    <p>
+                        Explore future tournaments, recurring
+                        competition, media coverage, and a
+                        growing NYCL community.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section class="contact section-padding" id="contact">
+
+            <div class="contact-content">
+
+                <span class="contact-label">NEW YORK CANNABIS LEAGUE</span>
+
+                <h2>
+                    LET'S BUILD<br>
+                    <span>SOMETHING.</span>
+                </h2>
+
+                <p>
+                    Interested in getting involved, collaborating,
+                    or learning more? We'd love to connect.
+                </p>
+
+                <a href="#signup" class="button button-primary">
+                    GET IN TOUCH <span>↗</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <a href="#home" class="footer-logo">NYCL<span>.</span></a>
+
+        <div class="footer-center">
+            NEW YORK CANNABIS LEAGUE<br>
+            <span>SOCCER · COMMUNITY · CULTURE</span>
         </div>
-        <div class="hero-note"><span class="note-bar"></span><p>INDEPENDENT FOOTBALL.<br><strong>BUILT IN NEW YORK CITY.</strong></p></div>
-      </div>
-      <div class="hero-visual" role="img" aria-label="Abstract indoor football pitch graphic">
-        <div class="visual-meta"><span>NYC / 001</span><span>FOUNDING SEASON</span></div>
-        <div class="pitch">
-          <span class="pitch-half"></span><span class="pitch-circle"></span>
-          <span class="pitch-box left"></span><span class="pitch-box right"></span>
-          <span class="pitch-vertical">NO SHORTCUTS</span><span class="pitch-vertical pitch-vertical-right">JUST FOOTBALL</span>
-          <span class="pitch-seven">07</span>
+
+        <a href="#home" class="back-top">BACK TO TOP ↑</a>
+
+        <div class="footer-bottom">
+            <span>© 2026 NYCL. ALL RIGHTS RESERVED.</span>
+            <span>BUILT IN NEW YORK.</span>
         </div>
-        <div class="visual-meta visual-bottom"><span>40° 43' N / 73° 56' W</span><span>THE CITY IS THE CLUB</span></div>
-      </div>
-      <div class="hero-foot"><span>01 — THE NEXT CHAPTER</span><a href="#league">SCROLL TO EXPLORE ↓</a></div>
-    </section>
 
-    <div class="ticker" aria-label="League values"><div class="ticker-track" aria-hidden="true">
-      <span>LOCAL TEAMS</span><b>✳</b><span>REAL COMPETITION</span><b>✳</b><span>NYC COMMUNITY</span><b>✳</b><span>ONE CITY CHAMPION</span><b>✳</b>
-      <span>LOCAL TEAMS</span><b>✳</b><span>REAL COMPETITION</span><b>✳</b><span>NYC COMMUNITY</span><b>✳</b><span>ONE CITY CHAMPION</span><b>✳</b>
-    </div></div>
+    </footer>
 
-    <section class="section wrap section-pad" id="league">
-      <div class="section-kicker"><span>01</span><span>THE IDEA</span><i></i></div>
-      <div class="two-col">
-        <div><p class="eyebrow">MORE THAN A MATCH</p><h2>A LEAGUE OF<br><em>OUR OWN.</em></h2></div>
-        <div class="body-copy">
-          <p class="large-copy">A city full of neighborhoods. A city full of footballers. A league that brings them together.</p>
-          <p>FOUNDING XI is a working name for a proposed NYC 7v7 indoor football league. The concept: each participating licensed dispensary backs a team, with a season built around competition, community, and a city-wide final.</p>
-          <p>We're gathering interest from players, potential team operators, venues, and prospective partners. The founding-season details will be announced after the league structure and venue are confirmed.</p>
-          <a class="under-link" href="#interest">HELP BUILD THE FIRST SEASON <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-      <div class="stats">
-        <div><strong>07<span>v</span>07</strong><small>PROPOSED MATCH FORMAT</small></div>
-        <div><strong>NYC</strong><small>HOME CITY</small></div>
-        <div><strong>01</strong><small>CITY-WIDE TITLE — PROPOSED</small></div>
-        <div><strong>TBD</strong><small>SEASON & VENUE DETAILS</small></div>
-      </div>
-    </section>
 
-    <section class="teams-section section-pad" id="teams">
-      <div class="wrap">
-        <div class="section-kicker light"><span>02</span><span>THE CLUBS</span><i></i><small>FICTIONAL CONCEPTS / NOT AFFILIATED</small></div>
-        <div class="heading-row">
-          <div><p class="eyebrow light-text">EVERY BLOCK HAS A SIDE</p><h2>MEET THE<br><em>HOME TEAMS.</em></h2></div>
-          <p class="side-note">A dispensary-backed team model. Distinct identities. One shared pitch.<br><strong>Real participants will be announced only after confirmation.</strong></p>
-        </div>
-        <div class="team-grid" id="team-grid" aria-label="Fictional sample team concepts"></div>
-        <p class="sample-note">All team names, crests, and descriptions shown here are fictional design samples. They do not represent actual dispensaries, sponsors, or confirmed participants.</p>
-      </div>
-    </section>
+    <script src="script.js"></script>
 
-    <section class="section wrap section-pad" id="format">
-      <div class="section-kicker"><span>03</span><span>THE FORMAT</span><i></i></div>
-      <div class="heading-row format-heading">
-        <div><p class="eyebrow">SMALL SIDED. BIG ENERGY.</p><h2>ALL GAS.<br><em>ALL GAME.</em></h2></div>
-        <p class="side-note">A proposed indoor 7v7 setup designed for quick transitions, tight spaces, and competitive matches. Final rules and logistics are still to be determined.</p>
-      </div>
-      <div class="format-grid">
-        <article class="format-card"><small>01 / THE GAME</small><div class="format-symbol">7<span>v</span>7</div><h3>SMALL-SIDED FOOTBALL</h3><p>Seven players per side is the current planning format. Squad size, match duration, substitutions, and rules will be confirmed before registration.</p></article>
-        <article class="format-card"><small>02 / THE SETTING</small><div class="field-symbol" aria-hidden="true"><span></span></div><h3>INDOOR TURF</h3><p>Indoor turf is the current venue preference. Facility, borough, field dimensions, and season dates have not yet been finalized.</p></article>
-        <article class="format-card"><small>03 / THE MISSION</small><div class="star-symbol" aria-hidden="true">✳</div><h3>ONE CITY CHAMPION</h3><p>The proposed season ends with a playoff or final event. The competition format will be set once the number of teams is known.</p></article>
-      </div>
-      <div class="status-banner"><span aria-hidden="true">!</span><p><strong>FOUNDING SEASON STATUS:</strong> Planning and partner outreach. No dates, prices, venues, teams, or registration places are confirmed yet.</p></div>
-    </section>
-
-    <section class="interest-section section-pad" id="interest">
-      <div class="wrap">
-        <div class="section-kicker light"><span>04</span><span>GET INVOLVED</span><i></i></div>
-        <div class="interest-layout">
-          <div class="interest-copy">
-            <p class="eyebrow light-text">THE FIRST WHISTLE STARTS HERE</p>
-            <h2>PUT YOUR<br>NAME <em>IN PLAY.</em></h2>
-            <p>Whether you want to play, represent a dispensary team, host matches, or explore a partnership, tell us what you're interested in. This is an expression of interest only — not a confirmed registration.</p>
-            <div class="interest-types"><span><b>01</b> Players & captains</span><span><b>02</b> Licensed dispensaries</span><span><b>03</b> Venues & other partners</span></div>
-          </div>
-          <div class="form-panel">
-            <div class="form-top"><strong>INTEREST FORM / 001</strong><span>* REQUIRED</span></div>
-            <form id="interest-form">
-              <div class="field"><label for="interest-type">I'M INTERESTED AS A <span>*</span></label>
-                <select id="interest-type" name="interestType" required><option value="">Choose one</option><option>Player</option><option>Team captain / organizer</option><option>Licensed dispensary</option><option>Potential sponsor / brand</option><option>Venue / facility</option><option>Other partner</option></select>
-              </div>
-              <div class="field-row">
-                <div class="field"><label for="full-name">NAME <span>*</span></label><input id="full-name" name="name" autocomplete="name" maxlength="100" required placeholder="Your name"></div>
-                <div class="field"><label for="email">EMAIL <span>*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="200" required placeholder="you@example.com"></div>
-              </div>
-              <div class="field"><label for="organization">ORGANIZATION / TEAM <small>OPTIONAL</small></label><input id="organization" name="organization" maxlength="150" placeholder="If applicable"></div>
-              <div class="field"><label for="borough">PREFERRED BOROUGH <small>OPTIONAL</small></label>
-                <select id="borough" name="borough"><option value="">No preference / not sure</option><option>Bronx</option><option>Brooklyn</option><option>Manhattan</option><option>Queens</option><option>Staten Island</option><option>Outside NYC</option></select>
-              </div>
-              <div class="field"><label for="message">ANYTHING ELSE WE SHOULD KNOW? <small>OPTIONAL</small></label><textarea id="message" name="message" rows="3" maxlength="1200" placeholder="Your interest, questions, or ideas…"></textarea></div>
-              <label class="consent"><input type="checkbox" id="consent" name="consent" required><span>I agree to be contacted about this league inquiry. I understand this is not a confirmed registration. <b>*</b></span></label>
-              <button class="button button-lime submit-button" type="submit">PREPARE MY INQUIRY <span aria-hidden="true">↗</span></button>
-              <p class="form-note">Prototype only: this form does not send or store your details. Submitting opens a prefilled email in your email app. Connect a secure form service before publishing.</p>
-              <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section wrap section-pad" id="partners">
-      <div class="section-kicker"><span>05</span><span>PARTNERS</span><i></i></div>
-      <div class="two-col partners-layout">
-        <div><p class="eyebrow">BUILT WITH THE RIGHT PEOPLE</p><h2>BACK THE<br><em>GAME.</em></h2></div>
-        <div class="body-copy">
-          <p class="large-copy">Help shape a new community football platform in New York.</p>
-          <p>We're open to conversations with potential venues, community organizations, service providers, and businesses interested in learning about the project.</p>
-          <p class="compliance-note"><strong>Partner and advertising review:</strong> Cannabis-related sponsorships, logos, apparel, event placements, and promotions are subject to applicable New York rules and legal review. No sponsorship is implied by this page. We do not accept cannabis product promotion or giveaway submissions through this prototype.</p>
-          <a class="button button-dark" href="#interest" data-interest-select="Potential sponsor / brand">EXPLORE A PARTNERSHIP <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-      <div class="partner-strip"><span>VENUE PARTNERS</span><span>COMMUNITY PARTNERS</span><span>LEAGUE SUPPORTERS</span><span>ELIGIBLE BUSINESS PARTNERS</span></div>
-    </section>
-
-    <section class="closing">
-      <div class="closing-mark" aria-hidden="true">FXI</div>
-      <div class="wrap closing-inner"><p class="eyebrow light-text">THE CITY IS THE CLUB</p><h2>SEE YOU<br><em>ON THE PITCH.</em></h2><a class="button button-lime" href="#interest">GET IN THE MIX <span aria-hidden="true">↗</span></a></div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-main">
-      <a class="brand footer-brand" href="#home" aria-label="FOUNDING XI home"><span class="brand-mark" aria-hidden="true">FXI</span><span class="brand-text"><strong>FOUNDING XI</strong><small>NEW YORK FOOTBALL</small></span></a>
-      <p>A proposed community football league.<br>Built in NYC. Still being built.</p>
-      <div class="footer-links"><a href="#league">About</a><a href="#format">Format</a><a href="#interest">Contact / Interest</a><a href="#partners">Partners</a></div>
-    </div>
-    <div class="wrap footer-bottom"><span>© <span id="current-year"></span> FOUNDING XI · WORKING NAME</span><span>FICTIONAL CONCEPT ART & SAMPLE DATA ONLY</span><a href="#home">BACK TO TOP ↑</a></div>
-    <div class="wrap footer-legal"><p>This prototype is not affiliated with any dispensary, cannabis brand, venue, or existing soccer league. All sample teams and identities are fictional. The project is in planning; participation, venue, schedule, rules, pricing, and sponsorships are not confirmed. Cannabis-related marketing or sponsorship must be reviewed for compliance with applicable law before publication.</p></div>
-  </footer>
 </body>
 </html>
