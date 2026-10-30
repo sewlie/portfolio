@@ -1,152 +1,145 @@
-/* FOUNDING XI — front-end interactions and fictional sample data.
-   The interest form opens an email draft only; it does not store or transmit data. */
 
-"use strict";
+/* ==============================
+   NYCL — NEW YORK CANNABIS LEAGUE
+   ============================== */
 
-const sampleTeams = [
-  {
-    number: "01 / CONCEPT",
-    initials: "BX",
-    name: "BOROUGH XI",
-    description: "A fictional team identity inspired by borough pride and the city's local pitches.",
-    status: "FICTIONAL SAMPLE",
-    bg: "#293027",
-    accent: "#d7ff3f",
-    tag: "NYC"
-  },
-  {
-    number: "02 / CONCEPT",
-    initials: "NT",
-    name: "NIGHT SHIFT",
-    description: "A fictional late-kickoff club concept built around after-hours football energy.",
-    status: "FICTIONAL SAMPLE",
-    bg: "#282a38",
-    accent: "#b8c6ff",
-    tag: "AFTER DARK"
-  },
-  {
-    number: "03 / CONCEPT",
-    initials: "CT",
-    name: "CONCRETE FC",
-    description: "A fictional street-football identity with a stripped-back, hard-edged look.",
-    status: "FICTIONAL SAMPLE",
-    bg: "#392c25",
-    accent: "#ffb37c",
-    tag: "CITY BUILT"
-  }
-];
 
-const teamGrid = document.querySelector("#team-grid");
+/* MOBILE NAVIGATION */
 
-if (teamGrid) {
-  sampleTeams.forEach((team) => {
-    const article = document.createElement("article");
-    article.className = "team-card";
-    article.innerHTML = `
-      <div class="team-art" style="--team-bg:${team.bg};--team-accent:${team.accent}">
-        <span class="team-index">${team.number}</span>
-        <span class="team-crest" aria-hidden="true">${team.initials}</span>
-        <span class="team-tag">${team.tag}</span>
-      </div>
-      <div class="team-info" style="--team-accent:${team.accent}">
-        <h3>${team.name}</h3>
-        <p>${team.description}</p>
-        <div class="team-status"><span>${team.status}</span><span>PARTICIPANTS: TBD</span></div>
-      </div>
-    `;
-    teamGrid.appendChild(article);
-  });
-}
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
 
-const menuToggle = document.querySelector(".menu-toggle");
-const siteNav = document.querySelector("#site-nav");
+menuToggle.addEventListener("click", function () {
 
-function closeMenu() {
-  if (!menuToggle || !siteNav) return;
-  menuToggle.setAttribute("aria-expanded", "false");
-  siteNav.classList.remove("is-open");
-  document.body.classList.remove("nav-open");
-}
+    const isOpen = navLinks.classList.toggle("active");
 
-if (menuToggle && siteNav) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", String(!isOpen));
-    siteNav.classList.toggle("is-open", !isOpen);
-    document.body.classList.toggle("nav-open", !isOpen);
-  });
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
 
-  siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 680) closeMenu();
-  });
-}
-
-const currentYear = document.querySelector("#current-year");
-if (currentYear) currentYear.textContent = String(new Date().getFullYear());
-
-document.querySelectorAll("[data-interest-select]").forEach((link) => {
-  link.addEventListener("click", () => {
-    const select = document.querySelector("#interest-type");
-    if (select) select.value = link.dataset.interestSelect;
-  });
 });
 
-const interestForm = document.querySelector("#interest-form");
-const formMessage = document.querySelector("#form-message");
+
+/* CLOSE MOBILE NAVIGATION AFTER CLICKING A LINK */
+
+const navigationLinks = document.querySelectorAll(".nav-links a");
+
+navigationLinks.forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        navLinks.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+
+    });
+
+});
+
+
+/* INTEREST CARDS */
+
+const interestCards = document.querySelectorAll(".interest-card");
+const interestSelect = document.getElementById("interest");
+
+interestCards.forEach(function (card) {
+
+    card.addEventListener("click", function () {
+
+        const selectedInterest = card.dataset.interest;
+
+        interestSelect.value = selectedInterest;
+
+        document.getElementById("signup").scrollIntoView({
+            behavior: "smooth"
+        });
+
+    });
+
+});
+
+
+/* INTEREST FORM */
+
+const interestForm = document.getElementById("interest-form");
+const formMessage = document.getElementById("form-message");
+
 
 /*
-  IMPORTANT:
-  Replace this placeholder with a real league inbox before publishing.
-  The form is intentionally front-end only and opens an email draft.
-*/
-const CONTACT_EMAIL = "replace-with-your-league-email@example.com";
+    IMPORTANT:
 
-if (interestForm && formMessage) {
-  interestForm.addEventListener("submit", (event) => {
+    This is the email address that receives interest submissions.
+
+    Replace the example address below with your actual NYCL email.
+
+    The form opens the visitor's email application with a
+    pre-filled message. It does not automatically send or
+    store submissions.
+*/
+
+const CONTACT_EMAIL = "replace-with-your-nycl-email@example.com";
+
+
+interestForm.addEventListener("submit", function (event) {
+
     event.preventDefault();
 
-    if (!interestForm.reportValidity()) return;
-
-    const formData = new FormData(interestForm);
-    const inquiryType = String(formData.get("interestType") || "").trim();
-    const name = String(formData.get("name") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const organization = String(formData.get("organization") || "").trim();
-    const borough = String(formData.get("borough") || "").trim();
-    const message = String(formData.get("message") || "").trim();
-
-    const subject = `FOUNDING XI interest — ${inquiryType}`;
-    const body = [
-      "FOUNDING XI — Expression of Interest",
-      "",
-      `Interest type: ${inquiryType}`,
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Organization / team: ${organization || "Not provided"}`,
-      `Preferred borough: ${borough || "No preference / not sure"}`,
-      "",
-      "Additional information:",
-      message || "None provided",
-      "",
-      "This is an expression of interest, not a confirmed registration."
-    ].join("\n");
-
-    if (CONTACT_EMAIL === "replace-with-your-league-email@example.com") {
-      formMessage.textContent = "The form is working as a prototype, but the league email has not been configured. Open script.js and replace CONTACT_EMAIL with your real contact email before testing email submission.";
-      formMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      return;
+    if (!interestForm.reportValidity()) {
+        return;
     }
 
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    formMessage.textContent = "Your email app should open with a draft inquiry. Nothing has been sent by this website.";
-    window.location.href = mailtoUrl;
-  });
-}
+    if (CONTACT_EMAIL.includes("replace-with")) {
+
+        formMessage.textContent =
+            "The interest form is not connected yet. Please configure the NYCL contact email in script.js.";
+
+        formMessage.style.color = "#b23b2c";
+
+        return;
+
+    }
+
+
+    const formData = new FormData(interestForm);
+
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const interest = formData.get("interest");
+    const organization = formData.get("organization") || "Not provided";
+    const borough = formData.get("borough") || "Not provided";
+    const message = formData.get("message") || "No additional message";
+
+
+    const subject = encodeURIComponent(
+        "NYCL Interest Submission - " + interest
+    );
+
+
+    const body = encodeURIComponent(
+
+        "NEW YORK CANNABIS LEAGUE - INTEREST SUBMISSION\n\n" +
+
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Interest: " + interest + "\n" +
+        "Organization: " + organization + "\n" +
+        "Borough: " + borough + "\n\n" +
+
+        "Additional Information:\n" +
+        message
+
+    );
+
+
+    const mailtoLink =
+        "mailto:" + CONTACT_EMAIL +
+        "?subject=" + subject +
+        "&body=" + body;
+
+
+    window.location.href = mailtoLink;
+
+
+    formMessage.textContent =
+        "Your email application should open with your interest submission.";
+
+    formMessage.style.color = "#526d24";
+
+});
