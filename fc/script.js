@@ -4,6 +4,11 @@
    ============================== */
 
 
+/* FORMSPREE CONFIGURATION */
+
+const FORMSPREE_URL = "https://formspree.io/f/xaeed1vz";
+
+
 /* MOBILE NAVIGATION */
 
 const menuToggle = document.getElementById("menu-toggle");
@@ -27,6 +32,7 @@ navigationLinks.forEach(function (link) {
     link.addEventListener("click", function () {
 
         navLinks.classList.remove("active");
+
         menuToggle.setAttribute("aria-expanded", "false");
 
     });
@@ -37,6 +43,7 @@ navigationLinks.forEach(function (link) {
 /* INTEREST CARDS */
 
 const interestCards = document.querySelectorAll(".interest-card");
+
 const interestSelect = document.getElementById("interest");
 
 interestCards.forEach(function (card) {
@@ -59,25 +66,15 @@ interestCards.forEach(function (card) {
 /* INTEREST FORM */
 
 const interestForm = document.getElementById("interest-form");
+
 const formMessage = document.getElementById("form-message");
 
-
-/*
-    IMPORTANT:
-
-    This is the email address that receives interest submissions.
-
-    Replace the example address below with your actual NYCL email.
-
-    The form opens the visitor's email application with a
-    pre-filled message. It does not automatically send or
-    store submissions.
-*/
-
-const CONTACT_EMAIL = "nico@nicklzny.com";
+const submitButton = interestForm.querySelector(
+    'button[type="submit"]'
+);
 
 
-interestForm.addEventListener("submit", function (event) {
+interestForm.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
@@ -85,61 +82,107 @@ interestForm.addEventListener("submit", function (event) {
         return;
     }
 
-    if (CONTACT_EMAIL.includes("replace-with")) {
 
-        formMessage.textContent =
-            "The interest form is not connected yet. Please configure the NYCL contact email in script.js.";
+    /* PREPARE FORM DATA */
 
-        formMessage.style.color = "#b23b2c";
+    const formData = new FormData(interestForm);
 
-        return;
+    formData.append("_subject", "New NYCL Interest Submission");
+
+
+    /* DISABLE BUTTON WHILE SUBMITTING */
+
+    submitButton.disabled = true;
+
+    submitButton.innerHTML = "SUBMITTING...";
+
+    formMessage.textContent = "Sending your information...";
+
+    formMessage.style.color = "#62665b";
+
+
+    try {
+
+        /* SEND TO FORMSPREE */
+
+        const response = await fetch(FORMSPREE_URL, {
+
+            method: "POST",
+
+            body: formData,
+
+            headers: {
+                "Accept": "application/json"
+            }
+
+        });
+
+
+        const result = await response.json();
+
+
+        /* SUCCESS */
+
+        if (response.ok) {
+
+            formMessage.textContent =
+                "Thanks for your interest! We'll be in touch.";
+
+            formMessage.style.color = "#526d24";
+
+            interestForm.reset();
+
+        }
+
+
+        /* FORMSPREE VALIDATION ERROR */
+
+        else {
+
+            if (result.errors) {
+
+                formMessage.textContent = result.errors
+                    .map(function (error) {
+                        return error.message;
+                    })
+                    .join(" ");
+
+            } else {
+
+                formMessage.textContent =
+                    "Something went wrong. Please try again.";
+
+            }
+
+            formMessage.style.color = "#b23b2c";
+
+        }
 
     }
 
 
-    const formData = new FormData(interestForm);
+    /* CONNECTION ERROR */
 
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const interest = formData.get("interest");
-    const organization = formData.get("organization") || "Not provided";
-    const borough = formData.get("borough") || "Not provided";
-    const message = formData.get("message") || "No additional message";
+    catch (error) {
 
+        formMessage.textContent =
+            "Unable to submit right now. Please try again later.";
 
-    const subject = encodeURIComponent(
-        "NYCL Interest Submission - " + interest
-    );
+        formMessage.style.color = "#b23b2c";
 
+        console.error("NYCL Form Error:", error);
 
-    const body = encodeURIComponent(
-
-        "NEW YORK CANNABIS LEAGUE - INTEREST SUBMISSION\n\n" +
-
-        "Name: " + name + "\n" +
-        "Email: " + email + "\n" +
-        "Interest: " + interest + "\n" +
-        "Organization: " + organization + "\n" +
-        "Borough: " + borough + "\n\n" +
-
-        "Additional Information:\n" +
-        message
-
-    );
+    }
 
 
-    const mailtoLink =
-        "mailto:" + CONTACT_EMAIL +
-        "?subject=" + subject +
-        "&body=" + body;
+    /* RESTORE BUTTON */
 
+    finally {
 
-    window.location.href = mailtoLink;
+        submitButton.disabled = false;
 
+        submitButton.innerHTML = 'SUBMIT INTEREST <span>↗</span>';
 
-    formMessage.textContent =
-        "Your email application should open with your interest submission.";
-
-    formMessage.style.color = "#526d24";
+    }
 
 });
