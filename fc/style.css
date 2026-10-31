@@ -1,9 +1,6 @@
-
 /* ==============================
    NYCL — NEW YORK CANNABIS LEAGUE
    ============================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800;900&family=DM+Sans:wght@400;500;700;800&display=swap');
 
 :root {
     --black: #111310;
@@ -11,8 +8,8 @@
     --dark-light: #242820;
     --cream: #f1f0e8;
     --white: #ffffff;
-    --lime: #4e8c1d;
-    --lime-dark: #426427;
+    --lime: #c4e16b;
+    --lime-dark: #a9c74e;
     --grey: #969a8e;
     --border: rgba(255, 255, 255, 0.14);
 
@@ -320,7 +317,7 @@ button {
 .involved-heading h2,
 .signup-intro h2,
 .vision h2,
-.contact h2 {
+. h2 {
     font-family: var(--heading-font);
     font-weight: 900;
     font-size: clamp(65px, 8vw, 105px);
