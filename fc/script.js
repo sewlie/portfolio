@@ -74,7 +74,7 @@ const formMessage = document.getElementById("form-message");
     store submissions.
 */
 
-const CONTACT_EMAIL = "replace-with-your-nycl-email@example.com";
+const CONTACT_EMAIL = "nico@nicklzny.com";
 
 
 interestForm.addEventListener("submit", function (event) {
