@@ -6,7 +6,7 @@
 
 /* FORMSPREE CONFIGURATION */
 
-const FORMSPREE_URL = "https://formspree.io/f/xaeed1vz";
+const FORMSPREE_URL = "https://formspree.io/f/xaeedlvz";
 
 
 /* MOBILE NAVIGATION */
