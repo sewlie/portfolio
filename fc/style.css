@@ -317,7 +317,7 @@ button {
 .involved-heading h2,
 .signup-intro h2,
 .vision h2,
-. h2 {
+.contact h2 {
     font-family: var(--heading-font);
     font-weight: 900;
     font-size: clamp(65px, 8vw, 105px);
