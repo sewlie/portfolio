@@ -87,11 +87,15 @@ button {
 }
 
 .logo-mark {
-    color: var(--lime);
+    color: var(--white);
     font-family: var(--heading-font);
     font-weight: 900;
     font-size: 36px;
     letter-spacing: -2px;
+}
+
+.logo-period {
+    color: var(--lime);
 }
 
 .logo-name {
@@ -389,7 +393,7 @@ button {
     color: var(--white);
     text-align: left;
     padding: 28px;
-    min-height: 330px;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     transition: all 0.25s ease;
