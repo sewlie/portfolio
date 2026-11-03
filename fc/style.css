@@ -176,19 +176,17 @@ button {
 .hero-background {
     position: absolute;
     inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(17, 19, 16, 0.98) 0%,
-            rgba(17, 19, 16, 0.91) 42%,
-            rgba(17, 19, 16, 0.55) 100%
-        ),
-        url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=2200&q=85");
-
-    background-size: cover;
+    overflow: hidden;
+    background-image:
+        linear-gradient(rgba(17, 19, 16, 0.82), rgba(17, 19, 16, 0.82)),
+        url('/fc/weed-bg.png');
+    background-size: 147% auto;
     background-position: center;
-    opacity: 0.95;
+    background-repeat: no-repeat;
+}
+
+.hero-background img {
+    display: none;
 }
 
 .hero-content {
@@ -362,9 +360,16 @@ button {
 /* GET INVOLVED */
 
 .involved {
-    background: var(--black);
+    position: relative;
+    background-image:
+        linear-gradient(rgba(17, 19, 16, 0.82), rgba(17, 19, 16, 0.82)),
+        url('/fc/weed-bg.png');
+    background-size: 147% auto;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--white);
 }
+
 
 .involved-heading {
     display: grid;
@@ -575,7 +580,13 @@ button {
 /* VISION */
 
 .vision {
-    background: var(--dark);
+    position: relative;
+    background-image:
+        linear-gradient(rgba(17, 19, 16, 0.82), rgba(17, 19, 16, 0.82)),
+        url('/fc/weed-bg.png');
+    background-size: 147% auto;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--white);
 }
 
