@@ -762,6 +762,24 @@ button {
         font-size: 9px;
     }
 
+    .hero-background {
+        min-height: 100%;
+        background-size: auto 120%;
+        background-position: center 130%;
+    }
+
+    .involved {
+        background-size: auto 120%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .vision {
+        background-size: auto 120%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
     .section-padding {
         padding: 90px 7%;
     }
@@ -837,10 +855,6 @@ button {
         height: 720px;
         min-height: 650px;
         padding: 0 7%;
-    }
-
-    .hero-background {
-        background-position: 60% center;
     }
 
     .hero h1 {
