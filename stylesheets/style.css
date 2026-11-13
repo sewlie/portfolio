@@ -1,3 +1,4 @@
+
 /* ==================================================
    GLOBAL STYLES
 ================================================== */
@@ -117,7 +118,7 @@ a {
 
 
 /* ==================================================
-   FEATURED HERO IMAGE
+   FEATURED HERO IMAGE - STATIC
 ================================================== */
 
 .featured-image {
@@ -130,88 +131,20 @@ a {
     margin: 80px 0 10px;
 
     overflow: hidden;
-    isolation: isolate;
 
     background-color: #000000;
 }
 
-/* Static hero image */
-
-.featured-image > img,
-.featured-image .featured-slide img {
+.featured-static-image {
     display: block;
 
     width: 100%;
     height: 100%;
+
+    max-width: none;
 
     object-fit: contain;
     object-position: center;
-}
-
-/* Supports the featured-track markup */
-
-.featured-track {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    animation: none;
-    transform: none;
-}
-
-.featured-slide {
-    display: none;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-}
-
-.featured-slide:first-child {
-    display: block;
-}
-
-/* Hero darkening overlay */
-
-.featured-image > .overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-
-    background: rgba(0, 0, 0, 0.10);
-
-    pointer-events: none;
-}
-
-/* Hero title */
-
-.featured-title {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    z-index: 3;
-
-    width: 90%;
-    margin: 0;
-
-    text-align: center;
-
-    font-family: "Arizonia", cursive;
-    font-size: clamp(48px, 8vw, 110px);
-    font-weight: 400;
-    line-height: 1.1;
-
-    color: #ffffff;
-
-    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
-
-    pointer-events: none;
 }
 
 
@@ -221,16 +154,12 @@ a {
 
 .trusted-footer {
     width: 100%;
-
-    padding: 35px 40px 20px;
-
+    padding: 0px 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     gap: 22px;
-
     background-color: #000000;
 }
 
@@ -287,9 +216,7 @@ a {
 
 .masonry {
     width: 100%;
-
-    padding: 40px 40px 0;
-
+    padding: 40px;
     column-count: 4;
     column-gap: 40px;
 }
@@ -420,15 +347,15 @@ a {
     }
 }
 
+
+/* ==================================================
+   TABLET
+================================================== */
+
 @media (max-width: 800px) {
     .featured-image {
         height: 45vh;
         min-height: 280px;
-    }
-
-    .featured-title {
-        width: 92%;
-        font-size: clamp(42px, 9vw, 72px);
     }
 
     .masonry {
@@ -451,16 +378,16 @@ a {
     }
 }
 
+
+/* ==================================================
+   MOBILE
+================================================== */
+
 @media (max-width: 480px) {
     .featured-image {
         height: 40vh;
         min-height: 240px;
         margin-top: 70px;
-    }
-
-    .featured-title {
-        width: 94%;
-        font-size: clamp(38px, 10vw, 52px);
     }
 
     .masonry {

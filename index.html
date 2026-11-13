@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,264 +12,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
-
-    <style>
-        /* ---------- MASONRY GRID ---------- */
-        .masonry {
-            padding: 40px 40px 0 40px;
-            column-count: 4;
-            column-gap: 40px;
-        }
-
-        .masonry-item {
-            position: relative;
-            break-inside: avoid;
-            margin-bottom: 20px;
-            width: 100%;
-        }
-
-        .masonry-item img,
-        .masonry-item video {
-            width: 100%;
-            height: auto;
-            display: block;
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
-        /* ---------- OVERLAY ---------- */
-        .masonry-item .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-            pointer-events: all;
-        }
-
-        /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 1200px) {
-            .masonry {
-                column-count: 4;
-            }
-        }
-
-        @media (max-width: 800px) {
-            .masonry {
-                column-count: 3;
-                padding: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .masonry {
-                column-count: 2;
-            }
-        }
-
-        /* ---------- TRANSPARENT LOADING SCREEN ---------- */
-        #page-loader {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: rgba(255, 255, 255, 0.47);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-
-            opacity: 1;
-            visibility: visible;
-            transition:
-                opacity 0.6s ease,
-                visibility 0.6s ease;
-        }
-
-        #page-loader.is-hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .loader-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .loader-logo {
-            font-family: inherit;
-            font-size: 28px;
-            font-weight: 500;
-            letter-spacing: -1px;
-            color: #222;
-        }
-
-        .loader-spinner {
-            width: 24px;
-            height: 24px;
-            border: 2px solid rgba(0, 0, 0, 0.12);
-            border-top-color: #222;
-            border-radius: 50%;
-            animation: loader-spin 0.8s linear infinite;
-        }
-
-        .loader-text {
-            font-family: inherit;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            text-transform: lowercase;
-            color: #555;
-        }
-
-        @keyframes loader-spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .loader-spinner {
-                animation-duration: 2s;
-            }
-
-            #page-loader {
-                transition-duration: 0.1s;
-            }
-        }
-
-        /* ---------- LIGHTBOX ---------- */
-        #lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-        }
-
-        #lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
-        #lightbox video {
-            max-width: 90%;
-            max-height: 90%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-
-        #lightbox .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 36px;
-            color: white;
-            cursor: pointer;
-            font-family: sans-serif;
-        }
-
-        /* ---------- STATIC FEATURED IMAGE + ARIZONIA TITLE ---------- */
-        .featured-image {
-            position: relative;
-            width: 100%;
-            height: 65vh;
-            min-height: 350px;
-            margin: 80px 0 10px;
-            overflow: hidden;
-            isolation: isolate;
-            background: #000;
-        }
-
-        .featured-track {
-            display: block;
-            width: 100%;
-            height: 100%;
-            animation: none;
-            transform: none;
-        }
-
-        .featured-slide {
-            display: none;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .featured-slide:first-child {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
-        .featured-image img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            max-width: none;
-            object-fit: contain;
-            object-position: center;
-        }
-
-        .featured-image > .overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            background: rgba(0, 0, 0, 0.10);
-            pointer-events: none;
-        }
-
-        .featured-title {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 3;
-            width: 90%;
-            margin: 0;
-            text-align: center;
-            font-family: 'Arizonia', cursive;
-            font-size: clamp(48px, 8vw, 110px);
-            font-weight: 400;
-            line-height: 1.1;
-            letter-spacing: 0;
-            color: #ffffff;
-            text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
-            pointer-events: none;
-        }
-
-        @media (max-width: 1023px) {
-            .featured-image {
-                height: 45vh;
-                min-height: 280px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .featured-title {
-                width: 92%;
-                font-size: clamp(42px, 12vw, 68px);
-                line-height: 1.1;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -288,6 +31,7 @@
         </div>
 
         <div class="menu-center">
+
             <!-- INSTAGRAM ICON -->
             <a
                 class="social-link"
@@ -306,20 +50,28 @@
 
             <!-- CONTACT -->
             <a href="#" onclick="event.preventDefault(); showContactPreview()">contact</a>
+
         </div>
     </nav>
 
-    <!-- STATIC FEATURED HERO IMAGE -->
-    <div class="featured-image">
-        <div class="featured-track">
-            <div class="featured-slide">
-                <img src="/assets/photos/hudson_colas.jpg" alt="Hudson Colas">
-            </div>
-        </div>
 
-        <div class="featured-title">Macro Cannabis Photography</div>
+    <section class="featured-image">
+        <img
+            src="/assets/photos/hudson_colas.jpg"
+            alt="Hudson Colas"
+            class="featured-static-image"
+        >
+    </section>
+
+    
+        <!-- HERO TITLE -->
+        <div class="featured-title"></div>
+
+        <!-- DARKENING OVERLAY -->
         <div class="overlay"></div>
+
     </div>
+
 
     <!-- TRUSTED BY -->
     <div class="trusted-footer">
@@ -336,8 +88,9 @@
         </div>
     </div>
 
+
     <!-- MASONRY GRID -->
-    <section class="masonry" id="masonry" style="margin: 59px auto 0px auto;">
+    <section class="masonry" id="masonry">
 
         <div class="masonry-item">
             <img src="/assets/photos/fyre_purple_haze_zoom.jpg" alt="1">
@@ -617,49 +370,64 @@
 
     </section>
 
+
     <!-- LIGHTBOX -->
     <div id="lightbox">
         <span class="close">&times;</span>
         <img src="" alt="">
     </div>
 
+
     <!-- MAIN SCRIPT -->
     <script>
+
         function showContactPreview() {
             alert("Email: sewlie.art@gmail.com");
         }
 
         const masonry = document.getElementById("masonry");
+
         let images = masonry.querySelectorAll("img, video");
         let overlays = masonry.querySelectorAll(".overlay");
 
+
         // ---------- SHUFFLE MASONRY ITEMS ----------
+
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
+
             return array;
         }
 
+
         // ---------- LIGHTBOX ----------
+
         const lightbox = document.getElementById("lightbox");
         const lightboxImg = lightbox.querySelector("img");
         const closeBtn = lightbox.querySelector(".close");
 
+
         function setupOverlays() {
+
             images = masonry.querySelectorAll("img, video");
             overlays = masonry.querySelectorAll(".overlay");
 
             overlays.forEach((overlay, index) => {
+
                 overlay.addEventListener("click", () => {
+
                     const media = images[index];
 
                     if (media.tagName === "VIDEO") {
+
                         const videoSrc =
                             media.querySelector("source")?.src || media.src;
 
                         const video = document.createElement("video");
+
                         video.src = videoSrc;
                         video.controls = true;
                         video.autoplay = true;
@@ -672,6 +440,7 @@
                         lightboxImg.style.display = "none";
 
                         const existingVideo = lightbox.querySelector("video");
+
                         if (existingVideo) {
                             existingVideo.pause();
                             existingVideo.remove();
@@ -679,9 +448,13 @@
 
                         lightbox.appendChild(video);
                         lightbox.style.display = "flex";
+
                         video.play().catch(() => {});
+
                     } else {
+
                         const existingVideo = lightbox.querySelector("video");
+
                         if (existingVideo) {
                             existingVideo.pause();
                             existingVideo.remove();
@@ -690,21 +463,33 @@
                         lightboxImg.style.display = "block";
                         lightboxImg.src = media.src;
                         lightboxImg.alt = media.alt;
+
                         lightbox.style.display = "flex";
+
                     }
+
                 });
+
 
                 overlay.addEventListener("contextmenu", e => {
+
                     e.preventDefault();
+
                     alert("Right-click is disabled on these images");
+
                 });
+
             });
+
         }
 
+
         function closeLightbox() {
+
             lightbox.style.display = "none";
 
             const video = lightbox.querySelector("video");
+
             if (video) {
                 video.pause();
                 video.remove();
@@ -712,41 +497,60 @@
 
             lightboxImg.src = "";
             lightboxImg.style.display = "block";
+
         }
+
 
         closeBtn.addEventListener("click", closeLightbox);
 
+
         lightbox.addEventListener("click", e => {
+
             if (e.target === lightbox) {
                 closeLightbox();
             }
+
         });
 
+
         document.addEventListener("keydown", e => {
+
             if (e.key === "Escape") {
                 closeLightbox();
             }
+
         });
 
+
         // ---------- IMAGE LOAD FIX ----------
+
         images.forEach(media => {
             media.setAttribute("draggable", "false");
         });
 
+
         // ---------- INITIALIZE ----------
+
         document.addEventListener("DOMContentLoaded", () => {
+
             window.scrollTo({ top: 0, behavior: "instant" });
 
             const items = shuffle(Array.from(masonry.children));
+
             items.forEach(item => masonry.appendChild(item));
 
             setupOverlays();
+
         });
+
     </script>
+
 
     <!-- LOADING DETECTION -->
     <script>
+
         (() => {
+
             const loader = document.getElementById("page-loader");
 
             const media = Array.from(
@@ -756,54 +560,80 @@
             let finished = false;
 
             function hideLoader() {
+
                 if (finished) return;
+
                 finished = true;
 
                 loader.classList.add("is-hidden");
 
                 setTimeout(() => loader.remove(), 700);
+
             }
 
+
             function waitForMedia(element) {
+
                 return new Promise(resolve => {
+
                     let settled = false;
                     let timeout;
 
                     function finish() {
+
                         if (settled) return;
+
                         settled = true;
 
                         clearTimeout(timeout);
+
                         element.removeEventListener("load", finish);
                         element.removeEventListener("error", finish);
                         element.removeEventListener("loadeddata", finish);
                         element.removeEventListener("canplay", finish);
 
                         resolve();
+
                     }
+
 
                     timeout = setTimeout(finish, 15000);
 
                     if (element.tagName === "IMG") {
+
                         if (element.complete) {
+
                             finish();
+
                         } else {
+
                             element.addEventListener("load", finish, { once: true });
                             element.addEventListener("error", finish, { once: true });
+
                         }
+
                     } else {
+
                         if (element.readyState >= 2) {
+
                             finish();
+
                         } else {
+
                             element.addEventListener("loadeddata", finish, { once: true });
                             element.addEventListener("canplay", finish, { once: true });
                             element.addEventListener("error", finish, { once: true });
+
                         }
 
                         element.load();
+
                     }
+
                 });
+
             }
+
 
             const pageReady = document.readyState === "complete"
                 ? Promise.resolve()
@@ -811,16 +641,23 @@
                     window.addEventListener("load", resolve, { once: true });
                 });
 
+
             const safetyTimeout = setTimeout(hideLoader, 15000);
+
 
             Promise.all([
                 pageReady,
                 ...media.map(waitForMedia)
             ]).then(() => {
+
                 clearTimeout(safetyTimeout);
+
                 hideLoader();
+
             });
+
         })();
+
     </script>
 
 </body>
