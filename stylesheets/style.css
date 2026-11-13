@@ -134,9 +134,8 @@ a {
 .featured-static-image {
     display: block;
     width: 100%;
-    height: 100%;
     height: 50%;
-    ne;
+
     object-fit: contain;
     object-position: center;
 }
@@ -149,11 +148,14 @@ a {
 .trusted-footer {
     width: 100%;
     padding: 0px 40px 20px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     gap: 22px;
+
     background-color: #000000;
 }
 
@@ -211,6 +213,7 @@ a {
 .masonry {
     width: 100%;
     padding: 40px;
+
     column-count: 4;
     column-gap: 40px;
 }
@@ -223,7 +226,11 @@ a {
 
     break-inside: avoid;
     -webkit-column-break-inside: avoid;
+
+    overflow: hidden;
 }
+
+/* Gallery images and videos */
 
 .masonry-item img,
 .masonry-item video {
@@ -237,6 +244,21 @@ a {
     user-select: none;
     -webkit-user-select: none;
     -webkit-user-drag: none;
+
+    transform: scale(1);
+
+    transition: transform 4s cubic-bezier(0.22, 1, 0.66, 1);
+}
+
+/* Slow zoom on hover */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .masonry-item:hover img,
+    .masonry-item:hover video {
+        transform: scale(1.06);
+    }
+
 }
 
 /* Clickable layer above each gallery item */
@@ -330,6 +352,7 @@ a {
 ================================================== */
 
 @media (max-width: 1200px) {
+
     .masonry {
         column-count: 4;
         column-gap: 25px;
@@ -339,6 +362,7 @@ a {
     .trusted-clients {
         gap: 28px;
     }
+
 }
 
 
@@ -347,6 +371,7 @@ a {
 ================================================== */
 
 @media (max-width: 800px) {
+
     .featured-image {
         /* height: 45vh; */
         /* min-height: 280px; */
@@ -370,6 +395,7 @@ a {
         max-width: 100px;
         max-height: 32px;
     }
+
 }
 
 
@@ -378,6 +404,7 @@ a {
 ================================================== */
 
 @media (max-width: 480px) {
+
     .featured-image {
         /* height: 40vh; */
         /* min-height: 240px; */
@@ -428,4 +455,19 @@ a {
         right: 18px;
         font-size: 32px;
     }
+
+}
+
+
+/* ==================================================
+   REDUCED MOTION
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .masonry-item img,
+    .masonry-item video {
+        transition: none;
+    }
+
 }
