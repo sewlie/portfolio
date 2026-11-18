@@ -11,6 +11,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+    <style>
+        /* Lightbox magnifier */
+        #lightbox .close { z-index: 2; }
+        #zoom-lens {
+            display: none;
+            position: fixed;
+            z-index: 3;
+            pointer-events: none;
+            background-repeat: no-repeat;
+            background-color: #000;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9), 0 10px 30px rgba(0, 0, 0, 0.55);
+        }
+        #zoom-lens.lens-circle { border-radius: 50%; }
+        #zoom-lens.lens-square { border-radius: 6px; }
+    </style>
 </head>
 
 <body>
@@ -571,6 +587,7 @@
                         lightboxImg.style.display = "block";
 
                         // Use the large version in the lightbox, fall back to the grid image
+                        exitZoom();
                         lightboxImg.src = media.dataset.full || media.src;
                         lightboxImg.alt = media.alt;
 
@@ -605,10 +622,71 @@
                 video.remove();
             }
 
+            exitZoom();
             lightboxImg.src = "";
             lightboxImg.style.display = "block";
 
         }
+
+
+        // ---------- LIGHTBOX MAGNIFIER (a lens follows the mouse, the photo stays still) ----------
+
+        const LENS_SHAPE = "circle";   // "circle" or "square"
+        const LENS_SIZE = 500;         // lens width/height in pixels
+        const MIN_ZOOM = 2;            // weakest magnification
+        const MAX_ZOOM = 3;            // strongest magnification
+
+        const lens = document.createElement("div");
+        lens.id = "zoom-lens";
+        lens.className = LENS_SHAPE === "square" ? "lens-square" : "lens-circle";
+        lens.style.width = lens.style.height = LENS_SIZE + "px";
+        lightbox.appendChild(lens);
+
+        function exitZoom() {
+
+            lens.style.display = "none";
+            lightbox.style.cursor = "";
+
+        }
+
+        function zoomAt(e) {
+
+            // Magnifier is for mouse/trackpad; touch screens keep the normal view
+            if (e.pointerType === "touch") return;
+
+            // Only for photos that have fully loaded (not videos)
+            if (lightboxImg.style.display === "none") return exitZoom();
+            if (!lightboxImg.complete || !lightboxImg.naturalWidth) return exitZoom();
+
+            const r = lightboxImg.getBoundingClientRect();
+
+            const inside =
+                e.clientX >= r.left && e.clientX <= r.right &&
+                e.clientY >= r.top && e.clientY <= r.bottom;
+
+            if (!inside) return exitZoom();
+
+            // Magnify toward the photo's real pixel size
+            const zoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, lightboxImg.naturalWidth / r.width));
+
+            const x = e.clientX - r.left;
+            const y = e.clientY - r.top;
+
+            lens.style.backgroundImage = `url("${lightboxImg.currentSrc || lightboxImg.src}")`;
+            lens.style.backgroundSize = `${r.width * zoom}px ${r.height * zoom}px`;
+            lens.style.backgroundPosition = `${-(x * zoom - LENS_SIZE / 2)}px ${-(y * zoom - LENS_SIZE / 2)}px`;
+
+            lens.style.left = (e.clientX - LENS_SIZE / 2) + "px";
+            lens.style.top = (e.clientY - LENS_SIZE / 2) + "px";
+            lens.style.display = "block";
+
+            lightbox.style.cursor = "none";
+
+        }
+
+        lightbox.addEventListener("pointermove", zoomAt);
+        lightbox.addEventListener("pointerleave", exitZoom);
+        window.addEventListener("resize", exitZoom);
 
 
         closeBtn.addEventListener("click", closeLightbox);
