@@ -14,7 +14,7 @@
     flex: 0;
     display: flex;
     justify-content: flex-start;
-    padding: 20px 20px 20px 15vw;
+    padding: 20px 20px 20px 10vw;
 }
 .menu-left a {
     color: #ffffff;
@@ -27,7 +27,7 @@
     flex: 0;
     display: flex;
     justify-content: center;
-    padding: 20px 15vw 20px 20px;
+    padding: 20px 10vw 20px 20px;
 }
 .menu-center a {
     color: #ffffff;

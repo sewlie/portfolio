@@ -163,7 +163,7 @@ a {
 /* RIGHT PLANT */
 
 .side-plant-right {
-    right: -450px;
+    right: -480px;
     top: -167px;
 }
 
@@ -291,6 +291,26 @@ a {
     height: 50%;
     object-fit: contain;
     object-position: center;
+}
+
+.featured-title {
+    width: 100%;
+    margin: 0 0 30px;
+    padding: 0 20px;
+    text-align: center;
+    font-family: 'Molle', sans-serif;
+    font-size: clamp(48px, 5vw, 96px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+@media (max-width: 800px) {
+    .featured-title {
+        display: none;
+    }
 }
 
 
@@ -600,7 +620,7 @@ a {
 
     .featured-static-image {
         display: block;
-        padding: 0 70px;
+        padding: 0 150px;
         width: 100%;
         height: 50%;
         object-fit: contain;
