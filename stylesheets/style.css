@@ -156,15 +156,15 @@ a {
 /* LEFT PLANT */
 
 .side-plant-left {
-    left: -500px;
-    top: -154px;
+    left: -465px;
+    top: -204px;
 }
 
 /* RIGHT PLANT */
 
 .side-plant-right {
-    right: -480px;
-    top: -167px;
+    right: -410px;
+    top: -150px;
 }
 
 @media (max-width: 1200px) {
@@ -249,14 +249,14 @@ a {
 /* LEFT PLANT */
 
 .side-plant-left {
-    left: -550px;
+    left: -450px;
     top: -154px;
 }
 
 /* RIGHT PLANT */
 
 .side-plant-right {
-    right: -500px;
+    right: -410px;
     top: -167px;
 }
 }
