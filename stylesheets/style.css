@@ -263,7 +263,7 @@ a {
 
 /* MOBILE */
 
-@media (max-width: 800px) {
+@media (max-width: 800px), (max-device-width: 800px) {
     .side-plants {
         display: none;
     }
@@ -622,10 +622,6 @@ a {
         padding: 30px;
     }
 
-    .trusted-footer {
-        padding: 30px 100px 20px;
-    }
-
     .trusted-clients {
         gap: 25px;
     }
@@ -651,12 +647,13 @@ a {
    MOBILE
 ================================================== */
 
-@media (max-width: 480px) {
+@media (max-width: 800px) {
 
     .masonry {
         column-count: 2;
         column-gap: 12px;
         padding: 20px 12px 0;
+        margin-top: 62px;
     }
 
     .masonry-item {
@@ -664,6 +661,7 @@ a {
     }
 
     .trusted-footer {
+        display: none;
         padding: 25px 15px 15px;
         gap: 18px;
     }
