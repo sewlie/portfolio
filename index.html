@@ -27,6 +27,30 @@
         #zoom-lens.lens-circle { border-radius: 50%; }
         #zoom-lens.lens-square { border-radius: 6px; }
 
+        /* Navbar layers (plants are z-index 5 to 99 depending on screen width):
+           black bar = under the plants, nav words = above the plants */
+        :root { --nav-h: 78px; }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-h);
+            background: #000000;
+            box-shadow: 0 4px 10px -6px rgba(255, 255, 255, 0.077);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .menu {
+            z-index: 100;
+            height: var(--nav-h);
+            background-color: transparent;
+            box-shadow: none;
+        }
+
         /* Side plants slide off-screen as you scroll */
         .side-plant {
             will-change: translate;
@@ -731,7 +755,7 @@
 
         // ---------- SIDE PLANTS: slide away on scroll ----------
 
-        const HIDE_DISTANCE = 1800;   // pixels of scrolling until the plants are fully hidden
+        const HIDE_DISTANCE = 300;   // pixels of scrolling until the plants are fully hidden
         const sidePlants = document.querySelector(".side-plants");
 
         let plantTicking = false;

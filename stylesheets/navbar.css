@@ -22,6 +22,7 @@
     font-size: 32px;
     text-decoration: none !important;
     cursor: pointer;
+    z-index: 100;
 }
 .menu-center {
     flex: 0;
@@ -35,6 +36,7 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 31px;
+    z-index: 100;
 }
 .menu-center a:hover {
     color: rgb(0, 98, 255);

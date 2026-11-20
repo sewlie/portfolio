@@ -131,7 +131,7 @@ a {
     height: 100vh;
 
     pointer-events: none;
-    z-index: 5;
+    z-index: 99;
     overflow: hidden;
 }
 
