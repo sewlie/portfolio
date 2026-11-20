@@ -26,6 +26,17 @@
         }
         #zoom-lens.lens-circle { border-radius: 50%; }
         #zoom-lens.lens-square { border-radius: 6px; }
+
+        /* Side plants slide off-screen as you scroll */
+        .side-plant {
+            will-change: translate;
+        }
+        .side-plant-left {
+            translate: calc(var(--plant-hide, 0) * -150%) 0;
+        }
+        .side-plant-right {
+            translate: calc(var(--plant-hide, 0) * 150%) 0;
+        }
     </style>
 </head>
 
@@ -709,6 +720,33 @@
         images.forEach(media => {
             media.setAttribute("draggable", "false");
         });
+
+
+        // ---------- SIDE PLANTS: slide away on scroll ----------
+
+        const HIDE_DISTANCE = 2000;   // pixels of scrolling until the plants are fully hidden
+        const sidePlants = document.querySelector(".side-plants");
+
+        let plantTicking = false;
+
+        function updatePlants() {
+
+            const progress = Math.min(1, Math.max(0, window.scrollY / HIDE_DISTANCE));
+            sidePlants.style.setProperty("--plant-hide", progress);
+            plantTicking = false;
+
+        }
+
+        window.addEventListener("scroll", () => {
+
+            if (!plantTicking) {
+                requestAnimationFrame(updatePlants);
+                plantTicking = true;
+            }
+
+        }, { passive: true });
+
+        updatePlants();
 
 
         // ---------- INITIALIZE ----------
