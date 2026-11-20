@@ -37,6 +37,13 @@
         .side-plant-right {
             translate: calc(var(--plant-hide, 0) * 150%) 0;
         }
+
+        /* Hide the plants on portrait / tall screens (vertical tablets) and narrow screens */
+        @media (max-aspect-ratio: 1/1), (max-width: 1023px) {
+            .side-plants {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -724,7 +731,7 @@
 
         // ---------- SIDE PLANTS: slide away on scroll ----------
 
-        const HIDE_DISTANCE = 2000;   // pixels of scrolling until the plants are fully hidden
+        const HIDE_DISTANCE = 1800;   // pixels of scrolling until the plants are fully hidden
         const sidePlants = document.querySelector(".side-plants");
 
         let plantTicking = false;
