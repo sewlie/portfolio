@@ -299,7 +299,7 @@ a {
     padding: 0 20px;
     text-align: center;
     font-family: 'Molle', sans-serif;
-    font-size: clamp(48px, 5vw, 96px);
+    font-size: clamp(48px, 4vw, 96px);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: 1px;
